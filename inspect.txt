@@ -1,0 +1,203 @@
+﻿=== ROUTES ===
+digital-marketing-training
+seo-training
+web-development
+=== ASSETS ===
+public\assets\dm\analytics.jpg
+public\assets\dm\band.jpg
+public\assets\dm\brainstorm.jpg
+public\assets\dm\celebrate.jpg
+public\assets\dm\devices.jpg
+public\assets\dm\huddle.jpg
+public\assets\dm\review.jpg
+public\assets\dm\strategy.jpg
+public\assets\dm\team.jpg
+public\assets\seo\audit.jpg
+public\assets\seo\band.jpg
+public\assets\seo\cta.jpg
+public\assets\seo\hero.jpg
+public\assets\seo\keyword.jpg
+public\assets\seo\round.jpg
+public\assets\seo\why.jpg
+=== app/web-development/page.tsx ===
+import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import { SiteFooter } from "@/components/Site";
+import WxMotion from "@/components/wx/WxMotion";
+import WxPage from "@/components/wx/WxPage";
+
+const description =
+  "Website design and development in Nepal by Softsaro: WordPress, business websites, dynamic sites with admin panels and custom web apps. Fast, secure, mobile-friendly and SEO-ready.";
+
+export const metadata: Metadata = {
+  title: "Website Design & Development in Nepal | Softsaro",
+  description,
+  alternates: { canonical: "/web-development" },
+  openGraph: { type: "website", title: "Website Design & Development | Softsaro Nepal", description, url: "/web-development" },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Website Design and Development",
+  provider: { "@type": "Organization", name: "Softsaro", url: "https://softsaro.com.np" },
+  areaServed: "Nepal",
+  description,
+};
+
+export default function WebDevelopmentPage() {
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <Navbar b="/" />
+      <main id="main">
+        <WxMotion>
+          <WxPage />
+        </WxMotion>
+      </main>
+      <SiteFooter />
+    </>
+  );
+}
+=== components/wx/WxPhoto.tsx ===
+"use client";
+import { useEffect, useRef, useState } from "react";
+
+/** Tries each src in order. Also checks on mount, because a 404 can fire before React hydrates. */
+export default function WxPhoto({ srcs, alt, className, label }: { srcs: string[]; alt: string; className?: string; label?: string }) {
+  const [i, setI] = useState(0);
+  const ref = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (el && el.complete && el.naturalWidth === 0) setI((n) => n + 1);
+  }, [i]);
+
+  if (i >= srcs.length) return <div className={"wx-empty " + (className || "")} role="img" aria-label={alt} />;
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img ref={ref} className={className} src={srcs[i]} alt={alt} loading="lazy" decoding="async" data-cursor-label={label} onError={() => setI((n) => n + 1)} />
+  );
+}
+=== components/wx/WxMotion.tsx (first 70 lines) ===
+"use client";
+import { useRef, type ReactNode } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import Lenis from "lenis";
+
+gsap.registerPlugin(ScrollTrigger);
+
+/** Masked word split (same technique as the other pages). Restores original markup on cleanup. */
+function splitWords(el: HTMLElement) {
+  const orig = el.innerHTML;
+  const frag = document.createDocumentFragment();
+  const wrap = (node: Node) => {
+    const w = document.createElement("span");
+    w.className = "wx-w";
+    const i = document.createElement("span");
+    i.className = "wx-i";
+    i.appendChild(node);
+    w.appendChild(i);
+    return w;
+  };
+  Array.from(el.childNodes).forEach((n) => {
+    if (n.nodeType === 3) {
+      (n.textContent || "").split(/(\s+)/).forEach((p) => {
+        if (!p) return;
+        if (/^\s+$/.test(p)) frag.appendChild(document.createTextNode(" "));
+        else frag.appendChild(wrap(document.createTextNode(p)));
+      });
+    } else if ((n as HTMLElement).tagName === "BR") frag.appendChild(n.cloneNode());
+    else frag.appendChild(wrap(n.cloneNode(true)));
+  });
+  el.textContent = "";
+  el.appendChild(frag);
+  return { words: Array.from(el.querySelectorAll<HTMLElement>(".wx-i")), restore: () => { el.innerHTML = orig; } };
+}
+
+/** Motion for /web-development. GsapCursor and Navbar run on their own. */
+export default function WxMotion({ children }: { children: ReactNode }) {
+  const root = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    (_ctx, contextSafe) => {
+      const safe = contextSafe!;
+      const scope = root.current as HTMLDivElement;
+      const q = (s: string) => Array.from(scope.querySelectorAll<HTMLElement>(s));
+      const one = (s: string) => scope.querySelector<HTMLElement>(s);
+      const offs: (() => void)[] = [];
+      const on = (t: EventTarget, e: string, f: EventListener) => {
+        t.addEventListener(e, f);
+        offs.push(() => t.removeEventListener(e, f));
+      };
+      const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const mm = gsap.matchMedia();
+      offs.push(() => mm.revert());
+
+      // expertise switcher works with click even without animation
+      const pics = q(".wx-exp-pic");
+      const items = q(".wx-exp-item");
+      let cur = 0;
+      let etl: gsap.core.Timeline | null = null;
+      const setActive = (i: number) => {
+        if (i === cur || !pics[i]) return;
+        const prev = cur;
+        cur = i;
+        items.forEach((b, k) => b.classList.toggle("on", k === i));
+        if (etl) etl.progress(1).kill();
+        pics.forEach((p, k) => { if (k !== prev && k !== i) gsap.set(p, { zIndex: 0, clipPath: "inset(100% 0% 0% 0%)" }); });
+        gsap.set(pics[prev], { zIndex: 1 });
+=== Navbar links to ui-ux ===
+Footer.tsx:25: { t: "UI/UX Design", href: `${S}/services/ui-ux-design-in-nepal` },
+=== CSS markers ===
+174: /* buttons */
+313: /* nav */
+336: /* Focused menu overlay */
+606: /* Reference-inspired large navigation composition */
+712: /* Chess artwork menu background */
+988: /* hero */
+1311: /* services */
+1387: /* work */
+1531: /* Featured work deck */
+1743: /* Editorial project-board arrangement */
+1816: /* Horizontal product shelf */
+2248: /* about */
+2291: /* why */
+2343: /* process */
+2422: /* tech */
+2472: /* testimonials */
+2589: /* final + footer */
+2899: /* motion layer */
+3357: /* ===== FINAL UI POLISH (appended; overrides only type scale & rhythm) ===== */
+3447: /* ===== MOTION PLUS ===== */
+3499: /* ===== SERVICES SHOWCASE ===== */
+3743: /* ===== SERVICES SHOWCASE ===== */
+3987: /* SV2 SERVICES */
+4197: /* Interactive Softsaro services */
+4528: /* SEO TRAINING PAGE */
+5230: /* DM TRAINING PAGE v2 */
+5555: /* photo band */
+5615: /* bento */
+5773: /* practical */
+5886: /* tools */
+5947: /* why */
+6004: /* final cta */
+6095: /* SEO TRAINING PAGE v2 */
+6342: /* photo band */
+6410: /* learn: topic index with photo preview */
+6522: /* method */
+6551: /* tools */
+6603: /* why */
+6663: /* cta */
+6760: /* ===== GSAP CURSOR ===== */
+6859: /* ===== DROPDOWN LOCK (close after selection) ===== */
+6867: /* SOFTSARO INTRO */
+6937: /* INTRO V2 */
+7015: /* INTRO V3 */
+7054: /* NAVBAR LOGO */
+7072: /* FOOTER V2 */
+7431: /* FOOTER V3 */
+7504: /* ===== WORK DECK: contain screenshots (final override) ===== */

@@ -1,0 +1,178 @@
+﻿
+=== blog routes ===
+app\blog\page.tsx 685
+app\blog\a-website-that-earns-its-keep\page.tsx 741
+
+=== app\blog\page.tsx ===
+import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import BlogPage from "@/components/BlogPage";
+import BlogMotion from "@/components/BlogMotion";
+import { SiteFooter } from "@/components/Site";
+
+const description = "Ideas on web development, UI/UX design, SEO and digital growth from the Softsaro team.";
+export const metadata: Metadata = { title: "Insights & Blog | Softsaro", description, alternates: { canonical: "/blog" }, openGraph: { type: "website", title: "Insights & Blog | Softsaro", description, url: "/blog" } };
+export default function BlogRoute() { return <><Navbar b="/" /><BlogMotion><BlogPage /></BlogMotion><SiteFooter /></>; }
+
+=== components\BlogPage.tsx ===
+import Link from "next/link";
+import { ArrowUpRight, Clock3, Search, Sparkles } from "lucide-react";
+
+type Article = { category: string; title: string; excerpt: string; date: string; read: string; tone: string; featured?: boolean };
+
+const articles: Article[] = [
+  { category: "Growth strategy", title: "The practical guide to a website that earns its keep", excerpt: "A clear framework for turning a beautiful website into a useful business tool â€” from first impression to final conversion.", date: "May 16, 2026", read: "7 min read", tone: "violet", featured: true },
+  { category: "SEO", title: "How to build an SEO plan people can actually follow", excerpt: "Start with the questions your customers ask, then make every page earn its place.", date: "May 08, 2026", read: "5 min read", tone: "lime" },
+  { category: "Design", title: "Small UX decisions that make a big difference", excerpt: "The details that make a digital product feel obvious, useful and easy to return to.", date: "April 29, 2026", read: "6 min read", tone: "coral" },
+  { category: "Development", title: "What makes a modern business website fast?", excerpt: "A plain-language look at performance, accessibility and the technical choices behind a stronger web presence.", date: "April 17, 2026", read: "8 min read", tone: "ink" },
+];
+
+const categories = ["All articles", "Growth strategy", "Design", "Development", "SEO"];
+
+function ArticleArt({ tone, featured = false }: { tone: string; featured?: boolean }) {
+  return <div className={`blog-art blog-art-${tone}${featured ? " is-featured" : ""}`} aria-hidden="true"><i className="blog-art-orb" /><i className="blog-art-grid" /><span className="blog-art-window"><b /><b /><b /></span><span className="blog-art-line one" /><span className="blog-art-line two" /><span className="blog-art-line three" /><Sparkles className="blog-art-spark" /></div>;
+}
+
+function ArticleMeta({ article }: { article: Article }) {
+  return <p className="blog-meta"><span>{article.date}</span><i /> <Clock3 size={14} /> {article.read}</p>;
+}
+
+export default function BlogPage() {
+  const lead = articles[0];
+  return <div className="blog-page" id="top">
+    <section className="blog-hero" aria-labelledby="blog-title"><div className="wrap">
+      <p className="lab"><i /><span className="gn">Softsaro journal /</span> Ideas for better digital work</p>
+      <div className="blog-hero-row"><h1 id="blog-title">Insights with <em>momentum.</em></h1><p>Notes on design, technology and growth for teams building what&rsquo;s next.</p></div>
+      <div className="blog-rule" />
+      <div className="blog-topics" aria-label="Article categories">{categories.map((category, index) => <button className={index === 0 ? "active" : ""} type="button" key={category}>{category}</button>)}</div>
+    </div></section>
+    <main className="blog-main wrap">
+      <p className="blog-kicker">Latest perspective</p>
+      <article className="blog-featured"><ArticleArt tone={lead.tone} featured /><div className="blog-featured-copy"><p className="blog-category">{lead.category}</p><h2>{lead.title}</h2><p className="blog-excerpt">{lead.excerpt}</p><ArticleMeta article={lead} /><Link href="/blog/a-website-that-earns-its-keep" className="blog-link">Read article <ArrowUpRight size={18} /></Link></div></article>
+      <div className="blog-list-head"><h2>More to explore</h2><div className="blog-search"><Search size={17} /><input aria-label="Search articles" placeholder="Search articles" /></div></div>
+      <div className="blog-grid">{articles.slice(1).map((article) => <article className="blog-card" key={article.title}><ArticleArt tone={article.tone} /><div className="blog-card-copy"><p className="blog-category">{article.category}</p><h3>{article.title}</h3><p className="blog-excerpt">{article.excerpt}</p><div className="blog-card-bottom"><ArticleMeta article={article} /><Link href="#" aria-label={`Read ${article.title}`}><ArrowUpRight size={19} /></Link></div></div></article>)}</div>
+    </main>
+    <section className="blog-newsletter"><div className="wrap blog-newsletter-in"><div><p className="lab w"><i /><span className="gn">Stay in the loop /</span> Monthly, not noisy</p><h2>Useful ideas, delivered with intent.</h2></div><form className="blog-signup"><label htmlFor="blog-email">Email address</label><div><input id="blog-email" type="email" placeholder="you@company.com" /><button type="submit">Subscribe <ArrowUpRight size={17} /></button></div></form></div></section>
+  </div>;
+}
+
+=== components\BlogMotion.tsx ===
+"use client";
+
+import { useRef, type ReactNode } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function BlogMotion({ children }: { children: ReactNode }) {
+  const root = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const scope = root.current!;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+
+    const hero = scope.querySelector(".blog-hero");
+    const featured = scope.querySelector(".blog-featured");
+    const cards = gsap.utils.toArray<HTMLElement>(".blog-card", scope);
+    const signup = scope.querySelector(".blog-newsletter-in");
+
+    if (hero) {
+      gsap.from(hero.querySelectorAll(".lab, h1, .blog-hero-row > p, .blog-rule, .blog-topics"), {
+        y: 32, autoAlpha: 0, duration: 1, stagger: 0.11, ease: "expo.out", delay: 0.15,
+      });
+    }
+    let featuredObserver: IntersectionObserver | undefined;
+    if (featured) {
+      const art = featured.querySelectorAll(".blog-art-window, .blog-art-line, .blog-art-spark");
+      gsap.set(featured, { y: 48, autoAlpha: 0 });
+      gsap.set(art, { scale: 0.7, autoAlpha: 0 });
+      featuredObserver = new IntersectionObserver((entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        gsap.timeline().to(featured, { y: 0, autoAlpha: 1, duration: 1.15, ease: "expo.out" })
+          .to(art, { scale: 1, autoAlpha: 1, duration: 1.1, stagger: 0.08, ease: "back.out(1.5)" }, "-=.65");
+        featuredObserver?.disconnect();
+      }, { threshold: 0.08 });
+      featuredObserver.observe(featured);
+    }
+    const grid = scope.querySelector(".blog-grid");
+    gsap.set(cards, { y: 38, autoAlpha: 0 });
+    const cardObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      gsap.to(cards, { y: 0, autoAlpha: 1, duration: 0.9, stagger: 0.12, ease: "expo.out", overwrite: true });
+      cardObserver.disconnect();
+    }, { threshold: 0.12 });
+    if (grid) cardObserver.observe(grid);
+    if (signup) gsap.from(signup.children, { y: 36, autoAlpha: 0, duration: 1, stagger: 0.16, ease: "expo.out", scrollTrigger: { trigger: signup, start: "top 83%" } });
+    ScrollTrigger.refresh();
+
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!fine) return () => { featuredObserver?.disconnect(); cardObserver.disconnect(); };
+    const cleanups: (() => void)[] = [];
+    [featured, ...cards].filter(Boolean).forEach((card) => {
+      const el = card as HTMLElement;
+      const art = el.querySelector<HTMLElement>(".blog-art");
+      const move = (event: PointerEvent) => {
+        const box = el.getBoundingClientRect();
+        const x = (event.clientX - box.left) / box.width - .5;
+        const y = (event.clientY - box.top) / box.height - .5;
+        gsap.to(el, { rotateX: -y * 2.3, rotateY: x * 2.3, transformPerspective: 900, transformOrigin: "center", duration: .55, ease: "power3.out", overwrite: true });
+        if (art) gsap.to(art, { x: x * 9, y: y * 9, duration: .65, ease: "power3.out", overwrite: true });
+      };
+      const leave = () => { gsap.to(el, { rotateX: 0, rotateY: 0, duration: .75, ease: "elastic.out(1,.5)", overwrite: true }); if (art) gsap.to(art, { x: 0, y: 0, duration: .75, ease: "power3.out", overwrite: true }); };
+      el.addEventListener("pointermove", move); el.addEventListener("pointerleave", leave);
+      cleanups.push(() => { el.removeEventListener("pointermove", move); el.removeEventListener("pointerleave", leave); });
+    });
+    return () => { featuredObserver?.disconnect(); cardObserver.disconnect(); cleanups.forEach((cleanup) => cleanup()); };
+  }, { scope: root });
+
+  return <div ref={root}>{children}</div>;
+}
+
+=== where blog data lives ===
+app\blog\a-website-that-earns-its-keep\page.tsx:7: const title = "The practical guide to a website that earns its keep | Softsaro";
+components\bn\BnPage.tsx:47: { t: "Social media creatives", d: "Posts, stories and covers that stop the scroll.", ad: { cls: "r-mpu", a: VIO, b: PNK, c: W, d: INK, tag: "Social", 
+components\pricing\PricingPage.tsx:16: copy: "Choose a focused monthly plan, or let us tailor one around your goals. Every plan begins with a clear content and growth strategy.",
+components\pricing\PricingPage.tsx:18: { name: "Basic", price: "Rs. 20,999", note: "Best for small businesses / month", items: ["Social media setup (Facebook, Instagram & TikTok)", "12 high
+components\pricing\PricingPage.tsx:19: { name: "Standard", price: "Rs. 31,999", note: "Best for medium businesses / month", featured: true, items: ["Platform management (Facebook, Instagram
+components\pricing\PricingPage.tsx:20: { name: "Premium", price: "Rs. 47,999", note: "Best for large businesses / month", items: ["Platform management (Facebook, Instagram & TikTok)", "20+ 
+components\pricing\PricingPage.tsx:51: { name: "Basic", price: "Rs. 23,999", note: "Best for small businesses / month", items: [], sections: [{ title: "Initial website analysis", items: [["
+components\pricing\PricingPage.tsx:52: { name: "Standard", price: "Rs. 55,999", note: "Best for large businesses / month", featured: true, items: [], sections: [{ title: "Initial website an
+components\pricing\PricingPage.tsx:53: { name: "Premium", price: "Rs. 39,999", note: "Best for medium businesses / month", items: [], sections: [{ title: "Initial website analysis", items: 
+components\AboutPage.tsx:15: <div className="about-hero-grid"><div><h1>Good work begins with <em>real partnership.</em></h1><p>Softsaro is a digital team for ambitious businesses 
+components\BlogArticle.tsx:15: <p className="blog-category">Growth strategy</p>
+components\BlogArticle.tsx:16: <h1>The practical guide to a website that earns its keep</h1>
+components\BlogArticle.tsx:35: <p>A website that earns its keep is never finished once. Watch where people hesitate, listen to the questions sales receives, and improve the pages th
+components\BlogPage.tsx:6: const articles: Article[] = [
+components\BlogPage.tsx:7: { category: "Growth strategy", title: "The practical guide to a website that earns its keep", excerpt: "A clear framework for turning a beautiful webs
+components\BlogPage.tsx:13: const categories = ["All articles", "Growth strategy", "Design", "Development", "SEO"];
+components\BlogPage.tsx:24: const lead = articles[0];
+components\BlogPage.tsx:28: <div className="blog-hero-row"><h1 id="blog-title">Insights with <em>momentum.</em></h1><p>Notes on design, technology and growth for teams building w
+components\BlogPage.tsx:34: <article className="blog-featured"><ArticleArt tone={lead.tone} featured /><div className="blog-featured-copy"><p className="blog-category">{lead.cate
+components\BlogPage.tsx:35: <div className="blog-list-head"><h2>More to explore</h2><div className="blog-search"><Search size={17} /><input aria-label="Search articles" placehold
+components\BlogPage.tsx:36: <div className="blog-grid">{articles.slice(1).map((article) => <article className="blog-card" key={article.title}><ArticleArt tone={article.tone} /><d
+components\DmdPage.tsx:60: { k: "doc", t: "Content Marketing", d: "Articles, videos and visuals that explain your value and support every stage of the customer journey." },
+components\SeoLanding.tsx:96: { k: "content", t: "Content SEO", d: "Pages and articles optimized to be found and to convert." },
+
+=== blog css selectors (line numbers) ===
+globals.css:130: .blob {
+globals.css:19455: .blog-page{background:var(--cream);color:var(--ink)}
+globals.css:19456: .blog-hero{padding:clamp(150px,18vw,250px) 0 42px;background:radial-gradient(80% 95% at 95
+globals.css:19457: .blog-hero .wrap{max-width:1500px}.blog-hero .lab{margin-bottom:clamp(44px,7vw,96px)}
+globals.css:19458: .blog-hero-row{display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:end}.b
+globals.css:19459: .blog-rule{height:1px;margin-top:clamp(52px,7vw,100px);background:var(--line)}.blog-topics
+globals.css:19460: .blog-main{max-width:1500px;padding-top:clamp(64px,9vw,128px);padding-bottom:clamp(84px,12
+globals.css:19461: .blog-featured{display:grid;grid-template-columns:1.02fr .98fr;min-height:530px;background
+globals.css:19462: .blog-art{position:relative;min-height:260px;overflow:hidden;background:#6a67ae}.blog-art.
+globals.css:19463: .blog-list-head{display:flex;align-items:center;justify-content:space-between;gap:24px;mar
+globals.css:19464: .blog-newsletter{padding:clamp(65px,9vw,125px) 0;background:var(--ink);color:#fff}.blog-ne
+globals.css:19489: .blog-hero{padding:clamp(122px,13vw,172px) 0 30px}.blog-hero .lab{margin-bottom:clamp(30px
+
+=== public image folders that may hold blog covers ===
+public\assets
+
+=== old site reachable? ===
+https://softsaro.com.np/blog -> 200
+https://softsaro.com.np/blogs -> 200

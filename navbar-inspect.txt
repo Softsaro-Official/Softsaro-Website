@@ -1,0 +1,387 @@
+﻿=== Navbar.tsx ===
+  "use client";
+
+  import { useEffect, useRef, useState } from "react";
+  import { useGSAP } from "@gsap/react";
+  import { gsap } from "gsap";
+  import Link from "next/link";
+  import { usePathname } from "next/navigation";
+
+  const S = "https://softsaro.com.np";
+
+  const SERVICES = [
+    { href: "/seo-training", label: "Advanced SEO", icon: "seo" },
+    { href: "/digital-marketing-training", label: "Digital Marketing Training", icon: "training" },
+    { href: "/web-development", label: "Web Development", icon: "code" },
+    { href: "/services/banner-ads-in-nepal", label: "Banner Advertising", icon: "banner" },
+    { href: "/services/domain-and-hosting-in-nepal", label: "Domain & Hosting in Nepal", icon: "server" },
+    { href: "/mobile-app-development", label: "Mobile App Development", icon: "phone" },
+    { href: "/ui-ux-design", label: "UI/UX Design", icon: "design" },
+  ];
+
+  export default function Navbar({ b = "" }: { b?: string }) {
+    const root = useRef<HTMLDivElement>(null);
+    const [open, setOpen] = useState(false);
+    const [sub, setSub] = useState(false);
+    const [aboutSub, setAboutSub] = useState(false);
+    const [pricingSub, setPricingSub] = useState(false);
+    const subRef = useRef<HTMLDivElement>(null);
+    const chevRef = useRef<SVGSVGElement>(null);
+    const aboutSubRef = useRef<HTMLDivElement>(null);
+    const aboutChevRef = useRef<SVGSVGElement>(null);
+    const pathname = usePathname();
+    const subOpenRef = useRef(false);
+    subOpenRef.current = sub;
+    const pricingSubRef = useRef<HTMLDivElement>(null);
+    const pricingChevRef = useRef<SVGSVGElement>(null);
+
+    useEffect(() => { if (!open) { setSub(false); setAboutSub(false); setPricingSub(false); } }, [open]);
+
+    // Services submenu: smooth height + chevron rotation
+    useEffect(() => {
+      const el = subRef.current;
+      if (!el) return;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const links = el.querySelectorAll("a");
+      gsap.killTweensOf([el, chevRef.current, ...links]);
+      gsap.to(el, { height: sub ? "auto" : 0, duration: reduce ? 0 : 0.6, ease: "expo.out" });
+      gsap.to(chevRef.current, { rotation: sub ? 180 : 0, duration: reduce ? 0 : 0.5, ease: "expo.out" });
+      if (sub && !reduce) gsap.fromTo(links, { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.55, stagger: 0.08, delay: 0.08, ease: "expo.out" });
+      else gsap.set(links, { autoAlpha: 1, x: 0 });
+    }, [sub]);
+
+    useEffect(() => {
+      const el = aboutSubRef.current;
+      if (!el) return;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const links = el.querySelectorAll("a");
+      gsap.killTweensOf([el, aboutChevRef.current, ...links]);
+      gsap.to(el, { height: aboutSub ? "auto" : 0, duration: reduce ? 0 : 0.6, ease: "expo.out" });
+      gsap.to(aboutChevRef.current, { rotation: aboutSub ? 180 : 0, duration: reduce ? 0 : 0.5, ease: "expo.out" });
+      if (aboutSub && !reduce) gsap.fromTo(links, { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.55, stagger: 0.08, delay: 0.08, ease: "expo.out" });
+      else gsap.set(links, { autoAlpha: 1, x: 0 });
+    }, [aboutSub]);
+
+    useEffect(() => {
+      const el = pricingSubRef.current;
+      if (!el) return;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const links = el.querySelectorAll("a");
+      gsap.killTweensOf([el, pricingChevRef.current, ...links]);
+      gsap.to(el, { height: pricingSub ? "auto" : 0, duration: reduce ? 0 : 0.6, ease: "expo.out" });
+      gsap.to(pricingChevRef.current, { rotation: pricingSub ? 180 : 0, duration: reduce ? 0 : 0.5, ease: "expo.out" });
+      if (pricingSub && !reduce) gsap.fromTo(links, { autoAlpha: 0, x: -14 }, { autoAlpha: 1, x: 0, duration: 0.55, stagger: 0.08, delay: 0.08, ease: "expo.out" });
+      else gsap.set(links, { autoAlpha: 1, x: 0 });
+    }, [pricingSub]);
+
+    useGSAP(() => {
+      const nav = root.current;
+      if (!nav) return;
+      const items = nav.querySelectorAll(".menu-panel [data-menu-item]");
+      const meta = nav.querySelectorAll(".menu-meta > *");
+      gsap.set([...items, ...meta], { autoAlpha: 0, y: 28 });
+    }, { scope: root });
+
+    useEffect(() => {
+      const nav = root.current;
+      if (!nav) return;
+      const items = nav.querySelectorAll(".menu-panel [data-menu-item]");
+      const meta = nav.querySelectorAll(".menu-meta > *");
+      const targets = [...items, ...meta];
+      const panel = nav.querySelector(".menu-panel");
+      gsap.killTweensOf([panel, ...targets]);
+      document.body.classList.toggle("menu-is-open", open);
+
+      if (open) {
+        gsap.set(targets, { autoAlpha: 0, y: 28 });
+        gsap.timeline()
+          .to(panel, { clipPath: "inset(0 0 0% 0 round 0px)", duration: .72, ease: "expo.inOut" })
+          .to(targets, { autoAlpha: 1, y: 0, duration: .7, stagger: .055, ease: "expo.out" }, "-=.28");
+      } else {
+        gsap.timeline()
+          .to(targets, { autoAlpha: 0, y: -16, duration: .22, stagger: .015, ease: "power2.in" })
+          .to(panel, { clipPath: "inset(0 0 100% 0 round 0 0 28px 28px)", duration: .58, ease: "expo.inOut" }, "-=.06");
+      }
+      return () => document.body.classList.remove("menu-is-open");
+    }, [open]);
+
+    useEffect(() => {
+      const onKey = (event: KeyboardEvent) => event.key === "Escape" && (subOpenRef.current ? setSub(false) : setOpen(false));
+      window.addEventListener("keydown", onKey);
+      return () => window.removeEventListener("keydown", onKey);
+    }, []);
+
+    // NAV_FAILSAFE: never leave the navbar stuck above the viewport
+    useEffect(() => {
+      const t = window.setTimeout(() => {
+        const el = root.current?.querySelector<HTMLElement>(".nav");
+        if (el && !el.classList.contains("hide") && el.getBoundingClientRect().top < -1) {
+          gsap.to(el, { yPercent: 0, y: 0, duration: 0.6, ease: "expo.out" });
+        }
+      }, 5500);
+      return () => window.clearTimeout(t);
+    }, []);
+    const hover = (e: React.MouseEvent<HTMLButtonElement>, on: boolean) => {
+      const t = e.currentTarget;
+      gsap.to(t.querySelector("i"), { scale: on ? 1.12 : 1, duration: 0.55, ease: "expo.out", overwrite: "auto" });
+      gsap.to(t.querySelector("span"), { x: on ? -5 : 0, duration: 0.45, ease: "expo.out", overwrite: "auto" });
+    };
+    const hoverSub = (target: "about" | "services" | "pricing", show: boolean) => {
+      if (!window.matchMedia("(min-width: 701px) and (hover: hover)").matches) return;
+      if (show) {
+        setAboutSub(target === "about");
+        setSub(target === "services");
+        setPricingSub(target === "pricing");
+        return;
+      }
+      if (target === "about") setAboutSub(false);
+      if (target === "services") setSub(false);
+      if (target === "pricing") setPricingSub(false);
+    };
+    const close = () => { setOpen(false); setSub(false); setAboutSub(false); setPricingSub(false); };
+    return (
+      <div className={`menu-shell${open ? " is-open" : ""}`} ref={root}>
+        <header className="nav menu-nav" id="nav">
+          <a href={`${b}#top`} className="menu-brand" aria-label="Softsaro home" onClick={close}><img className="menu-logo" src="/softsaro-logo.png" width={1024} height={285} alt="Softsaro" /></a>
+          <button className="menu-trigger" type="button" aria-expanded={open} aria-controls="site-menu" onClick={() => setOpen(!open)} onMouseEnter={(e) => hover(e, true)} onMouseLeave={(e) => hover(e, false)}>
+            <span>{open ? "Close" : "Menu"}</span><i aria-hidden="true"><b /><b /></i>
+          </button>
+        </header>
+        <div className="menu-panel" id="site-menu" aria-hidden={!open} inert={!open}>
+          <div className="menu-content">
+            <nav className="menu-links" aria-label="Primary navigation">
+              <a data-menu-item data-cur="open" data-label="Open" className="menu-home" href={`${b}#top`} onClick={close}><span>01</span>Home <em>â†—</em></a>
+              <div data-menu-item className="menu-about menu-sw" onMouseEnter={() => hoverSub("about", true)} onMouseLeave={() => hoverSub("about", false)}>
+                <button type="button" data-cur="open" data-label="Open" className="services-toggle" aria-expanded={aboutSub} aria-controls="menu-about-sub" onClick={() => setAboutSub(!aboutSub)}><span>02</span>About <svg ref={aboutChevRef} className="msub-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></button>
+                <div className="msub" id="menu-about-sub" ref={aboutSubRef} aria-hidden={!aboutSub} inert={!aboutSub}>
+                  <div className="msub-in">
+                    <Link data-cur="open" data-label="Open" href="/about-us" onClick={close}>Introduction <b aria-hidden="true">&#8599;</b></Link>
+                    <Link data-cur="open" data-label="Open" href="/our-team" onClick={close}>Our Team <b aria-hidden="true">&#8599;</b></Link>
+                  </div>
+                </div>
+              </div>
+              <div data-menu-item className="menu-services-link menu-sw" onMouseEnter={() => hoverSub("services", true)} onMouseLeave={() => hoverSub("services", false)}>
+                <button type="button" data-cur="open" data-label="Open" className="services-toggle" aria-expanded={sub} aria-controls="menu-sub" onClick={() => setSub(!sub)}><span>03</span>Services <svg ref={chevRef} className="msub-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></button>
+                <div className="msub msub-svc" id="menu-sub" ref={subRef} aria-hidden={!sub} inert={!sub}>
+                  <div className="msub-in">
+                    {SERVICES.map((s) => (
+                      <Link key={s.href} data-cur="open" data-label="Open" href={s.href} onClick={close} aria-current={pathname === s.href ? "page" : undefined}>{s.label} <b aria-hidden="true">&#8599;</b></Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div data-menu-item className="menu-pricing menu-sw" onMouseEnter={() => hoverSub("pricing", true)} onMouseLeave={() => hoverSub("pricing", false)}>
+                <button type="button" data-cur="open" data-label="Open" className="services-toggle" aria-expanded={pricingSub} aria-controls="menu-pricing-sub" onClick={() => setPricingSub(!pricingSub)}><span>04</span>Pricing <svg ref={pricingChevRef} className="msub-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></button>
+                <div className="msub" id="menu-pricing-sub" ref={pricingSubRef} aria-hidden={!pricingSub} inert={!pricingSub}>
+                  <div className="msub-in">
+                    <Link data-cur="open" data-label="Open" href="/pricing/digital-marketing" onClick={close}>Digital Marketing <b aria-hidden="true">&#8599;</b></Link>
+                    <Link data-cur="open" data-label="Open" href="/pricing/domain-hosting" onClick={close}>Domain &amp; Hosting <b aria-hidden="true">&#8599;</b></Link>
+                    <Link data-cur="open" data-label="Open" href="/pricing/advanced-seo" onClick={close}>Advanced SEO <b aria-hidden="true">&#8599;</b></Link>
+                  </div>
+                </div>
+              </div>
+              <a data-menu-item data-cur="open" data-label="Open" className="menu-portfolio" href={`${S}/portfolio`} onClick={close}><span>05</span>Portfolio <em>â†—</em></a>
+              <Link data-menu-item data-cur="open" data-label="Open" className="menu-blogs" href="/blog" onClick={close}><span>06</span>Blogs <em>â†—</em></Link>
+              <a data-menu-item data-cur="open" data-label="Open" className="menu-contact" href={`${b}#contact`} onClick={close}><span>07</span>Contact <em>â†—</em></a>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+=== globals.css: dropdown / menu rules ===
+280: .menu a:hover .roll>span,
+337: .menu-nav {
+344: .menu-brand {
+354: .menu-brand svg {
+359: .menu-brand svg path:first-child,
+360: .menu-brand svg path:nth-child(2) {
+364: .menu-brand svg path:last-child {
+368: .menu-trigger {
+382: .menu-trigger>i {
+392: .menu-trigger b {
+401: .menu-trigger b:first-child {
+405: .menu-trigger b:last-child {
+409: .menu-trigger:hover>i {
+415: .menu-shell.is-open .menu-trigger b:first-child {
+420: .menu-shell.is-open .menu-trigger b:last-child {
+425: .menu-panel {
+435: .menu-shell.is-open .menu-panel {
+439: .menu-panel:before {
+451: .menu-panel-head {
+463: .menu-content {
+472: .menu-links {
+477: .menu-links>a,
+493: .menu-links span:first-child,
+500: .menu-links em,
+508: .menu-links>a:hover,
+513: .menu-links>a:hover em {
+523: .menu-services {
+530: .menu-services.expanded {
+534: .menu-services>div {
+542: .menu-services a {
+552: .menu-services a:hover {
+556: .menu-services small {
+561: .menu-services b {
+569: .menu-services a:hover b {
+574: .menu-meta {
+585: .menu-meta p {
+590: .menu-meta p a {
+596: .menu-meta>a {
+600: .menu-meta>span {
+608: .menu-panel {
+612: .menu-content {
+619: .menu-links {
+628: .menu-links>a {
+641: .menu-links>a:hover {
+646: .menu-home {
+652: .menu-about {
+657: .menu-services-link {
+662: .menu-portfolio {
+667: .menu-blogs {
+672: .menu-contact {
+677: .menu-pricing {
+682: .menu-links span:first-child,
+683: .menu-links em {
+687: .menu-meta {
+694: .menu-meta p {
+698: .menu-panel:after {
+713: body.menu-is-open {
+718: .menu-panel {
+723: .menu-panel:before {
+727: .menu-shell.is-open .menu-nav {
+734: .menu-shell.is-open .menu-brand,
+735: .menu-shell.is-open .menu-trigger {
+739: .menu-shell.is-open .menu-trigger>i {
+743: .menu-shell.is-open .menu-brand svg path:first-child,
+744: .menu-shell.is-open .menu-brand svg path:nth-child(2) {
+748: .menu-shell.is-open .menu-brand svg path:last-child {
+753: .menu-brand {
+757: .menu-brand svg {
+762: .menu-trigger {
+767: .menu-trigger>i {
+772: .menu-trigger b {
+776: .menu-trigger b:first-child {
+780: .menu-trigger b:last-child {
+784: .menu-shell.is-open .menu-trigger b:first-child,
+785: .menu-shell.is-open .menu-trigger b:last-child {
+789: .menu-panel {
+794: .menu-panel-head {
+798: .menu-panel-head span:last-child {
+802: .menu-content {
+811: .menu-links {
+816: .menu-links>a,
+823: .menu-links em,
+828: .menu-services>div {
+834: .menu-services a {
+839: .menu-meta {
+848: .menu-meta p {
+853: .menu-meta>span {
+860: .menu-panel {
+865: .menu-panel:after {
+869: .menu-links>a {
+874: .menu-home {
+878: .menu-links>a:hover {
+900: .menu {
+906: .menu>a,
+907: .dd>a {
+917: .menu svg {
+925: .dd:hover svg {
+929: .dd {
+933: .ddm {
+948: .dd:hover .ddm {
+954: .ddm a {
+961: .ddm a:hover {
+966: .burger {
+976: .burger b {
+985: .burger b:first-child {
+989: .burger b:last-child {
+2717: .menu {
+2730: .nav.open .menu {
+2734: .menu>a,
+2735: .dd>a {
+2741: .dd .ddm,
+2742: .menu svg {
+2750: .burger {
+2754: .nav.open .burger b:first-child {
+2759: .nav.open .burger b:last-child {
+6865: html.dd-lock .dd .ddm {
+7060: .menu-brand .menu-logo {
+7067: .menu-trigger>i {
+7072: .menu-brand .menu-logo {
+7531: html.dd-lock .dd .ddm {
+7726: .menu-brand .menu-logo {
+7733: .menu-trigger>i {
+7738: .menu-brand .menu-logo {
+8814: .menu-sw {
+8884: .menu-sw {
+8888: .menu-links .services-toggle {
+8903: .menu-links .services-toggle:hover,
+8904: .menu-links .services-toggle[aria-expanded="true"] {
+8958: .menu-sw {
+9028: .menu-sw {
+9032: .menu-links .services-toggle {
+9047: .menu-links .services-toggle:hover,
+9048: .menu-links .services-toggle[aria-expanded="true"] {
+15860: @media(min-width:701px){.menu-links .menu-sw .msub{position:static;width:auto}.menu-links{align-items:start}.menu-links .menu-sw{align-self:start}}
+15878: @media(max-width:850px){.price-grid{grid-template-columns:1fr}.price-card,.price-card--featured{min-height:auto;transform:none}.price-card--featured:hover,.price-card:hover{transform:translateY(-6px)}.price-heading{align-items:flex-start;flex-direction:column}.menu-pricing{grid-column:1;grid-row:auto}}
+21538: .menu-shell .svc-pane{position:absolute;z-index:4;top:92px;bottom:40px;left:clamp(150px,26vw,500px);right:clamp(20px,8vw,120px);display:grid;align-items:center;visibility:hidden;opacity:0}
+21539: .menu-shell .svc-card{display:grid;grid-template-columns:minmax(210px,.62fr) minmax(0,1.7fr);gap:clamp(20px,3vw,44px);width:100%;max-height:100%;overflow-y:auto;padding:clamp(22px,2.8vw,38px);border-radius:28px;background:rgba(251,250,255,.92);-webkit-backdrop-filter:blur(22px) saturate(1.2);backdrop-filter:blur(22px) saturate(1.2);border:1px solid #6a67ae26;box-shadow:0 40px 90px -40px #3f3d7a70,inset 0 1px 0 #fff}
+21540: .menu-shell .svc-side{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
+21541: .menu-shell .svc-back{display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px 0 10px;border:1px solid var(--line);border-radius:99px;background:#ffffffa6;color:#0a0b14;font:600 11px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .35s var(--o),border-color .35s var(--o),color .35s var(--o)}
+21542: .menu-shell .svc-back svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s var(--o)}
+21543: .menu-shell .svc-back:hover{background:#6a67ae;border-color:#6a67ae;color:#fff}
+21544: .menu-shell .svc-back:hover svg{transform:translateX(-4px)}
+21545: .menu-shell .svc-eyebrow{margin:clamp(22px,4vh,44px) 0 12px;font:500 11px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6a67ae}
+21546: .menu-shell .svc-title{margin:0;font:700 clamp(32px,3.6vw,56px)/.98 'Inter Tight',Inter,sans-serif;letter-spacing:-.055em;color:#0a0b14;max-width:none;text-wrap:balance}
+21547: .menu-shell .svc-note{margin:14px 0 0;font:400 15px/1.5 Inter,sans-serif;color:#5b5870;max-width:24ch}
+21548: .menu-shell .svc-cta{margin-top:auto;padding-top:0;display:inline-flex;align-items:center;gap:10px;height:46px;padding:0 20px;border-radius:99px;background:#0a0b14;color:#fff;font:600 14px/1 Inter,sans-serif;text-decoration:none;transition:background .35s var(--o)}
+21549: .menu-shell .svc-cta b{font-weight:400;transition:transform .45s var(--o)}
+21550: .menu-shell .svc-cta:hover{background:#6a67ae}
+21551: .menu-shell .svc-cta:hover b{transform:translate(3px,-3px)}
+21552: .menu-shell .svc-note+.svc-cta{margin-top:clamp(22px,4vh,40px)}
+21553: .menu-shell .svc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:0;align-content:center}
+21554: .menu-shell .svc-item:last-child:nth-child(odd){grid-column:1/-1}
+21555: .menu-shell .svc-link{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;column-gap:14px;min-height:84px;padding:14px 18px;border-radius:18px;background:#ffffffbd;border:1px solid #6a67ae22;color:#0a0b14;text-decoration:none;overflow:hidden;isolation:isolate;text-shadow:none;transition:transform .5s var(--o),background .35s var(--o),border-color .35s var(--o),color .35s var(--o),box-shadow .5s var(--o),opacity .35s var(--o)}
+21556: .menu-shell .svc-link:before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),#6a67ae33,transparent 70%);transition:opacity .4s var(--o)}
+21557: .menu-shell .svc-link:hover,.menu-shell .svc-link:focus-visible{transform:translateY(-3px);border-color:#6a67ae80;box-shadow:0 22px 40px -22px #6a67aeb8;color:#0a0b14}
+21558: .menu-shell .svc-link:hover:before,.menu-shell .svc-link:focus-visible:before{opacity:1}
+21559: .menu-shell .svc-link:focus-visible{outline:2px solid #6a67ae;outline-offset:3px}
+21560: .menu-shell .svc-grid:has(.svc-link:hover) .svc-link:not(:hover):not([aria-current="page"]){opacity:.55}
+21561: .menu-shell .svc-ic{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:#6a67ae14;color:#6a67ae;transition:background .35s var(--o),color .35s var(--o),transform .5s var(--o)}
+21562: .menu-shell .svc-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+21563: .menu-shell .svc-link:hover .svc-ic,.menu-shell .svc-link:focus-visible .svc-ic{background:#6a67ae;color:#fff;transform:rotate(-6deg) scale(1.06)}
+21564: .menu-shell .svc-tx{display:block;min-width:0}
+21565: .menu-shell .svc-n{display:block;margin-bottom:6px;font:500 11px/1 Inter,sans-serif;letter-spacing:.1em;color:#8b88a0}
+21566: .menu-shell .svc-t{display:block;font:600 clamp(16px,1.35vw,20px)/1.15 'Inter Tight',Inter,sans-serif;letter-spacing:-.025em}
+21567: .menu-shell .svc-ar{font:400 20px/1 Inter,sans-serif;opacity:.4;transition:transform .45s var(--o),opacity .3s var(--o),color .3s var(--o)}
+21568: .menu-shell .svc-link:hover .svc-ar,.menu-shell .svc-link:focus-visible .svc-ar{transform:translate(4px,-4px);opacity:1;color:#6a67ae}
+21569: .menu-shell .svc-link[aria-current="page"]{background:linear-gradient(135deg,#6a67ae,#4a478f);border-color:transparent;color:#fff}
+21570: .menu-shell .svc-link[aria-current="page"] .svc-ic{background:#ffffff2b;color:#fff}
+21571: .menu-shell .svc-link[aria-current="page"] .svc-n{color:#ffffffb8}
+21572: .menu-shell .svc-link[aria-current="page"] .svc-ar{opacity:1;color:#fff}
+21574: .menu-shell .svc-pane{left:clamp(20px,6vw,60px);right:clamp(20px,6vw,60px)}
+21575: .menu-shell .svc-card{grid-template-columns:minmax(0,1fr);gap:20px}
+21576: .menu-shell .svc-side{flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 18px}
+21577: .menu-shell .svc-eyebrow{margin:0}
+21578: .menu-shell .svc-title{font-size:30px}
+21579: .menu-shell .svc-note{display:none}
+21580: .menu-shell .svc-cta{margin:0 0 0 auto!important}
+21583: .menu-shell .msub.msub-svc{position:static;width:auto;left:auto;top:auto}
+21584: .menu-shell .msub-svc .msub-in{counter-reset:svc;margin:0;padding:4px 0 10px;border:0;gap:0}
+21585: .menu-shell .msub-svc .msub-in a{counter-increment:svc;display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;min-height:58px;padding:0 4px;border-bottom:1px solid var(--line);font:600 clamp(19px,5.4vw,24px)/1.2 'Inter Tight',Inter,sans-serif;letter-spacing:-.03em;color:#1b1a26;text-shadow:none;transition:color .3s var(--o),padding-left .45s var(--o),background .3s var(--o)}
+21586: .menu-shell .msub-svc .msub-in a:before{content:counter(svc,decimal-leading-zero);font:500 11px/1 Inter,sans-serif;letter-spacing:.08em;color:#8b88a0}
+21587: .menu-shell .msub-svc .msub-in a:hover,.menu-shell .msub-svc .msub-in a:focus-visible{color:#6a67ae;padding-left:10px}
+21588: .menu-shell .msub-svc .msub-in a[aria-current="page"]{color:#6a67ae}
+21589: .menu-shell .msub-svc .msub-in a[aria-current="page"]:before{color:#6a67ae}
+21591: @media(prefers-reduced-motion:reduce){.menu-shell .svc-link,.menu-shell .svc-ic,.menu-shell .svc-ar{transition:none}}
+=== cursor ("Open" bubble) ===
+10: const IMAGE = 'img, picture, video, [role="img"], [data-cursor="image"]';
+11: const LINK = 'a[href], button, [role="button"], summary, label, [data-cursor="link"]';
+54: const orbit = $<HTMLElement>(".gc-orbit"), label = $<HTMLElement>(".gc-label");
+86: if (s === state && label.textContent === lab) return;
+96: label.textContent = lab;
+97: gsap.to(label, { opacity: lab ? 1 : 0, scale: 1 / c.scale, duration: 0.4, overwrite: "auto" });
+121: const l = (t.closest("[data-cursor-label]") as HTMLElement | null)?.dataset.cursorLabel || "";
+159: <span className="gc-label" />

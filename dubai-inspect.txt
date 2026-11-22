@@ -1,0 +1,246 @@
+﻿=== ROUTE FILES ===
+app\services\seo-expert-dubai\page.tsx
+
+=== app\services\seo-expert-dubai\page.tsx ===
+import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import { SiteFooter } from "@/components/Site";
+import SeoLanding from "@/components/SeoLanding";
+
+export const metadata: Metadata = {
+  title: "SEO Services in Dubai & UAE | Softsaro",
+  description:
+    "Softsaro helps businesses in Dubai and the UAE get found on Google and cited in AI answers: technical SEO, on-page, local SEO, AEO and GEO, with plain-language reporting.",
+};
+
+export default function Page() {
+  return (
+    <>
+      <Navbar b="/" />
+      <SeoLanding />
+      <SiteFooter />
+    </>
+  );
+}
+
+=== RELATED FILES ===
+components\SeoLanding.tsx  (651 lines)
+components\SlForm.tsx  (54 lines)
+lib\data.ts  (153 lines)
+
+=== IMPORTS/EXPORTS: components\SeoLanding.tsx ===
+1: import SlMotion from "@/components/SlMotion";
+2: import SlForm from "@/components/SlForm";
+3: import { D } from "@/lib/data";
+4: import { photos, tools } from "@/lib/seo-data";
+5: import { CONTACT, RESULTS, PRICING } from "@/lib/seo-landing-data";
+193: export default function SeoLanding() {
+=== FORM LOGIC: components\SeoLanding.tsx ===
+379: <div className="sl-loc-info" aria-live="polite"><h3>Downtown Dubai</h3><p>Location-specific pages, Google Business Profile and local citations, built around how customers search in this area.</p></div>
+=== PROJECTS / TESTIMONIALS / IMAGES: components\SeoLanding.tsx ===
+478: <img src="/assets/dm/analytics.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" data-par />
+
+=== IMPORTS/EXPORTS: components\SlForm.tsx ===
+1: "use client";
+2: import { useState } from "react";
+3: import { submitContact } from "@/lib/contact";
+7: export default function SlForm({ email, phone, tel }: { email: string; phone: string; tel: string }) {
+=== FORM LOGIC: components\SlForm.tsx ===
+2: import { useState } from "react";
+3: import { submitContact } from "@/lib/contact";
+8: const [state, setState] = useState<"idle" | "sending" | "sent" | "fallback">("idle");
+9: const [mail, setMail] = useState("");
+11: async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+18: const r = await submitContact({ name: g("name"), email: g("email"), phone: g("phone"), message });
+39: <form className="sl-form" onSubmit={onSubmit}>
+40: <label className="sl-f"><span>Name</span><input name="name" required autoComplete="name" /></label>
+41: <label className="sl-f"><span>Email</span><input name="email" type="email" required autoComplete="email" /></label>
+42: <label className="sl-f"><span>Phone</span><input name="phone" type="tel" autoComplete="tel" /></label>
+43: <label className="sl-f"><span>Website (if any)</span><input name="website" inputMode="url" autoComplete="url" /></label>
+45: <select name="type" defaultValue="">
+46: <option value="" disabled>Select one</option>
+47: {TYPES.map((t) => (<option key={t} value={t}>{t}</option>))}
+50: <label className="sl-f full"><span>Your SEO requirements</span><textarea name="need" rows={4} /></label>
+=== PROJECTS / TESTIMONIALS / IMAGES: components\SlForm.tsx ===
+
+=== IMPORTS/EXPORTS: lib\data.ts ===
+1: export const D: any = {
+=== FORM LOGIC: lib\data.ts ===
+=== PROJECTS / TESTIMONIALS / IMAGES: lib\data.ts ===
+6: "Daley Bhai",
+10: "Sajha Marketplace",
+13: "Adsaro",
+16: "Emperor Educational Network",
+27: "Daley Bhai Real Estate",
+30: "https://softsaro.com.np/uploads/portfolio_mY6fNptC.jpg",
+31: "daley-bhai-real-estate",
+34: "Sajha Courier",
+37: "https://softsaro.com.np/img/portfolio/sajha%20courier.jpg",
+38: "sajha-courier",
+41: "Emperor Educational Consultancy",
+44: "https://softsaro.com.np/img/portfolio/emperor.jpeg",
+45: "emperor-educational-consultancy",
+48: "Adsaro Nepal",
+51: "https://softsaro.com.np/img/portfolio/adsaro.jpg",
+52: "adsaro-nepal",
+123: "Bikash S.",
+128: "Siddhu K.",
+133: "Ritu K.",
+138: "Abhinash K.",
+
+=== PUBLIC IMAGES ===
+
+=== CSS MARKERS ===
+174: /* buttons */
+313: /* nav */
+336: /* Focused menu overlay */
+717: /* Chess artwork menu background */
+993: /* hero */
+1316: /* services */
+1392: /* work */
+1536: /* Featured work deck */
+1821: /* Horizontal product shelf */
+2253: /* about */
+2296: /* why */
+2348: /* process */
+2427: /* tech */
+2477: /* testimonials */
+2904: /* motion layer */
+3992: /* SV2 SERVICES */
+4202: /* Interactive Softsaro services */
+4533: /* SEO TRAINING PAGE */
+5235: /* DM TRAINING PAGE v2 */
+5560: /* photo band */
+5620: /* bento */
+5778: /* practical */
+5891: /* tools */
+5952: /* why */
+6009: /* final cta */
+6100: /* SEO TRAINING PAGE v2 */
+6347: /* photo band */
+6527: /* method */
+6556: /* tools */
+6608: /* why */
+6668: /* cta */
+6872: /* SOFTSARO INTRO */
+6942: /* INTRO V2 */
+7020: /* INTRO V3 */
+7059: /* NAVBAR LOGO */
+7077: /* FOOTER V2 */
+7436: /* FOOTER V3 */
+7538: /* SOFTSARO INTRO */
+7608: /* INTRO V2 */
+7686: /* INTRO V3 */
+7725: /* NAVBAR LOGO */
+7743: /* FOOTER V2 */
+8102: /* FOOTER V3 */
+8298: /* keep badge and arrow clear of the rounded corners */
+8309: /* optional tighter featured title */
+8349: /* badge and arrow sit inside the new silhouette */
+8366: /* keep screenshot well inside the silhouette */
+8468: /* keep badges and arrows clear of the larger curves */
+8808: /* WORDMARK TINT */
+8813: /* MENU SUBMENU */
+8952: /* WORDMARK TINT */
+8957: /* MENU SUBMENU */
+9150: /* hero */
+9572: /* what we build */
+9787: /* showcase */
+9880: /* process */
+9950: /* why */
+10015: /* tech */
+10045: /* faq */
+10090: /* cta */
+10238: /* WX WEB DEV v2 */
+10327: /* HERO */
+10584: /* MARQUEE */
+11015: /* BENTO */
+11074: /* PROCESS rows */
+11136: /* WHY */
+11213: /* TECH */
+11243: /* FAQ */
+11317: /* CTA */
+11353: /* RESPONSIVE */
+11466: /* WX IMAGES */
+11489: /* WX TYPE */
+11700: /* stats icon fix */
+11720: /* stats card size */
+11877: /* hero */
+12349: /* marquee */
+12387: /* accordion */
+12474: /* expertise */
+12825: /* showcase */
+13180: /* process stack */
+13257: /* why */
+13331: /* cta */
+13367: /* responsive */
+13778: /* WX WEB DEV v2 */
+13867: /* HERO */
+14124: /* MARQUEE */
+14555: /* BENTO */
+14614: /* PROCESS rows */
+14676: /* WHY */
+14753: /* TECH */
+14783: /* FAQ */
+14857: /* CTA */
+14893: /* RESPONSIVE */
+15006: /* WX IMAGES */
+15029: /* WX TYPE */
+15313: /* stats icon fix */
+15333: /* stats card size */
+15548: /* room for the corner number so cards never cover it */
+15868: /* Pricing pages */
+15903: /* MOBILE APP PAGE v1 */
+15975: /* phone */
+16223: /* hero */
+16470: /* what we build */
+16588: /* expertise */
+16702: /* showcase */
+16783: /* process */
+16895: /* tech */
+16930: /* why */
+17029: /* faq */
+17110: /* cta */
+17355: /* DOMAIN HOSTING PAGE */
+17544: /* hero */
+17931: /* marquee */
+17968: /* dark sections */
+18111: /* services panels */
+18216: /* vps */
+18447: /* journey */
+18608: /* why */
+18675: /* faq */
+18776: /* cta */
+18881: /* tablet */
+20102: /* hero */
+20273: /* marquee */
+20316: /* showcase */
+20435: /* create list */
+20507: /* approach */
+20611: /* uses */
+20684: /* why */
+20753: /* cta */
+20798: /* responsive */
+21408: /* quiet interactions */
+21592: /* PRICING MOTION */
+21604: /* cards */
+21722: /* SEO LANDING PAGE */
+21762: /* hero */
+21815: /* proof */
+21838: /* about */
+21856: /* practice panels */
+21882: /* local */
+21908: /* services */
+21937: /* tools */
+21946: /* audience */
+21955: /* process */
+21971: /* data */
+21988: /* education */
+22000: /* compare */
+22015: /* projects */
+22029: /* pricing */
+22048: /* faq */
+22063: /* testimonials */
+22074: /* contact */
+22096: /* final */
+22104: /* tablet */

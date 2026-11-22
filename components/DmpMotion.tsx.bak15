@@ -1,0 +1,172 @@
+"use client";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+export default function DmpMotion() {
+  useGSAP(() => {
+    const root = document.querySelector<HTMLElement>(".dmp-page");
+    if (!root) return;
+    const all = <T extends Element = HTMLElement>(s: string) => Array.from(root.querySelectorAll<T>(s));
+    const one = <T extends Element = HTMLElement>(s: string) => root.querySelector<T>(s);
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const offs: Array<() => void> = [];
+    const on = (t: EventTarget, ev: string, fn: EventListener) => { t.addEventListener(ev, fn); offs.push(() => t.removeEventListener(ev, fn)); };
+    const dur = (n: number) => (reduced ? 0 : n);
+    const enter = (el: Element, start: string, fn: () => void) => ScrollTrigger.create({ trigger: el, start, once: true, onEnter: fn });
+
+    /* ===== always on: FAQ accordion, service tabs, report tabs, scroll-spy pills ===== */
+    const fqs = all<HTMLButtonElement>(".dmp-fq");
+    const fa = (b: HTMLElement) => b.nextElementSibling as HTMLElement;
+    const setOpen = (b: HTMLElement, open: boolean) => {
+      b.setAttribute("aria-expanded", String(open));
+      b.parentElement && b.parentElement.classList.toggle("open", open);
+      gsap.to(fa(b), { height: open ? "auto" : 0, duration: dur(open ? 0.6 : 0.4), ease: "power3.out", overwrite: "auto" });
+    };
+    fqs.forEach((b, i) => {
+      b.setAttribute("aria-expanded", String(i === 0));
+      b.parentElement && b.parentElement.classList.toggle("open", i === 0);
+      gsap.set(fa(b), { height: i === 0 ? "auto" : 0 });
+      on(b, "click", () => {
+        const open = b.getAttribute("aria-expanded") === "true";
+        fqs.forEach((o) => { if (o !== b && o.getAttribute("aria-expanded") === "true") setOpen(o, false); });
+        setOpen(b, !open);
+      });
+    });
+
+    const tabGroup = (tabSel: string, paneSel: string, afterShow?: (pane: HTMLElement) => void) => {
+      const tabs = all<HTMLButtonElement>(tabSel), panes = all<HTMLElement>(paneSel);
+      if (!tabs.length) return;
+      let cur = 0;
+      panes.forEach((p, k) => gsap.set(p, { display: k === 0 ? "block" : "none" }));
+      const show = (i: number) => {
+        if (i === cur) return;
+        const out = panes[cur], inn = panes[i];
+        tabs.forEach((t, k) => { t.classList.toggle("on", k === i); t.setAttribute("aria-selected", String(k === i)); });
+        gsap.killTweensOf([out, inn]);
+        gsap.to(out, { autoAlpha: 0, y: -10, duration: dur(0.2), ease: "power2.in", onComplete: () => {
+          gsap.set(out, { display: "none" });
+          gsap.set(inn, { display: "block" });
+          gsap.fromTo(inn, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: dur(0.5), ease: "expo.out" });
+          if (afterShow) afterShow(inn);
+        } });
+        cur = i;
+      };
+      tabs.forEach((t, i) => {
+        on(t, "click", () => show(i));
+        on(t, "keydown", (e) => {
+          const ke = e as KeyboardEvent;
+          if (ke.key === "ArrowDown" || ke.key === "ArrowRight") { ke.preventDefault(); const n = (i + 1) % tabs.length; tabs[n].focus(); show(n); }
+          if (ke.key === "ArrowUp" || ke.key === "ArrowLeft") { ke.preventDefault(); const n = (i - 1 + tabs.length) % tabs.length; tabs[n].focus(); show(n); }
+        });
+      });
+    };
+    /* services tabs are handled by DmpSvcScroll */
+    tabGroup(".dmp-rtab", ".dmp-rpane");
+
+    const spy = all<HTMLAnchorElement>("[data-spy]");
+    spy.forEach((a) => {
+      const sec = document.getElementById(a.dataset.spy || "");
+      if (!sec) return;
+      ScrollTrigger.create({ trigger: sec, start: "top 45%", end: "bottom 45%", onToggle: (s) => { if (s.isActive) spy.forEach((x) => x.classList.toggle("on", x === a)); } });
+    });
+
+    if (reduced) return () => offs.forEach((f) => f());
+
+    /* ===== progress bar ===== */
+    const bar = one(".dmp-progress i");
+    if (bar) gsap.fromTo(bar, { scaleX: 0 }, { scaleX: 1, ease: "none", scrollTrigger: { trigger: root, start: "top top", end: "bottom bottom", scrub: 0.3 } });
+
+    /* ===== pointer: magnetic buttons ===== */
+    if (fine) {
+      all("[data-mag]").forEach((el) => {
+        const qx = gsap.quickTo(el, "x", { duration: 0.6, ease: "elastic.out(1,.5)" });
+        const qy = gsap.quickTo(el, "y", { duration: 0.6, ease: "elastic.out(1,.5)" });
+        on(el, "pointermove", (e) => {
+          const r = el.getBoundingClientRect(), m = e as PointerEvent;
+          qx((m.clientX - r.left - r.width / 2) * 0.25);
+          qy((m.clientY - r.top - r.height / 2) * 0.3);
+        });
+        on(el, "pointerleave", () => { qx(0); qy(0); });
+      });
+    }
+
+    /* ===== hero entrance ===== */
+    const hero = one(".dmp-hero"), bg = one(".dmp-hero-bg img");
+    const words = all(".dmp-h1 .dmp-w");
+    const h1 = one(".dmp-h1");
+    const smalls = all(".dmp-hero-copy [data-h]").filter((e) => e !== h1);
+    const card = one(".dmp-qcard");
+    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+    if (bg) tl.fromTo(bg, { scale: 1.25 }, { scale: 1.05, duration: 2.4 }, 0);
+    if (h1) tl.set(h1, { autoAlpha: 1 }, 0);
+    if (words.length) tl.fromTo(words, { yPercent: 115, rotate: 3 }, { yPercent: 0, rotate: 0, duration: 1.2, stagger: 0.06, transformOrigin: "0% 100%" }, 0.2);
+    if (smalls.length) tl.fromTo(smalls, { y: 24, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.12 }, 0.3);
+    if (card) tl.fromTo(card, { y: 50, autoAlpha: 0, scale: 0.96 }, { y: 0, autoAlpha: 1, scale: 1, duration: 1.3 }, 0.5);
+    if (hero && bg) gsap.to(bg, { yPercent: 12, ease: "none", scrollTrigger: { trigger: hero, start: "top top", end: "bottom top", scrub: true } });
+
+    /* ===== reveals ===== */
+    all("[data-up]").forEach((el) => {
+      const d = (Number(getComputedStyle(el).getPropertyValue("--i")) || 0) * 0.08;
+      gsap.set(el, { autoAlpha: 0, y: 28 });
+      enter(el, "top 92%", () => gsap.to(el, { autoAlpha: 1, y: 0, duration: 0.9, delay: d, ease: "expo.out" }));
+    });
+    all("[data-clip]").forEach((f) => {
+      const img = f.querySelector("img");
+      gsap.set(f, { clipPath: "inset(100% 0% 0% 0% round 22px)" });
+      enter(f, "top 88%", () => {
+        gsap.to(f, { clipPath: "inset(0% 0% 0% 0% round 22px)", duration: 1.3, ease: "expo.inOut" });
+        if (img) gsap.fromTo(img, { scale: 1.22 }, { scale: 1.04, duration: 1.8, ease: "expo.out" });
+      });
+    });
+    all("[data-par]").forEach((img) => {
+      gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: img.parentElement, start: "top bottom", end: "bottom top", scrub: true } });
+    });
+    all<HTMLElement>(".dmp-count").forEach((c) => {
+      const to = Number(c.dataset.to || 0), o = { n: 0 };
+      c.textContent = "0";
+      enter(c, "top 92%", () => gsap.to(o, { n: to, duration: 1.6, ease: "power3.out", onUpdate: () => { c.textContent = String(Math.round(o.n)); } }));
+    });
+
+    /* ===== process: steps slide in, chart draws ===== */
+    const steps = all("[data-step]");
+    if (steps.length) {
+      gsap.set(steps, { xPercent: -8, autoAlpha: 0 });
+      enter(steps[0], "top 85%", () => gsap.to(steps, { xPercent: 0, autoAlpha: 1, duration: 1, stagger: 0.14, ease: "expo.out" }));
+    }
+    const pchart = one(".dmp-pchart");
+    if (pchart) {
+      const bars = all(".dmp-pbar"), line = one(".dmp-pline"), dot = one(".dmp-pdot");
+      gsap.set(bars, { scaleY: 0, transformOrigin: "50% 100%", transformBox: "fill-box" });
+      if (line) gsap.set(line, { strokeDashoffset: 1 });
+      if (dot) gsap.set(dot, { autoAlpha: 0, scale: 0, transformOrigin: "50% 50%", transformBox: "fill-box" });
+      enter(pchart, "top 80%", () => {
+        gsap.to(bars, { scaleY: 1, duration: 1.1, ease: "expo.out", stagger: 0.07 });
+        if (line) gsap.to(line, { strokeDashoffset: 0, duration: 2, ease: "power2.inOut", delay: 0.4 });
+        if (dot) gsap.to(dot, { autoAlpha: 1, scale: 1, duration: 0.6, ease: "back.out(3)", delay: 2.2 });
+      });
+    }
+
+    /* ===== results charts ===== */
+    const line2 = one(".dmp-line"), area2 = one(".dmp-area");
+    if (line2) {
+      gsap.set(line2, { strokeDashoffset: 1 });
+      if (area2) gsap.set(area2, { autoAlpha: 0 });
+      enter(line2, "top 85%", () => { gsap.to(line2, { strokeDashoffset: 0, duration: 2.2, ease: "power2.inOut" }); if (area2) gsap.to(area2, { autoAlpha: 1, duration: 1.4, delay: 1 }); });
+    }
+
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    if (document.fonts) document.fonts.ready.then(refresh);
+
+    return () => {
+      window.removeEventListener("load", refresh);
+      offs.forEach((f) => f());
+    };
+  }, []);
+
+  return null;
+}

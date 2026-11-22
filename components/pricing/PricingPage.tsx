@@ -1,0 +1,120 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState, type FormEvent } from "react";
+import PricingMotion from "./PricingMotion";
+
+type Feature = [text: string, included?: boolean];
+type Plan = { name: string; price: string; note: string; featured?: boolean; items: string[]; sections?: { title: string; items: Feature[] }[]; excluded?: string[]; bonus?: string[] };
+type Pricing = { eyebrow: string; planLabel: string; title: string; copy: string; plans: Plan[] };
+
+const data: Record<string, Pricing> = {
+  "digital-marketing": {
+    eyebrow: "Digital marketing pricing",
+    planLabel: "Digital Marketing",
+    title: "Marketing plans made to move your business forward.",
+    copy: "Choose a focused monthly plan, or let us tailor one around your goals. Every plan begins with a clear content and growth strategy.",
+    plans: [
+      { name: "Basic", price: "Rs. 20,999", note: "Best for small businesses / month", items: ["Social media setup (Facebook, Instagram & TikTok)", "12 high-quality graphic posts", "Engaging captions & targeted hashtags", "Holiday & festive graphics", "Scheduling the posts", "Content planning", "Copywriting", "3 stories / week", "Social media SEO support", "Basic profile optimisation", "Basic competitor research", "Monthly content strategy", "Basic monthly performance report"], excluded: ["Advanced ads strategy", "Email marketing"] },
+      { name: "Standard", price: "Rs. 31,999", note: "Best for medium businesses / month", featured: true, items: ["Platform management (Facebook, Instagram & TikTok)", "15 high-quality graphic posts", "Holiday & festive graphics", "Content planning & strategy", "8 reels / month", "Scheduling the posts", "Social media page handling", "Captions & copywriting", "Hashtag & trend research", "5 stories / week", "Profile & page optimisation", "Competitor analysis", "Content performance optimisation", "Monthly content strategy", "Monthly analytics & performance report"], bonus: ["Basic SEO (on-page for 5 pages)", "Hashtag research", "Instagram, Facebook & LinkedIn management", "Social media SEO support", "YouTube SEO support"] },
+      { name: "Premium", price: "Rs. 47,999", note: "Best for large businesses / month", items: ["Platform management (Facebook, Instagram & TikTok)", "20+ high-quality graphic posts", "Holiday & festive graphics", "Content calendar", "12 reels / month", "Scheduling the posts", "Social media page handling", "SEO-optimised bios & profiles", "Keyword-rich captions for social search", "Advanced content planning & strategy", "Advanced caption & copywriting", "Daily stories", "Advanced social media SEO", "Keyword research & content optimisation", "Advanced profile & page optimisation", "Detailed competitor & market analysis", "Content performance optimisation", "Lead generation strategy", "Monthly strategy & performance call", "Advanced monthly analytics report"], bonus: ["Hashtag, trend & keyword research", "Google Ads & Meta Ads management", "Instagram, Facebook, LinkedIn & TikTok management", "Complete on-page SEO support", "Advanced YouTube SEO"] },
+    ],
+  },
+  "web-development": {
+    eyebrow: "Website development pricing",
+    planLabel: "Web Development",
+    title: "A website that looks sharp and works even harder.",
+    copy: "From a clear launch site to a complex digital platform, our web plans combine strategy, design and reliable engineering.",
+    plans: [
+      { name: "Launch", price: "Rs. 45,000", note: "starting from", items: ["Up to 5 focused pages", "Responsive development", "Contact and enquiry flow", "Basic on-page SEO", "30-day post-launch support"] },
+      { name: "Growth", price: "Rs. 85,000", note: "starting from", featured: true, items: ["Custom page system", "CMS integration", "Service and portfolio modules", "Performance optimisation", "Analytics setup"] },
+      { name: "Scale", price: "Let’s talk", note: "for platforms", items: ["Custom application planning", "User roles and dashboards", "API and third-party integrations", "Technical discovery", "Dedicated delivery team"] },
+    ],
+  },
+  "domain-hosting": {
+    eyebrow: "Domain & hosting pricing",
+    planLabel: "Domain & Hosting",
+    title: "Domain and hosting price in Nepal.",
+    copy: "Transparent domain and hosting plans for secure, reliable websites. Choose the right resources for your current site, then scale without surprises.",
+    plans: [
+      { name: "Basic", price: "Rs. 4,999", note: "Best for small businesses / year", items: [], sections: [{ title: "Features", items: [["Disk space quota 5 GB"], ["Monthly bandwidth 30 GB"], ["Max FTP accounts 2"], ["Max email accounts 10"], ["Max mailing lists 1"], ["Max SQL databases 3"], ["Max sub domains 3"], ["Max parked domains 1"], ["Max addon domains 1"], ["Max passenger applications 2"], ["Hourly emails 100"], ["Failed/deferred 100"], ["Email quota 2 GB"], ["Team users 2"], ["Dedicated IP", false], ["Shell access", false], ["4 GB RAM"], ["Node.js/Django support (not included)", false], ["Daily backups"]] }] },
+      { name: "Standard", price: "Rs. 8,999", note: "Best for medium businesses / year", featured: true, items: [], sections: [{ title: "Features", items: [["Disk space quota 10 GB"], ["Monthly bandwidth 500 GB"], ["Max FTP accounts 5"], ["Max email accounts 20"], ["Max mailing lists 2"], ["Max SQL databases 5"], ["Max sub domains 5"], ["Max parked domains 2"], ["Max addon domains 2"], ["Max passenger applications 3"], ["Hourly emails 200"], ["Failed/deferred 100"], ["Email quota 3 GB"], ["Team users 3"], ["Dedicated IP: optional (paid add-on)"], ["Shell access: optional (restricted)"], ["CGI access"], ["Node.js/Django support (not included)", false], ["4 GB RAM"], ["Daily backups"]] }] },
+      { name: "Premium", price: "Rs. 22,999", note: "Best for large businesses / year", items: [], sections: [{ title: "Features", items: [["Disk space quota 25 GB"], ["Monthly bandwidth 2 TB"], ["Max FTP accounts 20"], ["Max email accounts 50"], ["Max mailing lists 10"], ["Max SQL databases 20"], ["Max sub domains 50"], ["Max parked domains 50"], ["Max addon domains 10"], ["Max passenger applications 5"], ["Hourly emails 500"], ["Failed/deferred 100"], ["Email quota 10 GB"], ["Team users 7"], ["Dedicated IP: included / optional free"], ["Shell access: full (controlled)"], ["CGI access"], ["Node.js/Django support (not included)", false], ["4 GB RAM"], ["Daily backups"]] }] },
+    ],
+  },
+  "advanced-seo": {
+    eyebrow: "Advanced SEO pricing",
+    planLabel: "Advanced SEO",
+    title: "Best SEO price in Nepal | SEO packages.",
+    copy: "Affordable, effective SEO packages designed to improve ranking, increase traffic and support lasting business growth with transparent monthly reporting.",
+    plans: [
+      { name: "Basic", price: "Rs. 23,999", note: "Best for small businesses / month", items: [], sections: [{ title: "Initial website analysis", items: [["Up to 10 keyword rankings"], ["Site audit"], ["Competitor analysis"], ["Google Analytics setup", false], ["Google Search Console setup"], ["Robots.txt creation", false], ["Sitemap creation", false]] }, { title: "On-page SEO", items: [["Keyword research"], ["Keyword mapping", false], ["Major-page meta & heading optimisation"], ["URL optimisation", false], ["Image optimisation"], ["2 SEO-optimised blog articles"], ["Existing content optimisation"]] }, { title: "Technical SEO", items: [["Canonical URL addition"], ["Custom 404 page setup", false], ["OG tags", false], ["Page redirection"], ["Sitemap"], ["Robots.txt", false], ["Browser compatibility check"], ["Page speed optimisation"], ["Broken link fixing", false], ["Site architecture", false], ["Mobile friendliness", false], ["Solve keyword cannibalization", false], ["Hreflang tags", false], ["Competitor backlink research", false], ["Other webmaster optimisation", false]] }, { title: "Off-page SEO", items: [["Link building"], ["Guest blogging", false], ["Directory submission", false], ["Quora posting", false], ["Reddit posting", false], ["Schema implementation"], ["Conversion tracking", false]] }, { title: "Local SEO", items: [["GMB setup & optimisation"], ["GMB posting", false], ["Google Map creation"], ["Local citation", false]] }, { title: "Reports", items: [["Work done report"], ["On-page report"], ["Backlink report"], ["Traffic by country", false], ["Traffic comparison", false], ["Top 10 performing pages", false], ["Top 10 keywords"], ["Clicks, impressions, positions"]] }] },
+      { name: "Standard", price: "Rs. 55,999", note: "Best for large businesses / month", featured: true, items: [], sections: [{ title: "Initial website analysis", items: [["Up to 40 keyword rankings"], ["Complete site audit"], ["Competitor analysis"], ["Google Analytics setup"], ["Google Search Console setup"], ["Robots.txt creation"], ["Sitemap creation"]] }, { title: "On-page SEO", items: [["Advanced keyword research"], ["Keyword mapping"], ["All pages meta & heading optimisation"], ["URL optimisation"], ["Image optimisation"], ["5 SEO-optimised blog articles"], ["Full content optimisation"]] }, { title: "Technical SEO", items: [["Canonical URL addition"], ["Custom 404 page setup"], ["OG tags"], ["Page redirection"], ["Sitemap"], ["Robots.txt"], ["Browser compatibility check"], ["Page speed optimisation"], ["Broken link fixing"], ["Site architecture"], ["Mobile friendliness"], ["Solve keyword cannibalization"], ["Hreflang tags"], ["Competitor backlink research"], ["Bing Webmaster optimisation"], ["AEO, answer-box & voice search structuring"], ["GEO, citation-ready formatting for AI chat answers"], ["AI overview readiness audit"]] }, { title: "Off-page SEO", items: [["Link building"], ["Guest blogging"], ["Directory submission"], ["Active Quora posting"], ["Active Reddit posting"], ["Schema implementation"], ["Conversion tracking"], ["1 infographic creation & sharing monthly"]] }, { title: "Local SEO", items: [["GMB setup & optimisation"], ["Regular GMB posting"], ["Google Map creation"], ["Local citation"]] }, { title: "Reports", items: [["Work done report"], ["On-page report"], ["Backlink report"], ["Traffic by country"], ["Traffic comparison"], ["Top 10 performing pages"], ["Top 10 keywords"], ["Clicks, impressions, positions"]] }] },
+      { name: "Premium", price: "Rs. 39,999", note: "Best for medium businesses / month", items: [], sections: [{ title: "Initial website analysis", items: [["Up to 20 keyword rankings"], ["Site audit"], ["Competitor analysis"], ["Google Analytics setup", false], ["Google Search Console setup"], ["Robots.txt creation", false], ["Sitemap creation"]] }, { title: "On-page SEO", items: [["Keyword research"], ["Keyword mapping"], ["Major pages meta & heading optimisation"], ["URL optimisation"], ["Image optimisation"], ["4 SEO-optimised blog articles"], ["Existing major content optimisation"]] }, { title: "Technical SEO", items: [["Canonical URL addition", false], ["Custom 404 page setup"], ["OG tags"], ["Page redirection"], ["Sitemap"], ["Robots.txt", false], ["Browser compatibility check"], ["Page speed optimisation"], ["Broken link fixing"], ["Site architecture"], ["Mobile friendliness"], ["Solve keyword cannibalization"], ["Hreflang tags"], ["Competitor backlink research", false], ["Bing Webmaster optimisation", false], ["AEO, answer-box & voice search structuring"], ["GEO, citation-ready formatting for AI chat answers"], ["AI overview readiness audit", false]] }, { title: "Off-page SEO", items: [["Link building"], ["Guest blogging"], ["Few directory submissions"], ["Weekly Quora posting", false], ["Weekly Reddit posting", false], ["Schema implementation"], ["Conversion tracking"]] }, { title: "Local SEO", items: [["GMB setup & optimisation"], ["GMB posting"], ["Google Map creation"], ["Few local citations"]] }, { title: "Reports", items: [["Work done report"], ["On-page report"], ["Backlink report", false], ["Traffic by country", false], ["Traffic comparison", false], ["Top 10 performing pages", false], ["Top 10 keywords"], ["Clicks, impressions, positions"]] }] },
+    ],
+  },
+  "ui-ux-design": {
+    eyebrow: "UI/UX design pricing",
+    planLabel: "UI/UX Design",
+    title: "Design systems that make every click feel natural.",
+    copy: "Start with a focused product flow or build a flexible design language your whole team can ship with confidence.",
+    plans: [
+      { name: "Foundation", price: "Rs. 35,000", note: "starting from", items: ["Discovery workshop", "User-flow mapping", "Wireframes for a core journey", "Visual direction", "Clickable prototype"] },
+      { name: "Product", price: "Rs. 65,000", note: "starting from", featured: true, items: ["Everything in Foundation", "High-fidelity UI screens", "Responsive states", "Prototype testing", "Developer-ready handoff"] },
+      { name: "System", price: "Let’s talk", note: "for teams", items: ["Component library", "Design tokens", "Product audit", "Multi-platform patterns", "Ongoing design support"] },
+    ],
+  },
+};
+
+export default function PricingPage({ service }: { service: string }) {
+  const page = data[service] ?? data["digital-marketing"];
+  const [selected, setSelected] = useState<Plan | null>(null);
+  useEffect(() => {
+    if (!selected) return;
+    const closeOnEscape = (event: KeyboardEvent) => event.key === "Escape" && setSelected(null);
+    document.body.classList.add("plan-modal-open");
+    window.addEventListener("keydown", closeOnEscape);
+    return () => { document.body.classList.remove("plan-modal-open"); window.removeEventListener("keydown", closeOnEscape); };
+  }, [selected]);
+  const submit = (event: FormEvent<HTMLFormElement>) => event.preventDefault();
+  return <PricingMotion>
+    <section className="price-hero" id="top"><div className="price-fx" aria-hidden="true"><span className="l1"><i className="o1" /></span><span className="l2"><i className="r1" /><i className="r2" /></span><span className="l3"><i className="o2" /></span></div>
+      <p className="price-eye"><i />{page.eyebrow}</p>
+      <h1>{page.title}</h1>
+      <p>{page.copy}</p>
+      <a className="price-jump" href="#plans" data-cur="open" data-label="Scroll">Explore plans <span>↓</span></a>
+    </section>
+    <section className="price-section" id="plans">
+      <div className="price-heading"><p className="price-eye"><i />Packages</p><span>All prices are in NPR and can be tailored to your goals.</span></div>
+      <div className="price-grid">
+        {page.plans.map((plan, index) => <article className={`price-card${plan.featured ? " price-card--featured" : ""}`} key={plan.name}>
+          <div className="price-card-top"><span>0{index + 1}</span>{plan.featured && <b>Most popular</b>}</div>
+          <h2>{plan.name}</h2>
+          <p className="price-value">{plan.price}</p><small>{plan.note}</small>
+          {plan.items.length > 0 && <ul>{plan.items.map((item) => <li key={item}><i>✓</i>{item}</li>)}</ul>}
+          {plan.sections?.map((section) => <div className="price-feature-group" key={section.title}><h3>{section.title}</h3><ul>{section.items.map(([item, included = true]) => <li key={item} className={included ? "" : "is-excluded"}><i>{included ? "✓" : "×"}</i>{item}</li>)}</ul></div>)}
+          {plan.excluded && <div className="price-extra price-extra--excluded"><h3>Not included</h3>{plan.excluded.map((item) => <p key={item}><i>×</i>{item}</p>)}</div>}
+          {plan.bonus && <div className="price-extra"><h3>Bonus</h3>{plan.bonus.map((item) => <p key={item}><i>✓</i>{item}</p>)}</div>}
+          <button type="button" className="price-action" data-cur="open" data-label="Choose" onClick={() => setSelected(plan)}>Choose {plan.name}<span>↗</span></button>
+        </article>)}
+      </div>
+    </section>
+    <section className="price-cta"><div className="price-cta-fx" aria-hidden="true"><span className="l1"><i className="a" /></span><span className="l2"><i className="b" /><i className="c" /></span></div><p className="price-eye"><i />Need a tailored scope?</p><h2>Let’s build the right plan for what comes next.</h2><Link href="/#contact" data-cur="open" data-label="Open">Talk to our team <span>↗</span></Link></section>
+    {selected && <div className="plan-modal" role="dialog" aria-modal="true" aria-labelledby="plan-modal-title" onMouseDown={(event) => { if (event.target === event.currentTarget) setSelected(null); }}>
+      <div className="plan-modal-card">
+        <aside><p>Let’s Make Something</p><strong>BIG!</strong></aside>
+        <div className="plan-modal-form">
+          <button className="plan-modal-close" type="button" aria-label="Close plan form" onClick={() => setSelected(null)}>×</button>
+          <h2 id="plan-modal-title">Please Fill Out the Following Details</h2>
+          <form onSubmit={submit}>
+            <label>Name*<input required name="name" placeholder="Enter your name or Business name*" /></label>
+            <label>Phone Number*<input required name="phone" type="tel" placeholder="Enter your phone number*" /></label>
+            <label>Email*<input required name="email" type="email" placeholder="Enter your email*" /></label>
+            <div className="plan-modal-selected"><span>Selected Plan</span><b>{selected.name} {page.planLabel} Plan</b><small>{selected.name.toUpperCase()} PACKAGE</small></div>
+            <button className="plan-modal-submit" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>}
+  </PricingMotion>;
+}

@@ -1,0 +1,84 @@
+import type { ReactNode } from "react";
+
+export function Phone({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return (
+    <div className={`ap-ph ${className}`} aria-hidden="true">
+      <div className="ap-pf"><div className="ap-pscr">{children}</div><i className="ap-cam" /></div>
+    </div>
+  );
+}
+
+export const Shop = () => (
+  <div className="aps aps-shop">
+    <div className="aps-s-top"><i /><span /><u /></div>
+    <div className="aps-s-ban"><i /><i /><b /></div>
+    <div className="aps-s-grid">{[0, 1, 2, 3].map((k) => <div key={k}><u /><i /><i /></div>)}</div>
+    <div className="aps-s-nav"><i /><i /><i /><i /></div>
+  </div>
+);
+export const Track = () => (
+  <div className="aps aps-track">
+    <div className="aps-s-map"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M10 82 C 30 82 28 32 54 42 S 80 22 90 14" /><circle cx="10" cy="82" r="4" /><circle cx="90" cy="14" r="5" /></svg></div>
+    <div className="aps-s-sheet"><strong>On the way</strong><i /><div className="aps-s-steps"><u /><u /><u /></div></div>
+  </div>
+);
+export const Learn = () => (
+  <div className="aps aps-learn">
+    <div className="aps-s-top"><i /><span /><u /></div>
+    <div className="aps-s-course"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="15" /><circle cx="18" cy="18" r="15" className="r" /></svg><span><i /><i /></span></div>
+    {[0, 1, 2].map((k) => <div className="aps-s-row" key={k}><u /><span><i /><i /></span></div>)}
+    <div className="aps-s-nav"><i /><i /><i /><i /></div>
+  </div>
+);
+export const Wallet = () => (
+  <div className="aps aps-wallet">
+    <div className="aps-s-top"><i /><span /><u /></div>
+    <div className="aps-s-card"><i /><strong>&bull;&bull;&bull;&bull; &bull;&bull;&bull;&bull;</strong><b /></div>
+    <div className="aps-s-bars">{[40, 70, 52, 88, 60, 76].map((h, k) => <i key={k} style={{ height: h + "%" }} />)}</div>
+    {[0, 1].map((k) => <div className="aps-s-row" key={k}><u /><span><i /><i /></span></div>)}
+  </div>
+);
+export const Travel = () => (
+  <div className="aps aps-travel">
+    <div className="aps-s-hero"><i /><i /></div>
+    <div className="aps-s-chips"><b /><b /><b /></div>
+    <div className="aps-s-row"><u /><span><i /><i /></span></div>
+    <div className="aps-s-row"><u /><span><i /><i /></span></div>
+    <div className="aps-s-nav"><i /><i /><i /><i /></div>
+  </div>
+);
+export const Custom = () => (
+  <div className="aps aps-shop"><div className="aps-s-top"><i /><span /><u /></div><div className="aps-s-ban"><i /><i /><b /></div>
+    <div className="aps-s-row"><u /><span><i /><i /></span></div><div className="aps-s-row"><u /><span><i /><i /></span></div><div className="aps-s-nav"><i /><i /><i /><i /></div></div>
+);
+export const UiKit = () => (
+  <div className="aps aps-kit">
+    <div className="aps-k-sw"><i /><i /><i /><i /></div>
+    <strong>Aa</strong>
+    <div className="aps-k-ui"><b>Button</b><em>Ghost</em></div>
+    <div className="aps-k-in"><i /></div>
+    <div className="aps-k-ui"><u><i /></u><u className="o"><i /></u></div>
+    <div className="aps-s-row"><u /><span><i /><i /></span></div>
+    <div className="aps-s-nav"><i /><i /><i /><i /></div>
+  </div>
+);
+export const Api = () => (
+  <div className="aps aps-api">
+    <strong>API</strong>
+    {["/orders", "/users", "/payments", "/notifications"].map((p) => <div className="aps-a-row" key={p}><i /><span>{p}</span><b>OK</b></div>)}
+  </div>
+);
+export const Tests = () => (
+  <div className="aps aps-tests">
+    <strong>Devices</strong>
+    <div className="aps-t-grid">{[0, 1, 2, 3, 4, 5].map((k) => <div key={k}><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" /></svg></div>)}</div>
+    <div className="aps-t-bar"><i /></div>
+  </div>
+);
+export const Release = () => (
+  <div className="aps aps-rel">
+    <strong>What&rsquo;s new</strong>
+    {[0, 1, 2].map((k) => <div className="aps-s-row" key={k}><u /><span><i /><i /></span></div>)}
+    <b>Update</b>
+  </div>
+);
