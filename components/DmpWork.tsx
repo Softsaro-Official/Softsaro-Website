@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import DmpMarquee from "./DmpMarquee";
 
 type Cat = "web" | "seo" | "ads" | "social" | "content";
 type Item = { id: string; cat: Cat; title: string; label: string; desc: string; tags: string[]; img?: string; href?: string; viz?: string };
@@ -88,9 +89,24 @@ export default function DmpWork({ items, base }: { items: string[][]; base: stri
                 </div>
               </motion.article>
             ))}
-          </AnimatePresence>
+                    </AnimatePresence>
+          {shown.map((it) => (
+            <article key={"dup-" + it.id} className="dmp-wk-c dmp-wk-dup" aria-hidden="true" inert>
+              <div className="dmp-wk-m">
+                {it.img ? <img src={it.img} alt="" loading="lazy" decoding="async" /> : <Viz k={it.viz || ""} />}
+                <span className="dmp-wk-badge">Concept example</span>
+              </div>
+              <div className="dmp-wk-b">
+                <small className="dmp-wk-cat">{it.label}</small>
+                <b>{it.title}</b>
+                <p>{it.desc}</p>
+                <div className="dmp-wk-tags">{it.tags.map((x) => (<span key={x}>{x}</span>))}</div>
+              </div>
+            </article>
+          ))}
         </motion.div>
       </LayoutGroup>
+      <DmpMarquee />
     </div>
   );
 }

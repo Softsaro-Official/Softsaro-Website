@@ -3,6 +3,8 @@ import DmpFx from "@/components/DmpFx";
 import DmpSvcScroll from "@/components/DmpSvcScroll";
 import DmpWork from "./DmpWork";
 import DmpAbout from "./DmpAbout";
+import Rise from "./DmpRise";
+import DragScroll from "./DmpDragScroll";
 import HeroVis from "@/components/DmpHeroVis";
 import { ContactForm } from "@/components/DmpForms";
 import CareerForm from "@/components/DmpCareerForm";
@@ -69,7 +71,7 @@ const Head = ({ tag, t, em, lede, dark = false }: { tag: string; t: string; em?:
 );
 const st = (i: number) => ({ "--i": i } as React.CSSProperties);
 
-const PILLS = [["Overview", "dmp-overview"], ["Process", "dmp-process"], ["Services", "dmp-services"], ["UAE strategy", "dmp-uae"], ["Agency guide", "dmp-guide"], ["Work", "dmp-work"], ["Reviews", "dmp-reviews"], ["FAQ", "dmp-faq"], ["Contact", "dmp-contact"]];
+const PILLS = [["Overview", "dmp-overview"], ["Process", "dmp-process"], ["Services", "dmp-services"], ["Work", "dmp-work"], ["Reviews", "dmp-reviews"], ["FAQ", "dmp-faq"], ["Contact", "dmp-contact"]];
 
 const QUICK = [
   { k: "globe", t: "Remote, Dubai-friendly", d: "Calls fit Dubai business hours" },
@@ -121,7 +123,7 @@ const STEPS = [
 ];
 
 const SERV = [
-  { k: "search", n: "Search", h: "Be the answer when Dubai searches.", d: "Search visibility brings people who already want what you offer. We improve how your site is found, understood and trusted, locally and beyond.", tags: ["Site audit", "Local search", "Google Business Profile", "Search Console"],
+  { k: "search", n: "SEO", h: "Be the answer when Dubai searches.", d: "Search visibility brings people who already want what you offer. We improve how your site is found, understood and trusted, locally and beyond.", tags: ["Site audit", "Local search", "Google Business Profile", "Search Console"],
     inc: [["Site and content audit", "Crawl, speed and on-page checks"], ["Keyword and intent research", "What Dubai customers search for"], ["Local listings and Google Business Profile", "Be found on maps and near-me searches"], ["Ongoing reporting and fixes", "Rankings, clicks and next steps"]],
     best: ["Businesses that rely on being found", "Sites with little organic traffic", "Brands reducing reliance on paid ads"], rep: ["Visibility and rankings", "Clicks and enquiries", "Fixes made and planned"] },
   { k: "target", n: "Google Ads", h: "Show up when buyers are ready to act.", d: "Search and display campaigns built around clear goals and tracked conversions.", tags: ["Search ads", "Display", "Remarketing", "Conversion tracking"],
@@ -206,6 +208,7 @@ export default function DmpPage() {
   const tq = D.tq as string[][];
   return (
     <main className="dmp-page">
+      <DragScroll />
       <div className="dmp-progress" aria-hidden="true"><i /></div>
 
       {/* ===== HERO ===== */}
@@ -234,7 +237,7 @@ export default function DmpPage() {
         <div className="dmp-marq-t">
           {[0, 1].map((n) => (
             <div className="dmp-marq-g" key={n}>
-              {["Search", "Google Ads", "Social media", "Meta Ads", "Content", "Email", "Analytics"].map((w, i) => (<span key={w}><b className={i % 2 ? "o" : ""}>{w}</b><i /></span>))}
+              {["Seo", "Google Ads", "Social media", "Meta Ads", "Content", "Email", "Analytics"].map((w, i) => (<span key={w}><b className={i % 2 ? "o" : ""}>{w}</b><i /></span>))}
             </div>
           ))}
         </div>
@@ -296,32 +299,7 @@ export default function DmpPage() {
 
 
       {/* ===== MEET THE TEAM ===== */}
-      <section className="dmp-sec dmp-meet">
-        <div className="dmp-in dmp-two">
-          <div>
-            <span className="dmp-tag" data-up>Meet your team</span>
-            <h2 className="dmp-h2 left" data-up>The team behind the work</h2>
-            <i className="dmp-bar l" data-up />
-            <p className="dmp-body" data-up>Softsaro is a global IT company with offices in Nepal and the USA. For 8+ years we have delivered web development, mobile apps, SEO and digital marketing. Our marketing work sits alongside design and development, so your campaigns, website and tracking are built to work together.</p>
-            <p className="dmp-body" data-up>Before we start, you get a free consultation and an honest view of what is realistic. After that, you get a clear plan, regular reports in plain language and a team you can talk to directly.</p>
-            <ul className="dmp-stats3" data-up>
-              <li><b><span className="dmp-count" data-to="8">8</span>+</b><span>years as an IT company</span></li>
-              <li><b><span className="dmp-count" data-to="2">2</span></b><span>offices, Nepal and USA</span></li>
-              <li><b><span className="dmp-count" data-to="6">6</span></b><span>marketing disciplines</span></li>
-            </ul>
-            <ul className="dmp-rows s">
-              <li data-up><span className="dmp-ico"><Ic k="users" /></span><div><b>A real team, not a template</b><span>You work with the people planning and building your campaigns.</span></div></li>
-              <li data-up><span className="dmp-ico"><Ic k="msg" /></span><div><b>Open about what is realistic</b><span>We explain what to expect and never guarantee results.</span></div></li>
-              <li data-up><span className="dmp-ico"><Ic k="layers" /></span><div><b>Design, build and marketing together</b><span>Website, tracking and campaigns are planned as one.</span></div></li>
-            </ul>
-          </div>
-          <div className="dmp-collage">
-            <figure className="dmp-photo c1" data-clip><img src={P("dmx", "crew")} alt="A creative team meeting around a table with a whiteboard" loading="lazy" decoding="async" data-par /></figure>
-            <figure className="dmp-photo c2" data-clip><img src={P("dmd", "brain")} alt="Professionals brainstorming with laptops and charts" loading="lazy" decoding="async" /><figcaption>Planning with you</figcaption></figure>
-            <figure className="dmp-photo c3" data-clip><img src={P("dmd", "top")} alt="Colleagues analyzing data on a digital device" loading="lazy" decoding="async" /><figcaption>Reporting in plain language</figcaption></figure>
-          </div>
-        </div>
-      </section>
+      
 
       {/* ===== PROCESS ===== */}
       <section className="dmp-sec dmp-dark dmp-proc" id="dmp-process">
@@ -389,39 +367,27 @@ export default function DmpPage() {
       <section className="dmp-sec dmp-ind">
         <div className="dmp-in">
           <Head tag="Digital marketing by industry" t="Industries we help grow" lede="Every sector in the UAE buys differently. We adapt the channels and message to the customer, not the other way round." />
-          <div className="dmp-bentos">
+          <div className="dmi-grid">
             {INDUSTRIES.map((x, i) => (
-              <article className={`dmp-bento b${i}`} key={x.t} data-up style={st(i % 3)}>
-                <img src={P("dmp", "ind" + (i + 1))} alt="" aria-hidden="true" loading="lazy" decoding="async" />
-                <span className="dmp-ico"><Ic k={x.k} /></span>
-                <h3>{x.t}</h3>
-                <b className="dmp-tagline">{x.tag}</b>
-                <p>{x.d}</p>
-              </article>
+              <Rise className="dmi-card" key={x.t} i={i}>
+                <figure className="dmi-img"><img src={P("dmp", "ind" + (i + 1))} alt="" aria-hidden="true" loading="lazy" decoding="async" /></figure>
+                <div className="dmi-body">
+                  <span className="dmi-ico"><Ic k={x.k} /></span>
+                  <h3>{x.t}</h3>
+                  <b className="dmi-tag">{x.tag}</b>
+                  <p>{x.d}</p>
+                </div>
+              </Rise>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===== UAE STRATEGY ===== */}
-      <section className="dmp-sec dmp-dark dmp-uae" id="dmp-uae">
-        <div className="dmp-in">
-          <Head tag="Digital marketing strategy UAE" t="Built for the UAE market" lede="A good digital marketing strategy for Dubai respects how customers in the UAE actually search, compare and buy. This is how we plan for it." dark />
-          <div className="dmp-g3">
-            {UAE.map((u, i) => (<article className="dmp-card dk" key={u.t} data-up style={st(i % 3)}><span className="dmp-ico"><Ic k={u.k} /></span><h3>{u.t}</h3><p>{u.d}</p></article>))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ===== TERMS ===== */}
-      <section className="dmp-sec dmp-terms">
-        <div className="dmp-in">
-          <Head tag="Digital marketing UAE explained" t="Digital marketing terms in Dubai, simply explained" lede="Marketing and digital marketing mean different things to different people. Here is how we use the main terms when advising Dubai and UAE businesses." />
-          <div className="dmp-g3">
-            {TERMS.map((t, i) => (<article className="dmp-card" key={t.t} data-up style={st(i % 3)}><span className="dmp-ico"><Ic k={t.k} /></span><h3>{t.t}</h3><p>{t.d}</p></article>))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* ===== CHOOSING THE RIGHT AGENCY ===== */}
       <section className="dmp-sec dmp-guide" id="dmp-guide">
@@ -464,33 +430,7 @@ export default function DmpPage() {
       </section>
 
       {/* ===== RESULTS & ANALYTICS ===== */}
-      <section className="dmp-sec dmp-res">
-        <div className="dmp-in">
-          <Head tag="Performance and analytics" t="If it cannot be measured, it cannot be improved" lede="Every campaign is tracked against goals agreed up front. These are the areas we report on." />
-          <div className="dmp-two res">
-            <ul className="dmp-checks" data-up>
-              {["Campaign progress", "Audience engagement", "Website traffic", "Leads and enquiries", "Advertising performance", "Return on ad spend"].map((c, i) => (<li key={c} style={st(i % 2)}><Ic k="check" />{c}</li>))}
-            </ul>
-            <div className="dmp-rdash" data-up>
-              <div className="dmp-rdash-h"><b>Campaign performance</b><em>Illustrative sample, not client data</em></div>
-              <div className="dmp-rtabs" role="tablist" aria-label="Sample reports">
-                {["Overview", "Leads", "Traffic"].map((t, i) => (<button key={t} type="button" role="tab" aria-selected={i === 0} className={`dmp-rtab${i === 0 ? " on" : ""}`}>{t}</button>))}
-              </div>
-              <div className="dmp-rpanes">
-                <div className="dmp-rpane">
-                  <svg viewBox="0 0 300 110" preserveAspectRatio="none" fill="none" aria-hidden="true">{[22, 50, 78, 106].map((y) => (<line key={y} className="dmp-gl" x1="0" x2="300" y1={y} y2={y} />))}<path className="dmp-area" d={`${CURVE}V110H0Z`} /><path className="dmp-line" pathLength={1} d={CURVE} vectorEffect="non-scaling-stroke" /></svg>
-                </div>
-                <div className="dmp-rpane">
-                  <div className="dmp-rbars">{BARS.map((h, i) => (<i key={i} style={{ height: `${h}%` }} />))}</div>
-                </div>
-                <div className="dmp-rpane">
-                  <div className="dmp-rprog"><span>Goal progress A</span><i><b style={{ width: "72%" }} /></i><span>Goal progress B</span><i><b style={{ width: "46%" }} /></i><span>Goal progress C</span><i><b style={{ width: "60%" }} /></i></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* ===== TESTIMONIALS ===== */}
       <section className="dmp-sec dmp-dark dmp-rev" id="dmp-reviews">
@@ -503,7 +443,7 @@ export default function DmpPage() {
             </div>
           ) : null}
           <div className="dmp-g4 r">
-            {tq.map((t, i) => (<figure className="dmp-tq" key={t[0]} data-up style={st(i % 4)}><blockquote>{t[2]}</blockquote><figcaption><b>{t[0]}</b><span>{t[1]}</span></figcaption></figure>))}
+            {tq.slice(0, 4).map((t, i) => (<figure className="dmp-tq" key={t[0]} data-up style={st(i % 4)}><blockquote>{t[2]}</blockquote><figcaption><b>{t[0]}</b><span>{t[1]}</span></figcaption></figure>))}
           </div>
         </div>
       </section>

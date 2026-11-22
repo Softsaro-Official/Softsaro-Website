@@ -25,13 +25,13 @@ const COLS: [string, L[]][] = [
     { t: "App Development", href: "/mobile-app-development", next: true },
     { t: "UI/UX Design", href: `${S}/services/ui-ux-design-in-nepal` },
     { t: "Advanced SEO", href: `${S}/services/best-seo-agency-in-nepal` },
-    { t: "Digital Marketing in Dubai", href: "/services/digital-marketing-dubai", next: true },
+    { t: "Dubai Marketing", href: "/services/digital-marketing-dubai", next: true },
     { t: "Domain & Hosting", href: `${S}/services/domain-and-hosting-in-nepal` },
   ]],
   ["Resources", [
     { t: "Insights", href: "/blog", next: true },
     { t: "SEO Training", href: "/seo-training", next: true },
-    { t: "Digital Marketing Training", href: "/digital-marketing-training", next: true },
+    { t: "Digital Marketing", href: "/digital-marketing-training", next: true },
   ]],
   ["Contact", [
     { t: "9818439664", href: "tel:9818439664" },
