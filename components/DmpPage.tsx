@@ -212,7 +212,7 @@ export default function DmpPage() {
       <div className="dmp-progress" aria-hidden="true"><i /></div>
 
       {/* ===== HERO ===== */}
-      <section className="dmh" id="dmp-top">
+      <section className="dmh" id="dmp-top"><i className="dmh-dots" aria-hidden="true" />
         <div className="dmh-in">
           <div className="dmh-copy">
             <span className="dmp-pill" data-h>Digital marketing agency in Dubai</span>
@@ -222,9 +222,9 @@ export default function DmpPage() {
               <a className="dmp-btn p" data-mag href="#dmp-contact"><span>Book a free consultation</span><Ic k="arrow" /></a>
               <a className="dmp-btn o" data-mag href="#dmp-services"><span>See what we do</span><Ic k="down" /></a>
             </div>
-            <HeroVis a={P("dmp", "hero")} />
+            <ul className="dmh-trust" data-h><li><Ic k="check" />8+ years as an IT company</li><li><Ic k="check" />Offices in Nepal &amp; USA</li><li><Ic k="check" />Calls that fit Dubai hours</li></ul>
           </div>
-          <HeroCard />
+          <div className="dmh-stage"><span className="dmh-ring" aria-hidden="true" /><HeroVis a={P("dmp", "hero")} /><span className="dmh-chip k1" aria-hidden="true"><i />Replies on WhatsApp</span><span className="dmh-chip k2" aria-hidden="true"><i />Free consultation</span><HeroCard /></div>
         </div>
       </section>
 

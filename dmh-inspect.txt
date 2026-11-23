@@ -1,0 +1,230 @@
+Dmh inspect 11/23/2026 17:20:38
+
+=== A. DmpPage.tsx lines 205-250 (hero, about, pills) ===
+205: 
+206: export default function DmpPage() {
+207:   const pj = D.pj as string[][];
+208:   const tq = D.tq as string[][];
+209:   return (
+210:     <main className="dmp-page">
+211:       <DragScroll />
+212:       <div className="dmp-progress" aria-hidden="true"><i /></div>
+213: 
+214:       {/* ===== HERO ===== */}
+215:       <section className="dmh" id="dmp-top">
+216:         <div className="dmh-in">
+217:           <div className="dmh-copy">
+218:             <span className="dmp-pill" data-h>Digital marketing agency in Dubai</span>
+219:             <h1 className="dmp-h1" data-h aria-label="Dubai moves fast. Your marketing should keep up."><Words t="Dubai moves" /><Words t="fast." cls="em" /><br /><Words t="Your marketing should keep up." /></h1>
+220:             <p className="dmp-lead" data-h>Softsaro plans, launches and measures marketing for businesses in Dubai and the UAE: search, ads, social, content and email, all working toward the same goal. Based in Kathmandu, we work remotely with calls that fit Dubai business hours, and you get a free 
+221:             <div className="dmp-cta" data-h>
+222:               <a className="dmp-btn p" data-mag href="#dmp-contact"><span>Book a free consultation</span><Ic k="arrow" /></a>
+223:               <a className="dmp-btn o" data-mag href="#dmp-services"><span>See what we do</span><Ic k="down" /></a>
+224:             </div>
+225:             <HeroVis a={P("dmp", "hero")} />
+226:           </div>
+227:           <HeroCard />
+228:         </div>
+229:       </section>
+230: 
+231:       <DmpAbout a={P("dmx", "crew")} b={P("dmx", "board")} c={P("dmd", "charts")} />
+232: 
+233:       <nav className="dmp-pills" aria-label="On this page"><div className="dmp-in"><ul>{PILLS.map(([l, id]) => (<li key={id}><a href={`#${id}`} data-spy={id}>{l}</a></li>))}</ul></div></nav>
+234: 
+235:       {/* ===== MARQUEE ===== */}
+236:       <div className="dmp-marq" aria-hidden="true">
+237:         <div className="dmp-marq-t">
+238:           {[0, 1].map((n) => (
+239:             <div className="dmp-marq-g" key={n}>
+240:               {["Seo", "Google Ads", "Social media", "Meta Ads", "Content", "Email", "Analytics"].map((w, i) => (<span key={w}><b className={i % 2 ? "o" : ""}>{w}</b><i /></span>))}
+241:             </div>
+242:           ))}
+243:         </div>
+244:       </div>
+245: 
+246:       {/* ===== OVERVIEW ===== */}
+247:       <section className="dmp-sec dmp-over" id="dmp-overview">
+248:         <div className="dmp-in dmp-two">
+249:           <div className="dmp-over-t">
+250:             <span className="dmp-eye" data-up>Digital marketing in Dubai</span>
+
+=== B. all .dmh css lines in globals.css ===
+23792: .dmh{position:relative;overflow:hidden;background:#F6F5F2;padding:clamp(104px,11vw,148px) 0 clamp(56px,6vw,88px)}
+23793: .dmh:before{content:"";position:absolute;right:-8%;top:-18%;width:62%;height:95%;background:radial-gradient(closest-side,rgba(106,103,174,.2),transparent);pointer-events:none}
+23794: .dmh-in{position:relative;max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(28px,4vw,64px);align-items:center}
+23795: .dmh-copy{min-width:0;display:flex;flex-direction:column;align-items:flex-start}
+23796: .dmh .dmp-h1{margin:18px 0 0;font-size:clamp(36px,4.6vw,64px);line-height:1.04;letter-spacing:-.04em;color:#171624}
+23797: .dmh .dmp-lead{margin:20px 0 0;max-width:56ch;color:#5a5870}
+23798: .dmh .dmp-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:12px}
+23799: .dmh .dmp-btn{transition:box-shadow .4s,background .3s,border-color .3s,color .3s}
+23800: .dmh .dmp-btn.p{background:#6A67AE}
+23801: .dmh .dmp-btn.p:hover{box-shadow:0 16px 32px -14px rgba(106,103,174,.85)}
+23802: .dmh .dmp-btn.o:hover{border-color:#6A67AE;color:#6A67AE}
+23803: .dmh-vis{position:relative;width:100%;margin:36px 0 0;aspect-ratio:16/8;overflow:hidden;border-radius:24px;background:#DCD9EF;box-shadow:0 40px 70px -34px rgba(23,22,36,.5),0 0 0 6px rgba(255,255,255,.85)}
+23804: .dmh-vis img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+23805: .dmh-vis:hover img{transform:scale(1.05)}
+23806: .dmh-vis:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(23,22,36,.38));pointer-events:none}
+23807: .dmh-cap{position:absolute;left:16px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:99px;background:rgba(255,255,255,.94);color:#171624;font:600 12px/1 Inter,sans-serif}
+23808: .dmh-cap i{width:7px;height:7px;border-radius:50%;background:#6A67AE}
+23809: .dmh-card{justify-self:end;width:100%;max-width:460px;padding:24px;border-radius:24px;background:#fff;border-top:4px solid #6A67AE;box-shadow:0 40px 80px -40px rgba(106,103,174,.55),0 0 0 1px rgba(106,103,174,.12)}
+23810: .dmh-card .dmp-qcard-h{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+23811: .dmh-card .dmp-qcard-h b{display:block;color:#171624}
+23812: .dmh-card .dmp-qcard-h small{display:block;color:#5a5870}
+23813: .dmh-card .dmp-ap{display:flex;flex-direction:column;gap:10px;padding:0;margin:0;background:none;border:0;box-shadow:none}
+23814: .dmh-card .dmp-ap .dmp-ap-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+23815: .dmh-card .dmp-ap textarea{height:112px;min-height:0;resize:none}
+23817: .dmh-in{grid-template-columns:minmax(0,1fr)}
+23818: .dmh-card{justify-self:stretch;max-width:none}
+23820: @media(max-width:420px){.dmh-card .dmp-ap .dmp-ap-two{grid-template-columns:1fr}.dmh-card{padding:18px}}
+23821: @media(prefers-reduced-motion:reduce){.dmh-vis img,.dmh .dmp-btn{transition:none}}
+23823: .dmh .dmp-h1{white-space:normal}
+23824: .dmh .dmp-w.em{color:#6A67AE}
+23825: .dmh .dmp-pill{border-color:rgba(106,103,174,.45);background:#fff;color:#6A67AE}
+23826: .dmh .dmp-btn.o{border-color:rgba(23,22,36,.16);background:#fff;color:#171624}
+23827: .dmh .dmp-btn.o:hover{border-color:#6A67AE;color:#6A67AE}
+23828: .dmh .dmp-btn.p:hover{background:#171624;color:#fff}
+23829: .dmh-card .dmp-done .dmp-btn.o{border-color:rgba(23,22,36,.16);background:#fff;color:#171624}
+23831: .dmh{padding-top:clamp(96px,7.5vw,104px)}
+23832: .dmh-in{grid-template-columns:minmax(0,1fr) minmax(0,540px);gap:clamp(28px,4vw,56px)}
+23833: .dmh-card{max-width:540px;padding:32px}
+23834: .dmh-card .dmp-qcard-h{margin:0 0 20px}
+23835: .dmh-card .dmp-ap{gap:12px}
+23836: .dmh-card .dmp-ap .dmp-ap-two{gap:12px}
+23837: .dmh-card .dmp-ap textarea{height:150px}
+23839: .dmh{padding-top:96px}
+23840: .dmh-in{grid-template-columns:minmax(0,1fr)}
+23841: .dmh-card{max-width:none}
+23843: @media(max-width:420px){.dmh-card{padding:20px}.dmh-card .dmp-ap textarea{height:120px}}
+23845: .dmh .dmp-cta{gap:14px;margin-bottom:0}
+23846: .dmh-vis{margin-top:48px}
+23847: @media(max-width:960px){.dmh-vis{margin-top:36px}}
+23848: @media(max-width:420px){.dmh-vis{margin-top:28px}}
+23850: .dmh .dmh-copy .dmp-cta{padding-bottom:8px}
+23851: .dmh .dmh-copy .dmh-vis{margin-top:44px}
+23852: @media(max-width:960px){.dmh .dmh-copy .dmh-vis{margin-top:32px}}
+23854: .dmh-in{grid-template-columns:minmax(0,1.25fr) minmax(0,520px)}
+23855: .dmh .dmp-h1{font-size:clamp(28px,3.35vw,46px);line-height:1.1;letter-spacing:-.035em}
+23856: .dmh .dmp-h1 br{display:block}
+23857: @media(min-width:961px){.dmh .dmp-h1{white-space:nowrap}}
+23858: @media(max-width:960px){.dmh .dmp-h1{font-size:clamp(28px,6.4vw,44px);white-space:normal}}
+23860: .dmh-in{grid-template-columns:minmax(0,1.2fr) minmax(0,500px);gap:clamp(40px,5vw,80px)}
+23861: .dmh-copy{container-type:inline-size}
+23862: .dmh .dmp-h1{margin:20px 0 0;font-weight:700;font-size:clamp(28px,6.2cqi,56px);line-height:1.1;letter-spacing:-.04em;color:#171624;white-space:nowrap;text-wrap:balance}
+23863: .dmh .dmp-h1 br{display:block}
+23864: .dmh .dmp-h1 .dmp-w{padding-bottom:.08em}
+23865: .dmh .dmp-w.em{color:#6A67AE}
+23866: .dmh .dmp-lead{margin-top:24px;max-width:54ch}
+23868: .dmh .dmp-h1{font-size:clamp(30px,7.2vw,48px);white-space:normal;line-height:1.12}
+23871: .dmh .dmp-h1{font-size:clamp(28px,8.4vw,34px)}
+23935: .dmp-page .dmh-vis,
+23942: .dmp-page .dmh-vis,
+23945: .dmp-page .dmh-vis:hover,
+23962: .dmh-card{transition:box-shadow .6s var(--hv-e)}
+23963: .dmh-card:hover{box-shadow:0 46px 90px -40px rgba(106,103,174,.7),0 0 0 1px rgba(106,103,174,.22)}
+23966: .dmh-card input,.dmh-card select,.dmh-card textarea{transition:border-color .3s,box-shadow .3s,background-color .3s}
+23967: .dmh-card input:hover,.dmh-card select:hover,.dmh-card textarea:hover{box-shadow:0 0 0 1px rgba(106,103,174,.35)}
+
+=== C. DmpCareerForm.tsx ===
+"use client";
+import { useState } from "react";
+
+const WA = "";
+const SERVICES = [
+  "SEO", "Digital Marketing", "Social Media Marketing", "Google Ads", "Website Development", "Other",
+];
+
+export default function DmpCareerForm() {
+  const [sent, setSent] = useState(false);
+  const [link, setLink] = useState("");
+
+  function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const g = (k: string) => String(fd.get(k) || "").trim();
+    if (g("company")) return; // honeypot
+    const lines = [
+      "Hello Softsaro, I would like a free consultation.",
+      "",
+      `Name: ${g("name")}`,
+      `Phone: ${g("phone")}`,
+      `Email: ${g("email")}`,
+      `Service: ${g("service")}`,
+      `LinkedIn: ${g("linkedin") || "-"}`,
+      `Website: ${g("portfolio") || "-"}`,
+      "",
+      "About my business:",
+      g("intro"),
+    ];
+    const url = `https://wa.me/${WA}?text=${encodeURIComponent(lines.join("\n"))}`;
+    setLink(url);
+    setSent(true);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  if (sent) return (
+    <div className="dmp-done" role="status">
+      <b>Opening WhatsApp...</b>
+      <p>Press send in WhatsApp to deliver your inquiry. If it did not open, use the button below.</p>
+      <div className="dmp-done-btns">
+        <a className="dmp-btn p" href={link} target="_blank" rel="noopener noreferrer"><span>Open WhatsApp</span></a>
+        <button type="button" className="dmp-btn o" onClick={() => setSent(false)}><span>Back to form</span></button>
+      </div>
+    </div>
+  );
+
+  return (
+    <form className="dmp-form dmp-ap" onSubmit={submit}>
+      <div className="dmp-ap-two">
+        <input name="name" required minLength={2} maxLength={100} aria-label="Full name" placeholder="Full name" autoComplete="name" />
+        <input name="phone" type="tel" required maxLength={30} aria-label="Phone number" placeholder="Phone number" autoComplete="tel" />
+      </div>
+      <input name="email" type="email" required maxLength={120} aria-label="Email address" placeholder="Email address" autoComplete="email" />
+      <select name="service" required aria-label="Service" defaultValue="">
+        <option value="" disabled>Service</option>
+        {SERVICES.map((s) => (<option key={s} value={s}>{s}</option>))}
+      </select>
+      <div className="dmp-ap-two">
+        <input name="linkedin" type="url" maxLength={200} aria-label="LinkedIn profile (optional)" placeholder="LinkedIn (optional)" inputMode="url" />
+        <input name="portfolio" type="url" maxLength={200} aria-label="Website (optional)" placeholder="Portfolio / website (optional)" inputMode="url" />
+      </div>
+      <textarea name="intro" required minLength={20} maxLength={1500} rows={3} aria-label="Tell us about your business" placeholder="Tell us about your business" />
+      <input name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" className="dmp-sr" />
+      <button className="dmp-btn p full" type="submit"><span>Send Inquiry</span></button>
+      <p className="dmp-form-note">Free consultation &middot; We reply on WhatsApp</p>
+    </form>
+  );
+}
+
+=== D. form css (.dmp-ap*, .dmp-drop*, .dmp-form*) ===
+23216: .dmp-form,.dmp-cform{display:grid;gap:10px}
+23217: .dmp-form input,.dmp-form select,.dmp-form textarea,.dmp-cform input,.dmp-cform select,.dmp-cform textarea{width:100%;padding:14px 15px;border:1px solid transparent;border-radius:12px;background:#f1eef8;color:var(--n);font:400 15px/1.3 Inter,sans-serif;outline:none;transition:border-color .3s,backgr
+23218: .dmp-form input:focus,.dmp-form select:focus,.dmp-form textarea:focus{border-color:var(--p);background:#fff}
+23219: .dmp-form textarea{resize:vertical;min-height:84px}
+23220: .dmp-form-note{color:var(--tx);font:600 10.5px/1.4 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding-top:6px;border-top:1px solid var(--ln)}
+23557: .dmp-ap-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+23558: .dmp-ap input:focus-visible,.dmp-ap select:focus-visible,.dmp-ap textarea:focus-visible{border-color:var(--p);background:#fff;box-shadow:0 0 0 3px rgba(119,112,184,.18)}
+23559: .dmp-drop{border:1.5px dashed rgba(119,112,184,.5);border-radius:14px;background:#f7f5fc;transition:border-color .3s,background .3s,transform .3s}
+23560: .dmp-drop:hover{border-color:var(--p);background:#f1eef8}
+23561: .dmp-drop.drag{border-color:var(--p);background:#e9e6f6;transform:scale(1.01)}
+23562: .dmp-drop.err{border-color:#c0392b}
+23563: .dmp-drop.has{border-style:solid;background:#fff}
+23564: .dmp-drop-l{display:grid;justify-items:center;gap:4px;padding:16px 12px;text-align:center;cursor:pointer}
+23565: .dmp-drop-l .dmp-ic{width:22px;height:22px;color:var(--p)}
+23566: .dmp-drop-l b{font:650 14px/1.2 'Inter Tight',Inter,sans-serif}
+23567: .dmp-drop-l small{color:var(--tx);font:500 11.5px/1.4 Inter,sans-serif}
+23568: .dmp-drop:focus-within{box-shadow:0 0 0 3px rgba(119,112,184,.2)}
+23569: .dmp-file{display:flex;align-items:center;gap:10px;padding:10px 12px}
+23570: .dmp-file-ic{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--p);color:#fff;font:700 10px/1 Inter,sans-serif}
+23571: .dmp-file-n{flex:1;min-width:0;display:grid}
+23572: .dmp-file-n b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 13.5px/1.2 'Inter Tight',Inter,sans-serif}
+23573: .dmp-file-n small{color:var(--tx);font:500 11.5px/1.3 Inter,sans-serif}
+23574: .dmp-file-b{padding:7px 11px;border:1px solid var(--ln);border-radius:99px;background:#fff;color:var(--n);font:600 12px/1 Inter,sans-serif;cursor:pointer;transition:border-color .3s,color .3s}
+23575: .dmp-file-b:hover{border-color:var(--p);color:var(--p)}
+23576: .dmp-file-b.rm:hover{border-color:#c0392b;color:#c0392b}
+23577: .dmp-ap-err{margin:-4px 0 0!important;color:#c0392b;font:600 12.5px/1.3 Inter,sans-serif}
+23578: .dmp-ap .dmp-btn.p:disabled{opacity:.7;cursor:progress}
+23579: .dmp-ap .dmp-btn.p:not(:disabled):hover{transform:translateY(-1px)}
+
+=== E. dmp root variables ===
+23147: .dmp-page{--n:#0B0B14;--c:#F4F0E8;--c2:#ece7dd;--p:#7770B8;--pl:#A9A3DA;--pp:#e9e6f6;--tx:#5d5b6b;--tx2:#a9a7b8;--ln:rgba(11,11,20,.1);--ln2:rgba(255,255,255,.14);--e2:cubic-bezier(.16,1,.3,1);position:relative;background:var(--c);color:var(--n);overflow-x:clip;font-family:Inter,sans-serif}
+23914: .dmp-page{--hv-e:cubic-bezier(.16,1,.3,1)}
