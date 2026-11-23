@@ -9,7 +9,6 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const S = "https://softsaro.com.np";
-const HEAD = ["Have", "a", "project", "in", "mind?"];
 const WORD = "SOFTSARO".split("");
 const MAPS = "https://www.google.com/maps/search/?api=1&query=Trade+Tower%2C+5th+Floor+-+Thapathali";
 
@@ -18,7 +17,7 @@ const COLS: [string, L[]][] = [
   ["Company", [
     { t: "About Us", href: "/about-us", next: true }, { t: "Portfolio", href: `${S}/portfolio` },
     { t: "Our Team", href: "/our-team", next: true }, { t: "Careers", href: "/career#apply", next: true },
-    { t: "Contact", href: `${S}/contact` },
+    { t: "Contact", href: "/contact", next: true },
   ]],
   ["Services", [
     { t: "Web Development", href: `${S}/services/web-development-in-nepal` },
@@ -95,15 +94,7 @@ export default function Footer() {
         if (g) gsap.fromTo(g, { left: "-15%" }, { left: "110%", duration: 2.6, ease: "power2.inOut", repeat: -1, repeatDelay: 2.6, scrollTrigger: { trigger: l, start: "top 92%", toggleActions: "play pause resume pause" } });
       });
 
-      /* 2. CTA: eyebrow slides, headline words swing up from their baseline, then the rest */
-      const words = q(".sf-hw");
-      gsap.timeline({ scrollTrigger: { trigger: el(".sf-cta"), start: "top 80%" } })
-        .from(el(".sf-eyebrow"), { x: -24, opacity: 0, duration: 0.8, ease: "expo.out" })
-        .from(words, { yPercent: 120, rotate: 7, transformOrigin: "0% 100%", duration: 1.3, stagger: 0.09, ease: "expo.out" }, "-=.5")
-        .from(q("[data-sf=up]"), { y: 30, opacity: 0, duration: 1, stagger: 0.12, ease: "expo.out" }, "-=.9");
-      gsap.to(el(".sf-h"), { y: -26, ease: "none", scrollTrigger: { trigger: r, start: "top bottom", end: "top 20%", scrub: true } });
-
-      /* 3. columns: each reveals with its own timing (clip-path wipe), and drifts at its own depth */
+      /* 2. columns: each reveals with its own timing (clip-path wipe), and drifts at its own depth */
       const cols = q(".sf-col"), wrap = el(".sf-cols");
       const T: [number, number][] = [[0, 1.1], [0.12, 1.25], [0.24, 1.0], [0.36, 1.3], [0.5, 1.15]];
       const depth = [30, 64, 22, 72, 44];
@@ -115,12 +106,12 @@ export default function Footer() {
       });
       gsap.fromTo(el(".sf-glow"), { yPercent: 8 }, { yPercent: -10, ease: "none", scrollTrigger: { trigger: r, start: "top bottom", end: "bottom bottom", scrub: true } });
 
-      /* 4. transition into the wordmark: purple light blooms, the word tilts up out of depth */
+      /* 3. transition into the wordmark: purple light blooms, the word tilts up out of depth */
       gsap.fromTo(el(".sf-bloom"), { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 1, ease: "none", scrollTrigger: { trigger: wm, start: "top 100%", end: "top 40%", scrub: 0.8 } });
       gsap.set(inner, { transformPerspective: 900, transformOrigin: "50% 100%" });
       gsap.fromTo(inner, { rotationX: 28, scale: 0.92, yPercent: 6 }, { rotationX: 0, scale: 1, yPercent: 0, ease: "none", scrollTrigger: { trigger: wm, start: "top 100%", end: "top 45%", scrub: 0.8 } });
 
-      /* 5. wordmark entrance: every letter takes its own 3D path, blooming out from the centre */
+      /* 4. wordmark entrance: every letter takes its own 3D path, blooming out from the centre */
       const letters = q(".sf-l");
       let active = false;
       gsap.set(letters, { transformPerspective: 700 });
@@ -132,14 +123,6 @@ export default function Footer() {
         .to(letters, { color: "#bcb9e0", duration: 0.28, stagger: { each: 0.07, from: "start" }, yoyo: true, repeat: 1, ease: "sine.inOut" }, "-=.5");
       gsap.from(q(".sf-bar > *"), { y: 16, opacity: 0, duration: 0.9, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: el(".sf-bar"), start: "top 98%" } });
 
-      /* 6. hover: button fill grows from the pointer entry point (works for touch too) */
-      q(".sf-btn").forEach((b) => {
-        const f = b.querySelector<HTMLElement>(".sf-fill")!;
-        gsap.set(f, { xPercent: -50, yPercent: -50, scale: 0 });
-        const place = (e: PointerEvent) => { const bb = b.getBoundingClientRect(); f.style.left = e.clientX - bb.left + "px"; f.style.top = e.clientY - bb.top + "px"; };
-        on(b, "pointerenter", (e) => { place(e); gsap.to(f, { scale: 1, duration: 0.8, ease: "expo.out", overwrite: true }); });
-        on(b, "pointerleave", (e) => { place(e); gsap.to(f, { scale: 0, duration: 0.6, ease: "expo.inOut", overwrite: true }); });
-      });
       q(".sf-s").forEach((s) => {
         const ic = s.querySelector("svg")!;
         on(s, "pointerenter", () => { gsap.fromTo(ic, { rotate: -25, scale: 0.7 }, { rotate: 0, scale: 1, duration: 0.7, ease: "back.out(3)", overwrite: true }); });
@@ -148,7 +131,7 @@ export default function Footer() {
       on(top, "pointerenter", () => { gsap.timeline().to(arrow, { yPercent: -160, duration: 0.25, ease: "power2.in" }).fromTo(arrow, { yPercent: 160 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }); });
 
       if (fine) {
-        /* 7. magnetic pull on buttons, icons, back-to-top; subtle pull on links */
+        /* 5. magnetic pull on icons and back-to-top; subtle pull on links */
         const magnet = (t: HTMLElement, str: number, inn?: Element | null, istr = 0.5) => {
           const x = gsap.quickTo(t, "x", { duration: 0.9, ease: "elastic.out(1,.45)" }), y = gsap.quickTo(t, "y", { duration: 0.9, ease: "elastic.out(1,.45)" });
           const ix = inn ? gsap.quickTo(inn, "x", { duration: 0.7, ease: "power3" }) : null, iy = inn ? gsap.quickTo(inn, "y", { duration: 0.7, ease: "power3" }) : null;
@@ -158,7 +141,6 @@ export default function Footer() {
           });
           on(t, "pointerleave", () => { x(0); y(0); ix?.(0); iy?.(0); });
         };
-        q(".sf-btn").forEach((b) => magnet(b, 0.3, b.querySelector(".sf-bt"), 0.6));
         q(".sf-s").forEach((s) => magnet(s, 0.4, s.querySelector("svg"), 0.5));
         magnet(top, 0.28, top.querySelector("i"), 0.4);
         q(".sf-links a").forEach((a) => {
@@ -167,7 +149,7 @@ export default function Footer() {
           on(a, "pointerleave", () => x(0));
         });
 
-        /* 8. cursor light + wordmark letters turn toward the pointer and lift */
+        /* 6. cursor light + wordmark letters turn toward the pointer and lift */
         const spot = el(".sf-spot");
         const sx = gsap.quickTo(spot, "x", { duration: 0.8, ease: "power3" }), sy = gsap.quickTo(spot, "y", { duration: 0.8, ease: "power3" });
         const set = letters.map((l) => ({
@@ -196,29 +178,12 @@ export default function Footer() {
     return () => { mm.revert(); ro.disconnect(); };
   }, { scope: root });
 
-  const Arrow = () => <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>;
-
   return (
     <footer className="sf" ref={root}>
       <div className="sf-glow" aria-hidden="true" />
       <div className="sf-spot" aria-hidden="true" />
       <div className="sf-bloom" aria-hidden="true" />
       <div className="sf-in">
-        <div className="sf-cta">
-          <div>
-            <p className="sf-eyebrow">Let&rsquo;s talk</p>
-            <h2 className="sf-h" aria-label="Have a project in mind?">
-              {HEAD.map((w) => <span className="sf-hm" key={w} aria-hidden="true"><span className="sf-hw">{w}</span></span>)}
-            </h2>
-          </div>
-          <div className="sf-cta-r">
-            <p data-sf="up">Tell us about your web, app, design or SEO project and talk directly with the people who will build it.</p>
-            <div className="sf-btns" data-sf="up">
-              <a className="sf-btn" href={`${S}/contact`}><span className="sf-fill" /><span className="sf-bt">Start a project</span><Arrow /></a>
-              <a className="sf-call" href="tel:9818439664">Call 9818439664</a>
-            </div>
-          </div>
-        </div>
         <span className="sf-line"><i /></span>
         <div className="sf-cols">
           <div className="sf-col sf-brand">

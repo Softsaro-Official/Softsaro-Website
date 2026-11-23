@@ -7103,130 +7103,6 @@ html.intro-pending .hero-vis {
     transform-origin: 0 50%
 }
 
-.sf-cta {
-    display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    gap: clamp(28px, 5vw, 96px);
-    align-items: end;
-    padding: clamp(72px, 10vw, 150px) 0 clamp(48px, 6vw, 88px)
-}
-
-.sf-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 22px;
-    font: 600 12px/1 Inter, sans-serif;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: #a9a7b6
-}
-
-.sf-eyebrow:before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--green, #3fe33f)
-}
-
-.sf-h {
-    margin: 0;
-    max-width: none;
-    font: 700 clamp(42px, 7.2vw, 118px)/.94 var(--font-inter), Inter, sans-serif;
-    letter-spacing: -.055em;
-    color: #f3efe8
-}
-
-.sf-hm {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: top;
-    padding: .04em .04em .12em 0;
-    margin-right: .2em
-}
-
-.sf-hw {
-    display: inline-block;
-    will-change: transform
-}
-
-.sf-h .sf-hm:last-child .sf-hw {
-    color: #8b88c8
-}
-
-.sf-cta-r p {
-    margin: 0 0 28px;
-    max-width: 40ch;
-    color: #c9c7d3;
-    font: 400 clamp(16px, 1.3vw, 19px)/1.55 Inter, sans-serif
-}
-
-.sf-btns {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 14px 22px
-}
-
-.sf-btn {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    height: 58px;
-    padding: 0 26px;
-    border-radius: 99px;
-    background: #f3efe8;
-    color: var(--ink, #0a0b14);
-    font: 600 16px/1 var(--font-inter), Inter, sans-serif;
-    letter-spacing: -.01em;
-    transition: color .4s var(--o)
-}
-
-.sf-btn:hover,
-.sf-btn:focus-visible {
-    color: #fff
-}
-
-.sf-fill {
-    position: absolute;
-    z-index: -1;
-    left: 50%;
-    top: 50%;
-    width: 300%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: var(--blue, #6a67ae);
-    transform: translate(-50%, -50%) scale(0);
-    pointer-events: none
-}
-
-.sf-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round
-}
-
-.sf-call {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(243, 239, 232, .3);
-    color: #f3efe8;
-    font: 500 16px/1 Inter, sans-serif;
-    transition: color .3s, border-color .3s
-}
-
-.sf-call:hover {
-    color: #bcb9e0;
-    border-color: #bcb9e0
-}
-
 .sf-cols {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1.1fr 1fr 1.35fr;
@@ -7408,13 +7284,6 @@ html.intro-pending .hero-vis {
     }
 }
 
-@media(max-width:900px) {
-    .sf-cta {
-        grid-template-columns: 1fr;
-        align-items: start
-    }
-}
-
 @media(max-width:560px) {
     .sf-cols {
         grid-template-columns: 1fr
@@ -7476,11 +7345,6 @@ html.intro-pending .hero-vis {
     background: linear-gradient(90deg, transparent, #bcb9e0, transparent)
 }
 
-.sf-bt {
-    position: relative;
-    display: inline-block
-}
-
 .sf-l {
     backface-visibility: hidden
 }
@@ -7492,15 +7356,6 @@ html.intro-pending .hero-vis {
 }
 
 @media(prefers-reduced-motion:reduce) {
-    .sf-fill {
-        display: none
-    }
-
-    .sf-btn:hover,
-    .sf-btn:focus-visible {
-        color: var(--ink, #0a0b14)
-    }
-
     .sf-line i,
     .sf-bloom {
         display: none
@@ -7769,130 +7624,6 @@ html.intro-pending .hero-vis {
     transform-origin: 0 50%
 }
 
-.sf-cta {
-    display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    gap: clamp(28px, 5vw, 96px);
-    align-items: end;
-    padding: clamp(72px, 10vw, 150px) 0 clamp(48px, 6vw, 88px)
-}
-
-.sf-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 22px;
-    font: 600 12px/1 Inter, sans-serif;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: #a9a7b6
-}
-
-.sf-eyebrow:before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--green, #3fe33f)
-}
-
-.sf-h {
-    margin: 0;
-    max-width: none;
-    font: 700 clamp(42px, 7.2vw, 118px)/.94 var(--font-inter), Inter, sans-serif;
-    letter-spacing: -.055em;
-    color: #f3efe8
-}
-
-.sf-hm {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: top;
-    padding: .04em .04em .12em 0;
-    margin-right: .2em
-}
-
-.sf-hw {
-    display: inline-block;
-    will-change: transform
-}
-
-.sf-h .sf-hm:last-child .sf-hw {
-    color: #8b88c8
-}
-
-.sf-cta-r p {
-    margin: 0 0 28px;
-    max-width: 40ch;
-    color: #c9c7d3;
-    font: 400 clamp(16px, 1.3vw, 19px)/1.55 Inter, sans-serif
-}
-
-.sf-btns {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 14px 22px
-}
-
-.sf-btn {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    height: 58px;
-    padding: 0 26px;
-    border-radius: 99px;
-    background: #f3efe8;
-    color: var(--ink, #0a0b14);
-    font: 600 16px/1 var(--font-inter), Inter, sans-serif;
-    letter-spacing: -.01em;
-    transition: color .4s var(--o)
-}
-
-.sf-btn:hover,
-.sf-btn:focus-visible {
-    color: #fff
-}
-
-.sf-fill {
-    position: absolute;
-    z-index: -1;
-    left: 50%;
-    top: 50%;
-    width: 300%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: var(--blue, #6a67ae);
-    transform: translate(-50%, -50%) scale(0);
-    pointer-events: none
-}
-
-.sf-btn svg {
-    width: 18px;
-    height: 18px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round
-}
-
-.sf-call {
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(243, 239, 232, .3);
-    color: #f3efe8;
-    font: 500 16px/1 Inter, sans-serif;
-    transition: color .3s, border-color .3s
-}
-
-.sf-call:hover {
-    color: #bcb9e0;
-    border-color: #bcb9e0
-}
-
 .sf-cols {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1.1fr 1fr 1.35fr;
@@ -8074,13 +7805,6 @@ html.intro-pending .hero-vis {
     }
 }
 
-@media(max-width:900px) {
-    .sf-cta {
-        grid-template-columns: 1fr;
-        align-items: start
-    }
-}
-
 @media(max-width:560px) {
     .sf-cols {
         grid-template-columns: 1fr
@@ -8142,11 +7866,6 @@ html.intro-pending .hero-vis {
     background: linear-gradient(90deg, transparent, #bcb9e0, transparent)
 }
 
-.sf-bt {
-    position: relative;
-    display: inline-block
-}
-
 .sf-l {
     backface-visibility: hidden
 }
@@ -8158,15 +7877,6 @@ html.intro-pending .hero-vis {
 }
 
 @media(prefers-reduced-motion:reduce) {
-    .sf-fill {
-        display: none
-    }
-
-    .sf-btn:hover,
-    .sf-btn:focus-visible {
-        color: var(--ink, #0a0b14)
-    }
-
     .sf-line i,
     .sf-bloom {
         display: none

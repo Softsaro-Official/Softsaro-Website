@@ -1,0 +1,391 @@
+﻿import type { Metadata } from "next";
+import fs from "node:fs";
+import path from "node:path";
+import Navbar from "@/components/Navbar";
+import { SiteFooter } from "@/components/Site";
+import PortfolioClient from "@/components/portfolio/PortfolioClient";
+import "./portfolio.css";
+import { Instrument_Serif } from "next/font/google";
+
+const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], display: "swap", variable: "--pf-serif" });
+
+export const metadata: Metadata = {
+  title: "Portfolio | Web, App, Graphics, SEO & Digital Marketing Projects | Softsaro",
+  description: "Explore recent Softsaro projects across website development, mobile apps, graphics design, SEO and digital marketing for businesses in Nepal and beyond.",
+  alternates: { canonical: "/portfolio" },
+  openGraph: { title: "Softsaro Portfolio", description: "Recent web, app, design and marketing projects by Softsaro.", url: "/portfolio", type: "website" },
+};
+
+/* project screenshots you add to public/images/portfolio/<slug>.(jpg|png|webp) are picked up automatically */
+function localImages(): Record<string, string> {
+  const out: Record<string, string> = {};
+  try {
+    fs.readdirSync(path.join(process.cwd(), "public", "images", "portfolio")).forEach((f) => {
+      const m = f.match(/^(.+)\.(jpe?g|png|webp|avif)$/i);
+      if (m) out[m[1].toLowerCase()] = `/images/portfolio/${f}`;
+    });
+  } catch { /* folder not created yet */ }
+  return out;
+}
+
+export default function Page() {
+  return (
+    <>
+      <Navbar b="/" />
+      <div className={serif.variable}><PortfolioClient images={localImages()} /></div>
+      <SiteFooter />
+    </>
+  );
+}
+"use client";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
+import { motion } from "framer-motion";
+import { CATS, CAT_LABEL, FEATURED, PROJECTS, type Cat, type Project } from "./data";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+const reducedMotion = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const PAGE = 12;
+
+function Arrow() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9" /></svg>; }
+
+function Cover({ name, cat, src, className = "", blur = false }: { name: string; cat: Cat; src?: string; className?: string; blur?: boolean }) {
+  const [bad, setBad] = useState(false);
+  if (src && !bad) return <>{blur && <span className="pf-bgblur" aria-hidden="true" style={{ backgroundImage: `url("${src}")` }} />}<img className={`pf-img ${className}`} src={src} alt={`${name} project`} loading="lazy" decoding="async" onError={() => setBad(true)} /></>;
+  const initials = name.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+  return (
+    <div className={`pf-cover c-${cat} ${className}`} role="img" aria-label={`${name} project cover`}>
+      <b>{initials}</b><span>{name}</span><i>{CAT_LABEL[cat]}</i>
+    </div>
+  );
+}
+
+function splitWords(el: HTMLElement): HTMLElement[] {
+  const html = el.innerHTML; // keeps the accent <em>
+  const out: HTMLElement[] = [];
+  const walk = (n: Node) => Array.from(n.childNodes).forEach((c) => {
+    if (c.nodeType === 3) {
+      const f = document.createDocumentFragment();
+      (c.textContent ?? "").split(/(\s+)/).forEach((w) => {
+        if (!w.trim()) { f.append(w); return; }
+        const wrap = document.createElement("span"); wrap.className = "pf-w";
+        const i = document.createElement("span"); i.className = "pf-i"; i.textContent = w; wrap.append(i); f.append(wrap); out.push(i);
+      });
+      c.replaceWith(f);
+    } else if (c.nodeType === 1) walk(c);
+  });
+  walk(el);
+  el.setAttribute("aria-label", el.textContent ?? html);
+  return out;
+}
+
+export default function PortfolioClient({ images }: { images: Record<string, string> }) {
+  const root = useRef<HTMLDivElement>(null);
+  const grid = useRef<HTMLDivElement>(null);
+  const bar = useRef<HTMLDivElement>(null);
+  const ind = useRef<HTMLSpanElement>(null);
+  const prev = useRef(PAGE);
+  const [cat, setCat] = useState<"all" | Cat>("all");
+  const [shown, setShown] = useState<"all" | Cat>("all");
+  const [limit, setLimit] = useState(PAGE);
+  const list = useMemo(() => PROJECTS.filter((p) => shown === "all" || p.cat === shown), [shown]);
+  const visible = list.slice(0, limit);
+  const counts = useMemo(() => { const c: Record<string, number> = { all: PROJECTS.length }; PROJECTS.forEach((p) => { c[p.cat] = (c[p.cat] ?? 0) + 1; }); return c; }, []);
+
+  /* filter: cards leave, content swaps, new cards enter */
+  const pick = (c: "all" | Cat) => {
+    if (c === cat) return;
+    setCat(c);
+    const cards = grid.current?.querySelectorAll(".pf-card");
+    if (reducedMotion() || !cards?.length) { setShown(c); setLimit(PAGE); return; }
+    gsap.to(cards, { autoAlpha: 0, y: -14, scale: 0.97, duration: 0.28, stagger: { amount: 0.25 }, ease: "power2.in", overwrite: true, onComplete: () => { setShown(c); setLimit(PAGE); } });
+  };
+  useEffect(() => {
+    prev.current = PAGE;
+    const cards = grid.current?.querySelectorAll(".pf-card");
+    if (!cards?.length || reducedMotion()) { if (cards) gsap.set(cards, { clearProps: "all" }); return; }
+    const t = gsap.fromTo(cards, { autoAlpha: 0, y: 40, scale: 0.96 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.8, ease: "expo.out", stagger: { amount: 0.5 }, clearProps: "transform" });
+    const im = gsap.fromTo(grid.current?.querySelectorAll(".pf-card .pf-img, .pf-card .pf-cover") ?? [], { clipPath: "inset(100% 0% 0% 0%)", scale: 1.22 }, { clipPath: "inset(0% 0% 0% 0%)", scale: 1, duration: 1.3, ease: "expo.out", stagger: { amount: 0.6 }, delay: 0.1, clearProps: "transform,clipPath" });
+    return () => { t.kill(); im.kill(); };
+  }, [shown]);
+  useEffect(() => {
+    if (limit <= prev.current) return;
+    const cards = Array.from(grid.current?.querySelectorAll(".pf-card") ?? []).slice(prev.current);
+    prev.current = limit;
+    if (!cards.length) return;
+    if (reducedMotion()) { gsap.set(cards, { clearProps: "all" }); return; }
+    gsap.fromTo(cards, { autoAlpha: 0, y: 40 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "expo.out", stagger: 0.06, clearProps: "transform" });
+    const ims = cards.flatMap((c) => Array.from(c.querySelectorAll(".pf-img, .pf-cover")));
+    gsap.fromTo(ims, { clipPath: "inset(100% 0% 0% 0%)", scale: 1.22 }, { clipPath: "inset(0% 0% 0% 0%)", scale: 1, duration: 1.2, ease: "expo.out", stagger: 0.06, clearProps: "transform,clipPath" });
+  }, [limit]);
+
+  /* sliding indicator behind the active filter */
+  useEffect(() => {
+    const place = (animate: boolean) => {
+      const b = bar.current?.querySelector<HTMLElement>(`[data-k="${cat}"]`);
+      if (!b || !ind.current) return;
+      const vars = { x: b.offsetLeft, y: b.offsetTop, width: b.offsetWidth, height: b.offsetHeight };
+      if (animate && !reducedMotion()) gsap.to(ind.current, { ...vars, duration: 0.6, ease: "expo.out" }); else gsap.set(ind.current, vars);
+    };
+    place(true);
+    const ro = new ResizeObserver(() => place(false));
+    if (bar.current) ro.observe(bar.current);
+    return () => ro.disconnect();
+  }, [cat]);
+
+  /* hero, featured, scroll reveals, floating shapes, magnetic buttons */
+  useGSAP(() => {
+    const scope = root.current;
+    if (!scope || reducedMotion()) return;
+    const q = (s: string) => gsap.utils.toArray<HTMLElement>(s, scope);
+    const one = (s: string) => scope.querySelector<HTMLElement>(s);
+    const mm = gsap.matchMedia();
+    mm.add({ fine: "(hover: hover) and (pointer: fine)" }, (ctx) => {
+      const fine = (ctx.conditions as unknown as { fine: boolean }).fine;
+      const offs: Array<() => void> = [];
+      const on = (t: EventTarget, e: string, f: (ev: any) => void) => { t.addEventListener(e, f); offs.push(() => t.removeEventListener(e, f)); };
+      const lenis = new Lenis({ duration: 1.15, anchors: true });
+      lenis.on("scroll", ScrollTrigger.update);
+      const tick = (t: number) => lenis.raf(t * 1000);
+      gsap.ticker.add(tick); gsap.ticker.lagSmoothing(0);
+
+      /* hero: blur-to-focus word rise */
+      const h1 = one(".pf-h1");
+      const words = h1 ? splitWords(h1) : [];
+      gsap.fromTo(scope, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6, ease: "power2.out" });
+      gsap.timeline({ defaults: { ease: "expo.out" }, delay: 0.1 })
+        .from(one(".pf-pill"), { y: 20, autoAlpha: 0, duration: 0.8 })
+        .from(words, { yPercent: 115, rotate: 4, filter: "blur(10px)", duration: 1.3, stagger: 0.07 }, 0.15)
+        .from(q(".pf-sub, .pf-stats > *"), { y: 26, autoAlpha: 0, duration: 1, stagger: 0.1 }, 0.9);
+      q(".pf-shape").forEach((s, i) => gsap.to(s, { y: i % 2 ? 40 : -40, x: i % 2 ? -30 : 30, rotation: i % 2 ? -12 : 12, duration: 7 + i * 1.5, ease: "sine.inOut", yoyo: true, repeat: -1 }));
+      gsap.to(q(".pf-hero .pf-layer"), { yPercent: (i: number) => -12 - i * 8, ease: "none", scrollTrigger: { trigger: one(".pf-hero"), start: "top top", end: "bottom top", scrub: true } });
+
+      /* pf-fx1: stat counters + headline word reveals */
+      q(".pf-stats b").forEach((b) => {
+        const end = parseInt(b.textContent || "0", 10), o = { v: 0 };
+        b.textContent = "0";
+        gsap.to(o, { v: end, duration: 1.8, delay: 1, ease: "power3.out", onUpdate: () => { b.textContent = String(Math.round(o.v)); }, onComplete: () => { b.textContent = String(end); } });
+      });
+      q(".pf-head h2, .pf-cta h2").forEach((h) => {
+        const w = splitWords(h);
+        gsap.from(w, { yPercent: 115, rotate: 3, duration: 1.1, ease: "expo.out", stagger: 0.06, scrollTrigger: { trigger: h, start: "top 88%", once: true } });
+      });
+
+      /* section heads + featured cards */
+      q("[data-pf]").forEach((el) => gsap.from(el, { y: 40, autoAlpha: 0, duration: 1.1, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 88%", once: true } }));
+      q(".pf-feat").forEach((card, i) => {
+        const wrap = card.querySelector(".pf-fimg"), img = card.querySelector(".pf-fimg > *");
+        gsap.from(wrap, { clipPath: "inset(14% 8% 14% 8% round 28px)", scale: 0.94, duration: 1.4, ease: "expo.out", scrollTrigger: { trigger: card, start: "top 82%", once: true } });
+        gsap.from(card.querySelectorAll(".pf-ft > *"), { y: 26, autoAlpha: 0, stagger: 0.08, duration: 0.9, ease: "expo.out", scrollTrigger: { trigger: card, start: "top 75%", once: true } });
+        gsap.fromTo(img, { yPercent: -7 }, { yPercent: 7, ease: "none", scrollTrigger: { trigger: card, start: "top bottom", end: "bottom top", scrub: true } });
+        if (fine) {
+          const rx = gsap.quickTo(card, "rotationX", { duration: 0.8, ease: "power3" }), ry = gsap.quickTo(card, "rotationY", { duration: 0.8, ease: "power3" });
+          gsap.set(card, { transformPerspective: 1100 });
+          on(card, "pointermove", (e: PointerEvent) => { const b = card.getBoundingClientRect(); ry(((e.clientX - b.left) / b.width - 0.5) * (i % 2 ? -5 : 5)); rx(-((e.clientY - b.top) / b.height - 0.5) * 4); });
+          on(card, "pointerleave", () => { rx(0); ry(0); });
+        }
+      });
+      gsap.from(q(".pf-cta > *"), { y: 40, autoAlpha: 0, stagger: 0.12, duration: 1.1, ease: "expo.out", scrollTrigger: { trigger: one(".pf-cta"), start: "top 75%", once: true } });
+
+      if (fine) {
+        q(".pf-mag").forEach((b) => {
+          const x = gsap.quickTo(b, "x", { duration: 0.6, ease: "elastic.out(1,.5)" }), y = gsap.quickTo(b, "y", { duration: 0.6, ease: "elastic.out(1,.5)" });
+          on(b, "pointermove", (e: PointerEvent) => { const r = b.getBoundingClientRect(); x((e.clientX - (r.left + r.width / 2)) * 0.3); y((e.clientY - (r.top + r.height / 2)) * 0.35); });
+          on(b, "pointerleave", () => { x(0); y(0); });
+        });
+        const hero = one(".pf-hero")!;
+        const lx = gsap.quickTo(one(".pf-glow"), "x", { duration: 1.2, ease: "power3" }), ly = gsap.quickTo(one(".pf-glow"), "y", { duration: 1.2, ease: "power3" });
+        on(hero, "pointermove", (e: PointerEvent) => { const b = hero.getBoundingClientRect(); lx(e.clientX - b.left - 260); ly(e.clientY - b.top - 260); });
+      }
+      ScrollTrigger.refresh();
+      return () => { offs.forEach((f) => f()); gsap.ticker.remove(tick); lenis.destroy(); };
+    });
+    return () => mm.revert();
+  }, { scope: root });
+
+  const size = (i: number) => (i % 9 === 0 ? "wide" : i % 9 === 4 ? "tall" : "");
+
+  return (
+    <div className="pf" ref={root}>
+      {/* HERO */}
+      <header className="pf-hero">
+        <div className="pf-bg" aria-hidden="true"><i className="pf-glow" /><i className="pf-shape s1" /><i className="pf-shape s2" /><i className="pf-shape s3" /><span className="pf-layer" /></div>
+        <div className="pf-wrap pf-hero-in">
+          <p className="pf-pill"><i />Our portfolio</p>
+          <h1 className="pf-h1">Some of our <em>recent works.</em></h1>
+          <p className="pf-sub">We have worked across multiple industry verticals and helped businesses in diverse domains.</p>
+          <ul className="pf-stats">
+            <li><b>{PROJECTS.length}</b><span>Projects listed</span></li>
+            <li><b>{counts.web}</b><span>Websites</span></li>
+            <li><b>{counts.app}</b><span>Apps</span></li>
+            <li><b>{counts.graphics}</b><span>Graphics</span></li>
+          </ul>
+        </div>
+      </header>
+
+      {/* FEATURED */}
+      <section className="pf-sec pf-featured" id="featured">
+        <div className="pf-wrap">
+          <div className="pf-head" data-pf><p className="pf-eye">Selected work</p><h2>Featured case studies</h2><p>Detailed walk-throughs of architecture, UX design and engineering solutions.</p></div>
+          <div className="pf-fgrid">
+            {FEATURED.map((f, i) => (
+              <a className={`pf-feat f${i}`} key={f.slug} href={f.href} data-cur="open" data-label="View">
+                <div className="pf-fimg"><Cover name={f.name} cat="web" src={images[f.slug] ?? f.img} /><span className="pf-chip">{f.tag}</span><i className="pf-go"><Arrow /></i></div>
+                <div className="pf-ft"><small>{f.sector}</small><h3>{f.name}</h3><p>{f.desc}</p><span className="pf-link">Read case study <Arrow /></span></div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* DIRECTORY */}
+      <section className="pf-sec pf-dir" id="projects">
+        <div className="pf-wrap">
+          <div className="pf-head" data-pf><p className="pf-eye">All projects directory</p><h2>Browse every project</h2></div>
+          <div className="pf-filters" ref={bar} role="tablist" aria-label="Filter projects by category" data-pf>
+            <span className="pf-ind" ref={ind} aria-hidden="true" />
+            {CATS.map((c) => (
+              <motion.button key={c.key} whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }} transition={{ type: "spring", stiffness: 420, damping: 22 }} type="button" role="tab" aria-selected={cat === c.key} data-k={c.key} className={cat === c.key ? "on" : ""} onClick={() => pick(c.key)} data-cur="open" data-label="Filter">
+                {c.label}<sup>{counts[c.key]}</sup></motion.button>
+            ))}
+          </div>
+          <p className="pf-count" aria-live="polite">Showing <motion.b key={visible.length} initial={{ y: 8, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4 }}>{visible.length}</motion.b> of {list.length} projects</p>
+          <div className="pf-grid" ref={grid}>
+            {visible.map((p: Project, i) => (
+              <article className={`pf-card ${size(i)}`} key={p.slug + i} tabIndex={0} data-cur="open" data-label="View">
+                <Cover name={p.name} cat={p.cat} src={images[p.slug]} blur />
+                <div className="pf-ov"><small>{CAT_LABEL[p.cat]}</small><h3>{p.name}</h3><p>{p.desc}</p></div>
+                <i className="pf-go"><Arrow /></i>
+              </article>
+            ))}
+          </div>
+          {limit < list.length && (
+            <div className="pf-more"><button type="button" className="pf-btn pf-mag" onClick={() => setLimit((l) => l + PAGE)}>Load more projects <span>{list.length - limit} left</span></button></div>
+          )}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="pf-cta-sec">
+        <div className="pf-wrap pf-cta">
+          <p className="pf-eye">Start a conversation</p>
+          <h2>Have a project in mind?</h2>
+          <p>Tell us about your website, app, design or marketing needs and talk directly with the people who will build it.</p>
+          <div className="pf-cta-b"><a className="pf-btn pf-mag" href="/contact" data-cur="open" data-label="Open">Start a project <Arrow /></a><a className="pf-btn pf-btn--ghost pf-mag" href="tel:9818439664">Call 9818439664</a></div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+=== data.ts (first 40 lines) ===
+export type Cat = "web" | "app" | "graphics" | "seo" | "dm";
+export type Project = { name: string; cat: Cat; slug: string; desc: string };
+export type Featured = { name: string; slug: string; tag: string; sector: string; desc: string; img: string; href: string };
+
+export const CATS: { key: "all" | Cat; label: string }[] = [
+  { key: "all", label: "All" },
+  { key: "web", label: "Website Development" },
+  { key: "app", label: "App Development" },
+  { key: "graphics", label: "Graphics Design" },
+  { key: "seo", label: "SEO" },
+  { key: "dm", label: "Digital Marketing" },
+];
+export const CAT_LABEL: Record<Cat, string> = { web: "Website Development", app: "App Development", graphics: "Graphics Design", seo: "SEO", dm: "Digital Marketing" };
+const DESC: Record<Cat, string> = {
+  web: "A website designed and developed by Softsaro.",
+  app: "A mobile app designed and built by Softsaro.",
+  graphics: "Graphic design and marketing creatives by Softsaro.",
+  seo: "Search engine optimisation work by Softsaro.",
+  dm: "Digital marketing work by Softsaro.",
+};
+export const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+const raw: [string, Cat][] = [
+  ["Sajha Courier App", "app"], ["Softsaro Graphic Designs", "graphics"], ["Adsaro Nepal", "seo"], ["Sayumi Global", "dm"], ["Adsaro Nepal Graphics", "graphics"], ["Daley Bhai", "web"],
+  ["Adsaro", "web"], ["Softsaro Designs", "graphics"], ["Sayumi Travels", "seo"], ["Brochure", "graphics"], ["Artha Kagaj", "web"], ["Softsaro Graphics", "graphics"],
+  ["Adsaro UK Graphics", "dm"], ["Emperor Graphics", "graphics"], ["Buy Fresh", "web"], ["Angel Health Care", "seo"], ["Chandra Surya Sports", "web"], ["Suvlav Application", "app"],
+  ["Converttree", "seo"], ["Elaichi Graphics", "graphics"], ["CSR Link", "web"], ["Sajha Market Place", "app"], ["Adsaro", "seo"], ["Guru Purnima Graphics", "graphics"],
+  ["Dakarmi", "web"], ["Darchula Hydropower", "web"], ["De Glamora", "web"], ["Emperor", "seo"], ["Emperor", "web"], ["Leideu", "web"],
+  ["Global Ranking Hub", "web"], ["Hamro Jobs", "web"], ["Rstca", "web"], ["Himalayan Fabs", "web"], ["Hope 2 Help", "web"], ["Indreni Mushroom Farm", "web"],
+  ["Kosish", "web"], ["Softsaro", "seo"], ["Market Lab", "web"], ["Mero Gantabya", "web"], ["Neerkart", "web"], ["Photo Studio", "web"],
+  ["Plant Variety", "web"], ["Sajha Courier", "web"], ["Sajha Marketplace", "web"], ["Sajilo Mobile", "web"], ["Saurya Krishi", "web"], ["Sayumi Global", "web"],
+  ["Simrik Cooperation", "web"], ["Suvlav", "web"], ["Swissa Trek", "web"], ["Tcorp", "web"], ["Travel Bee", "web"], ["Zogad", "web"],
+];
+export const PROJECTS: Project[] = raw.map(([name, cat]) => ({ name, cat, slug: `${slugify(name)}-${cat}`, desc: DESC[cat] }));
+
+const S = "https://softsaro.com.np";
+export const FEATURED: Featured[] = [
+  { name: "Daley Bhai Real Estate", slug: "daley-bhai-real-estate", tag: "Real estate", sector: "Website Development", desc: "A structured property listing platform for the Kathmandu Valley.", img: `${S}/uploads/portfolio_mY6fNptC.jpg`, href: "/portfolio/daley-bhai-real-estate" },
+  { name: "Sajha Courier", slug: "sajha-courier", tag: "Logistics", sector: "Web + Mobile App", desc: "Parcel tracking, online booking and logistics management for web and app.", img: `${S}/img/portfolio/sajha%20courier.jpg`, href: "/portfolio/sajha-courier" },
+  { name: "Emperor Educational Consultancy", slug: "emperor-educational-consultancy", tag: "Education", sector: "Web + React Native", desc: "A study abroad guidance platform with a full-featured mobile app.", img: `${S}/img/portfolio/emperor.jpeg`, href: "/portfolio/emperor-educational-consultancy" },
+
+=== portfolio.css selectors ===
+2: .pf{--p:#6a67ae;--p2:#3f3d7a;--pl:#bcb9e0;--ink:#12121f;--cream:#f7f5f1;--grey:#6b6a78;--line:#12121f1a;background:var(--cream);color:var(--ink);overflow-x:clip;font:400 16px/1.6 Inter,system-ui,sans-serif}
+3: .pf *{box-sizing:border-box}.pf p{margin:0}.pf a{color:inherit;text-decoration:none}.pf ul{list-style:none;margin:0;padding:0}
+4: .pf h1,.pf h2,.pf h3{font-family:'Inter Tight',Inter,sans-serif;font-weight:700;letter-spacing:-.04em;white-space:normal;max-width:none;margin:0}
+5: .pf-wrap{max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+6: .pf-sec{padding:clamp(64px,8vw,120px) 0}
+7: .pf-eye{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin-bottom:14px}.pf-eye::before{content:"";width:24px;height:1px;background:currentColor}
+8: .pf-w{display:inline-block;overflow:hidden;vertical-align:top;padding:.08em .08em .16em;margin:-.08em -.08em -.16em;white-space:nowrap}.pf-i{display:inline-block;will-change:transform}
+10: .pf-hero{position:relative;overflow:hidden;padding:calc(76px + clamp(48px,7vw,100px)) 0 clamp(56px,7vw,100px);background:linear-gradient(180deg,#e9f1ee 0%,#f3efe9 55%,var(--cream) 100%)}
+11: .pf-bg{position:absolute;inset:0;pointer-events:none}.pf-bg::before{content:"";position:absolute;inset:0;background-image:radial-gradient(#12121f14 1px,transparent 1.2px);background-size:26px 26px;-webkit-mask-image:radial-gradient(70% 80% at 50% 30%,#000,transparent);mask-image:radial-gradient(70% 80% at 50% 30%,#000,transparent)}
+12: .pf-glow{position:absolute;left:0;top:0;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,#6a67ae38,transparent 65%)}
+13: .pf-shape{position:absolute;display:block;border-radius:50%}.pf-shape.s1{width:180px;height:180px;right:9%;top:22%;border:1.5px dashed #6a67ae55}.pf-shape.s2{width:90px;height:90px;left:7%;bottom:18%;background:linear-gradient(135deg,#bcb9e0,#6a67ae66)}.pf-shape.s3{width:46px;height:46px;right:24%;bottom:14%;border-radius:14px;background:#3fe33f55;transform:rotate(18deg)}
+14: .pf-layer{position:absolute;inset:0}
+15: .pf-hero-in{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center}
+16: .pf-pill{display:inline-flex;align-items:center;gap:8px;padding:9px 18px;border-radius:99px;background:#fff;box-shadow:0 0 0 1px var(--line);font:600 12px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:26px}.pf-pill i{width:7px;height:7px;border-radius:50%;background:var(--p)}
+17: .pf-h1{font-size:clamp(38px,6.6vw,96px);line-height:.98;max-width:14ch}.pf-h1 em{font-style:normal;color:var(--p)}
+18: .pf-sub{max-width:52ch;margin-top:22px;color:var(--grey);font-size:clamp(16px,1.4vw,19px)}
+19: .pf-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 40px;margin-top:38px}.pf-stats li{text-align:center}.pf-stats b{display:block;font:700 clamp(26px,3vw,40px)/1 'Inter Tight',sans-serif;letter-spacing:-.04em}.pf-stats span{font-size:13px;color:var(--grey)}
+21: .pf-head{display:grid;gap:6px;margin-bottom:clamp(28px,4vw,52px)}.pf-head h2{font-size:clamp(28px,3.6vw,52px);line-height:1.05}.pf-head p:last-child{color:var(--grey);max-width:52ch}
+23: .pf-fgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(18px,2.4vw,32px)}
+24: .pf-feat{display:flex;flex-direction:column;gap:18px;background:#fff;border-radius:28px;padding:14px 14px 26px;box-shadow:0 30px 60px -44px #3f3d7a88,0 0 0 1px var(--line);transition:box-shadow .5s}
+25: .pf-feat:hover{box-shadow:0 40px 80px -40px #3f3d7a99,0 0 0 1px #6a67ae55}
+26: .pf-feat.f0{grid-column:span 7}.pf-feat.f1{grid-column:span 5}.pf-feat.f2{grid-column:span 5}.pf-feat.f3{grid-column:span 7}
+27: .pf-fimg{position:relative;aspect-ratio:16/10;border-radius:20px;overflow:hidden;background:#e7e3f1}.pf-fimg>*:first-child{position:absolute;inset:-9% 0;width:100%;height:118%}
+28: .pf-img{object-fit:cover;object-position:top;display:block;transition:transform 1s cubic-bezier(.16,1,.3,1)}.pf-feat:hover .pf-img{transform:scale(1.05)}
+29: .pf-chip{position:absolute;left:14px;top:14px;padding:7px 14px;border-radius:99px;background:#ffffffe6;backdrop-filter:blur(8px);font:600 11px/1 Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;z-index:2}
+30: .pf-go{position:absolute;right:14px;top:14px;z-index:2;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--p);color:#fff;transform:scale(.6);opacity:0;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .3s}.pf-go svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+31: .pf-feat:hover .pf-go,.pf-card:hover .pf-go,.pf-card:focus-visible .pf-go{transform:none;opacity:1}
+32: .pf-ft{padding:4px 12px 0}.pf-ft small{font:600 11px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--p)}.pf-ft h3{font-size:clamp(22px,2.2vw,32px);margin:10px 0 8px}.pf-ft p{color:var(--grey);max-width:46ch}
+33: .pf-link{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font:600 14px 'Inter Tight',sans-serif;color:var(--p)}.pf-link svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .4s}.pf-feat:hover .pf-link svg{transform:translate(4px,-4px)}
+35: .pf-cover{position:relative;width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:4px;padding:clamp(14px,1.6vw,22px);color:#fff;overflow:hidden;background:linear-gradient(135deg,var(--c1),var(--c2))}
+36: .pf-cover::before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff14 1px,transparent 1px),linear-gradient(90deg,#ffffff14 1px,transparent 1px);background-size:34px 34px}
+37: .pf-cover b{position:absolute;right:-2%;top:2%;font:800 clamp(90px,11vw,170px)/.8 'Inter Tight',sans-serif;letter-spacing:-.08em;color:#ffffff22}.pf-cover span{position:relative;font:700 clamp(18px,1.8vw,26px)/1.1 'Inter Tight',sans-serif;letter-spacing:-.03em}.pf-cover i{position:relative;font:500 11px/1 Inter,sans-serif;font-style:normal;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+38: .c-web{--c1:#6a67ae;--c2:#3f3d7a}.c-app{--c1:#4f72bd;--c2:#27407d}.c-graphics{--c1:#8d65b8;--c2:#4d3277}.c-seo{--c1:#4f87a3;--c2:#254c63}.c-dm{--c1:#7d62a6;--c2:#3b2d5c}
+40: .pf-filters{position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+41: .pf-ind{position:absolute;left:0;top:0;border-radius:99px;background:var(--p);z-index:0;pointer-events:none;box-shadow:0 12px 24px -12px #6a67aeaa}
+42: .pf-filters button{position:relative;z-index:1;border:0;background:#fff;box-shadow:inset 0 0 0 1px var(--line);border-radius:99px;padding:11px 20px;cursor:pointer;font:600 14px 'Inter Tight',Inter,sans-serif;color:var(--ink);transition:color .35s,background .3s}
+43: .pf-filters button.on{color:#fff;background:transparent;box-shadow:none}.pf-filters sup{margin-left:6px;font-size:10px;opacity:.6}.pf-filters button:not(.on):hover{box-shadow:inset 0 0 0 1px var(--p);color:var(--p)}
+44: .pf-filters button:focus-visible,.pf-card:focus-visible,.pf-btn:focus-visible{outline:2px solid var(--p);outline-offset:3px}
+45: .pf-count{font-size:13px;color:var(--grey);margin-bottom:22px}
+47: .pf-grid{--u:clamp(70px,6.6vw,100px);display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:var(--u);grid-auto-flow:dense;gap:clamp(12px,1.4vw,20px)}
+48: .pf-card{position:relative;grid-row:span 3;border-radius:22px;overflow:hidden;background:#e7e3f1;box-shadow:0 0 0 1px var(--line);cursor:pointer;isolation:isolate;transition:box-shadow .5s,transform .5s cubic-bezier(.16,1,.3,1)}
+49: .pf-card.wide{grid-column:span 2}.pf-card.tall{grid-row:span 5}
+50: .pf-card:hover{box-shadow:0 30px 60px -36px #3f3d7acc,0 0 0 1px #6a67ae66}
+51: .pf-card .pf-img,.pf-card .pf-cover{position:absolute;inset:0;width:100%;height:100%;transition:transform 1s cubic-bezier(.16,1,.3,1)}.pf-card:hover .pf-img,.pf-card:hover .pf-cover{transform:scale(1.06)}
+52: .pf-ov{position:absolute;inset:auto 0 0 0;z-index:2;padding:46px 18px 16px;background:linear-gradient(transparent,#0e0e1ccc);color:#fff;display:grid;gap:2px;transform:translateY(calc(100% - 82px));transition:transform .55s cubic-bezier(.16,1,.3,1)}
+53: .pf-ov small{font:600 10.5px/1 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--pl)}.pf-ov h3{font-size:17px;letter-spacing:-.02em;margin-top:4px}.pf-ov p{font-size:13px;color:#ffffffcc;max-height:0;opacity:0;transition:opacity .4s .05s,max-height .5s;overflow:hidden}
+54: .pf-card:hover .pf-ov,.pf-card:focus-visible .pf-ov{transform:none}.pf-card:hover .pf-ov p,.pf-card:focus-visible .pf-ov p{max-height:60px;opacity:1;margin-top:6px}
+55: .pf-card .pf-cover span,.pf-card .pf-cover i{opacity:0}.pf-card .pf-cover{justify-content:flex-start}
+56: .pf-more{display:flex;justify-content:center;margin-top:36px}
+57: .pf-btn{display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 26px;border:0;border-radius:99px;background:var(--p);color:#fff;font:600 15px 'Inter Tight',Inter,sans-serif;cursor:pointer;transition:background .3s}.pf-btn:hover{background:var(--p2)}.pf-btn span{font-weight:500;opacity:.7;font-size:13px}.pf-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2}
+58: .pf-btn--ghost{background:transparent;box-shadow:inset 0 0 0 1px #ffffff40}.pf-btn--ghost:hover{background:#ffffff14}
+60: .pf-cta-sec{background:#0e0e1c;color:#f4f0e8;padding:clamp(72px,9vw,130px) 0;position:relative;overflow:hidden}.pf-cta-sec::before{content:"";position:absolute;right:-10%;top:-30%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,#6a67ae44,transparent 65%)}
+61: .pf-cta{position:relative;display:grid;gap:14px;justify-items:start}.pf-cta h2{font-size:clamp(34px,5.4vw,78px);line-height:1}.pf-cta p:not(.pf-eye){color:#b4b2c4;max-width:48ch}.pf-cta .pf-eye{color:var(--pl)}.pf-cta-b{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+69: .pf-h1 em{font-family:var(--pf-serif),'Inter Tight',Georgia,serif;font-style:italic;font-weight:400;font-size:1.06em;letter-spacing:-.02em}
+70: .pf-card .pf-img{object-position:center}
+71: .pf-bgblur{display:none;position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(26px) saturate(1.25);transform:scale(1.15)}
+72: .pf-card.wide .pf-bgblur,.pf-card.tall .pf-bgblur{display:block}
+73: .pf-card.wide .pf-img,.pf-card.tall .pf-img{object-fit:contain}
+74: .pf-ov h3{position:relative;width:fit-content}
+75: .pf-ov h3::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1) .1s}
+76: .pf-card:hover .pf-ov h3::after,.pf-card:focus-visible .pf-ov h3::after{transform:scaleX(1)}
+77: .pf-ov small,.pf-ov h3{transition:transform .6s cubic-bezier(.16,1,.3,1)}
+78: .pf-card:hover .pf-ov small{transform:translateY(-2px)}
+79: .pf-card:hover .pf-ov h3{transform:translateX(3px)}
+80: .pf-count b{display:inline-block;font-weight:600;color:var(--ink)}

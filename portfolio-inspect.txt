@@ -1,0 +1,157 @@
+=== key files ===
+app\portfolio\page.tsx  1436 bytes
+app\portfolio\portfolio.css  10817 bytes
+components\portfolio\data.ts  3968 bytes
+components\portfolio\PortfolioClient.tsx  13548 bytes
+
+=== public\images\portfolio ===
+README.txt  534 bytes
+
+=== files that mention lenis ===
+components\app\AppMotion.tsx
+components\bn\BnMotion.tsx
+components\portfolio\PortfolioClient.tsx
+components\pricing\PricingMotion.tsx
+components\ux\UxMotion.tsx
+components\web\WdMotion.tsx
+components\wx\WxMotion.tsx
+components\DhMotion.tsx
+components\DmdMotion.tsx
+components\DmMotion.tsx
+components\DmvMotion.tsx
+components\DmxMotion.tsx
+components\SeoMotion.tsx
+components\SlMotion.tsx
+
+=== old site: https://softsaro.com.np/portfolio ===
+status: 200  length: 261072
+img tags: 64
+
+=== img tags (whitespace collapsed) ===
+<img src="/img/softsaro.png" alt="Softsaro" class="h-7 w-auto object-contain sm:h-[32px]">
+<img src="/img/softsaro.png" alt="Softsaro" class="h-8 w-auto object-contain">
+<img src="https://softsaro.com.np/img/portfolio/daley bhai.jpg" alt="Daley Bhai Real Estate" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+<img src="https://softsaro.com.np/img/portfolio/sajha app.jpg" alt="Sajha Courier" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+<img src="https://softsaro.com.np/img/portfolio/emperor.jpeg" alt="Emperor Educational Consultancy" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+<img src="https://softsaro.com.np/img/portfolio/adsaro3.png" alt="Adsaro Nepal" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105">
+<img src="https://softsaro.com.np/uploads/portfolio_BazSULiq.jpg" alt="Sajha Courrier App" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_nmwlxAXR.jpg" alt="Softsaro Graphic Designs" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_72nSGuBM.png" alt="Adsaro Nepal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_db3L7qwE.png" alt="sayumi global" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_ul2kmNAP.png" alt="Adsaro Nepal Graphics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_mY6fNptC.jpg" alt="Dalley Bhai" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_zOdSl2YV.jpg" alt="Adsaro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_EZYcSeXO.jpg" alt="Softsaro Designs" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_9oL4pOlV.png" alt="Sayumi Travels" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_ldFvmhOP.png" alt="Brochure" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_nOFUH5KP.jpg" alt="Arthakagaj" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_hu2OixYa.jpg" alt="Softsaro Graphics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_gtZUb4iQ.jpg" alt="Adsaro Uk graphics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_vpU5slAP.png" alt="Emperor Graphics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_rdJmIeOS.jpg" alt="Buy Fresh" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_lUdF2AsK.png" alt="Angel Health Care" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_qluUbDfB.jpg" alt="Chandra Surya Sports" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_JUW3heFl.png" alt="Suvlav Application" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_MwhE4n06.png" alt="Converttree" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_BSuiNgOb.png" alt="Elaichi Graphics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_OjcQJAdh.jpg" alt="CSR Link" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_EwrVXfOq.jpg" alt="Sajha Market Place" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_1EyYbZ6r.jpg" alt="Adsaro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_AbOkahD4.png" alt="Guru Purnima Graphics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_dK7wpgr3.jpg" alt="Dakarmi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_CwWn4kxg.jpg" alt="Darchula Hydropower" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_cODoeM6d.jpg" alt="Deglamora" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_sUVGREad.png" alt="Emperor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_DedxB3cy.jpeg" alt="Emperor" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_pKLaM6hk.png" alt="Leideu" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_9jFeYOlW.jpg" alt="Global Ranking Hub" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_TO1Zc4GA.jpg" alt="Hamro Jobs" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_vIuM7qQC.png" alt="Rstca" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_UGJCRIBQ.jpg" alt="Himalayan Fabs" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_4kSEUyal.jpeg" alt="Hope 2 Help" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_NrSGq5BW.jpg" alt="Indreni Mushroom Farm" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_dxjOZl3G.jpg" alt="Kosish" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_cgQDBUeu.png" alt="Softsaro" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_h5SpxaRd.jpg" alt="Market Lab" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_ntCbNpWh.jpg" alt="Mero Gantabya" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_pmlH9QuR.jpeg" alt="Neerkart" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_bjE3BFgs.jpg" alt="Photo Studio" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_ycPeM5gp.jpg" alt="Plant Variety" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_F6ZAickH.jpg" alt="Sajha Courrier" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_ztjuqnOY.jpg" alt="Sajha MarketPlace" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_Ix5zXcTo.jpg" alt="SajiloMobile" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_5Mz4O3Jt.jpg" alt="Saurya Krishi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_BHy0Yl7D.jpg" alt="Sayumi Global" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_uafXjEWm.jpg" alt="Simrik Coopoeration" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_pj85mRxl.jpg" alt="Suvlav" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_oLc8ZYSp.jpg" alt="Swissa Trek" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_NVRIiF2E.jpg" alt="Tcorp" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_PXe1fs7q.jpg" alt="Travel Bee" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/uploads/portfolio_jrelSIWB.jpg" alt="Zogad" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+<img src="https://softsaro.com.np/img/softsaro white logo.png" alt="Softsaro Logo" class="max-sm:hidden w-full max-w-[960px] object-contain px-8">
+<img src="https://softsaro.com.np/img/softsaro white logo.png" alt="Softsaro Logo" class="h-10 w-auto">
+<img src="https://softsaro.com.np/img/bumper-blast.gif" alt="Celebration Blast" class="w-[650px] h-[650px] sm:w-[800px] sm:h-[800px] max-w-none object-contain pointer-events-none select-none opacity-0 transition-opacity duration-200" id="bumperOfferBlastImg">
+<img src="https://softsaro.com.np/assets/images/dashain.gif?v=1790486983" alt="Softsaro Special Dashain Offer Banner" class="w-full h-auto max-h-[58vh] sm:max-h-[78vh] object-contain block rounded-2xl sm:rounded-3xl transition-transform duration-500 group-hover:scale-[1.01]" onerror="this.onerror=null; this.src='https://softsaro.com.np/img/dashain.gif';">
+
+=== other image-like urls (css backgrounds, data-*) not inside img tags ===
+/img/softsaro.png
+https://softsaro.com.np/assets/images/favicon/favicon-32x32.png
+https://softsaro.com.np/img/cropped-Fab-icon-32x32.jpg
+https://softsaro.com.np/img/portfolio/adsaro3.png
+https://softsaro.com.np/img/portfolio/emperor.jpeg
+https://softsaro.com.np/uploads/portfolio_1EyYbZ6r.jpg
+https://softsaro.com.np/uploads/portfolio_4kSEUyal.jpeg
+https://softsaro.com.np/uploads/portfolio_5Mz4O3Jt.jpg
+https://softsaro.com.np/uploads/portfolio_72nSGuBM.png
+https://softsaro.com.np/uploads/portfolio_9jFeYOlW.jpg
+https://softsaro.com.np/uploads/portfolio_9oL4pOlV.png
+https://softsaro.com.np/uploads/portfolio_AbOkahD4.png
+https://softsaro.com.np/uploads/portfolio_BazSULiq.jpg
+https://softsaro.com.np/uploads/portfolio_BHy0Yl7D.jpg
+https://softsaro.com.np/uploads/portfolio_bjE3BFgs.jpg
+https://softsaro.com.np/uploads/portfolio_BSuiNgOb.png
+https://softsaro.com.np/uploads/portfolio_cgQDBUeu.png
+https://softsaro.com.np/uploads/portfolio_cODoeM6d.jpg
+https://softsaro.com.np/uploads/portfolio_CwWn4kxg.jpg
+https://softsaro.com.np/uploads/portfolio_db3L7qwE.png
+https://softsaro.com.np/uploads/portfolio_DedxB3cy.jpeg
+https://softsaro.com.np/uploads/portfolio_dK7wpgr3.jpg
+https://softsaro.com.np/uploads/portfolio_dxjOZl3G.jpg
+https://softsaro.com.np/uploads/portfolio_EwrVXfOq.jpg
+https://softsaro.com.np/uploads/portfolio_EZYcSeXO.jpg
+https://softsaro.com.np/uploads/portfolio_F6ZAickH.jpg
+https://softsaro.com.np/uploads/portfolio_gtZUb4iQ.jpg
+https://softsaro.com.np/uploads/portfolio_h5SpxaRd.jpg
+https://softsaro.com.np/uploads/portfolio_hu2OixYa.jpg
+https://softsaro.com.np/uploads/portfolio_Ix5zXcTo.jpg
+https://softsaro.com.np/uploads/portfolio_jrelSIWB.jpg
+https://softsaro.com.np/uploads/portfolio_JUW3heFl.png
+https://softsaro.com.np/uploads/portfolio_ldFvmhOP.png
+https://softsaro.com.np/uploads/portfolio_lUdF2AsK.png
+https://softsaro.com.np/uploads/portfolio_MwhE4n06.png
+https://softsaro.com.np/uploads/portfolio_mY6fNptC.jpg
+https://softsaro.com.np/uploads/portfolio_nmwlxAXR.jpg
+https://softsaro.com.np/uploads/portfolio_nOFUH5KP.jpg
+https://softsaro.com.np/uploads/portfolio_NrSGq5BW.jpg
+https://softsaro.com.np/uploads/portfolio_ntCbNpWh.jpg
+https://softsaro.com.np/uploads/portfolio_NVRIiF2E.jpg
+https://softsaro.com.np/uploads/portfolio_OjcQJAdh.jpg
+https://softsaro.com.np/uploads/portfolio_oLc8ZYSp.jpg
+https://softsaro.com.np/uploads/portfolio_pj85mRxl.jpg
+https://softsaro.com.np/uploads/portfolio_pKLaM6hk.png
+https://softsaro.com.np/uploads/portfolio_pmlH9QuR.jpeg
+https://softsaro.com.np/uploads/portfolio_PXe1fs7q.jpg
+https://softsaro.com.np/uploads/portfolio_qluUbDfB.jpg
+https://softsaro.com.np/uploads/portfolio_rdJmIeOS.jpg
+https://softsaro.com.np/uploads/portfolio_sUVGREad.png
+https://softsaro.com.np/uploads/portfolio_TO1Zc4GA.jpg
+https://softsaro.com.np/uploads/portfolio_uafXjEWm.jpg
+https://softsaro.com.np/uploads/portfolio_UGJCRIBQ.jpg
+https://softsaro.com.np/uploads/portfolio_ul2kmNAP.png
+https://softsaro.com.np/uploads/portfolio_vIuM7qQC.png
+https://softsaro.com.np/uploads/portfolio_vpU5slAP.png
+https://softsaro.com.np/uploads/portfolio_ycPeM5gp.jpg
+https://softsaro.com.np/uploads/portfolio_zOdSl2YV.jpg
+https://softsaro.com.np/uploads/portfolio_ztjuqnOY.jpg
+
+=== pagination / load-more hints ===
