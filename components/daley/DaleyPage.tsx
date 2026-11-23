@@ -1,0 +1,247 @@
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, ArrowUpRight, Bell, Bookmark, Building2, MapPin, MonitorSmartphone, PhoneCall, Search } from "lucide-react";
+import { FaAndroid, FaApple } from "react-icons/fa";
+import { SiHtml5, SiJavascript, SiLaravel, SiMysql, SiPhp, SiReact } from "react-icons/si";
+import { daley } from "@/lib/daley-data";
+import { ClipImage, Progress, Rise, Stagger, StaggerItem, Words } from "./DaleyFx";
+import DaleyGallery from "./DaleyGallery";
+import DaleyMotion from "./DaleyMotion";
+import s from "./daley.module.css";
+
+const features = [
+  "Property listing and detail pages",
+  "House, land, apartment and bungalow sections",
+  "Commercial property presentation",
+  "Location-based property browsing",
+  "Property search and filtering experience",
+  "Fully responsive across desktop and mobile",
+];
+const stack = [
+  { Icon: SiLaravel, t: "Laravel" }, { Icon: SiPhp, t: "PHP" }, { Icon: SiMysql, t: "MySQL" }, { Icon: SiHtml5, t: "HTML / CSS" },
+  { Icon: SiJavascript, t: "JavaScript" }, { Icon: MonitorSmartphone, t: "Responsive UI" }, { Icon: SiReact, t: "React Native" },
+];
+const appCards = [
+  { Icon: Search, t: "Property Search", d: "Filter by location, type, price range and size \u2014 all from the palm of your hand." },
+  { Icon: Bell, t: "Listing Alerts", d: "Push notifications the moment a matching property hits the market." },
+  { Icon: Bookmark, t: "Saved Properties", d: "Bookmark favourites and compare shortlisted properties side by side." },
+  { Icon: PhoneCall, t: "Direct Agent Contact", d: "One tap to call or message the listing agent without leaving the app." },
+];
+const process = ["Discovery", "Planning", "UI/UX Design", "Development", "Testing", "Launch"];
+const shots = [
+  { img: daley.g1, caption: "Homepage" }, { img: daley.g2, caption: "Property overview" }, { img: daley.g3, caption: "Client challenge view" },
+  { img: daley.g4, caption: "Solution page" }, { img: daley.g5, caption: "Results dashboard" }, { img: daley.g6, caption: "Listing page" },
+  { img: daley.g7, caption: "Property detail" }, { img: daley.g8, caption: "Search & filter" }, { img: daley.g9, caption: "Mobile view" },
+];
+const related = [
+  { slug: "sajha-courier", img: daley.rel1, name: "Sajha Courier", tag: "Logistics \u00b7 Web + App", d: "Parcel tracking, booking and courier management \u2014 website and React Native app." },
+  { slug: "emperor-educational-consultancy", img: daley.rel2, name: "Emperor Educational Consultancy", tag: "Education \u00b7 Web + React Native", d: "Study abroad platform with counsellor portal and student mobile app." },
+  { slug: "adsaro-nepal", img: daley.rel3, name: "Adsaro Nepal", tag: "Ad Agency \u00b7 Next.js + ClickHouse", d: "High-performance ad agency platform with real-time analytics infrastructure." },
+];
+
+function Lab({ n, t, light }: { n: string; t: string; light?: boolean }) {
+  return <p data-lab className={`${s.lab}${light ? ` ${s.labLight}` : ""}`}><i /><em>{n} /</em><span>{t}</span></p>;
+}
+
+export default function DaleyPage() {
+  return (
+    <DaleyMotion>
+      <Progress />
+      <main className={s.page}>
+        {/* 1. HERO */}
+        <section className={`${s.sec} ${s.hero}`} aria-labelledby="dl-title">
+          <i className={s.blob} data-drift="-40" /><i className={`${s.blob} ${s.blob2}`} data-drift="30" />
+          <div className={s.wrap}>
+            <nav className={s.crumb} aria-label="Breadcrumb"><Link href="/#work">Selected work</Link><span aria-hidden="true">/</span><span>Daley Bhai Real Estate</span></nav>
+            <Rise delay={0.1}><span className={s.pill}><i />Case study &mdash; Real estate</span></Rise>
+            <h1 id="dl-title" className={s.h1} aria-label="A clearer way to browse property in the Kathmandu Valley">
+              <Words className={s.hBlock} text="A clearer way to browse property" inView={false} delay={0.2} />
+              <span className={s.hBlock}><Words text="in the" inView={false} delay={0.55} />{" "}<Words className={s.hi} text="Kathmandu Valley" inView={false} delay={0.8} /></span>
+            </h1>
+            <div className={s.heroTop}>
+              <Rise delay={0.5}>
+                <p className={s.lead}>Softsaro Nepal designed and built the Daley Bhai Real Estate website &mdash; turning a growing portfolio of listings into a structured, easy-to-navigate property platform.</p>
+                <div className={s.ctas}>
+                  <a href="https://www.daleybhai.com" target="_blank" rel="noopener noreferrer" className={s.btnP} data-mag>Visit live website <ArrowUpRight size={18} /></a>
+                  <a href="#overview" className={s.btnG} data-mag>Read the case study</a>
+                </div>
+              </Rise>
+              <Rise delay={0.6}>
+                <dl className={s.meta}>
+                  <div><dt>Client</dt><dd>Daley Bhai Real Estate Pvt. Ltd.</dd></div>
+                  <div><dt>Industry</dt><dd>Real Estate</dd></div>
+                  <div><dt>Service area</dt><dd>Kathmandu, Bhaktapur &amp; Lalitpur</dd></div>
+                  <div><dt>Project type</dt><dd>Property listing website</dd></div>
+                </dl>
+              </Rise>
+            </div>
+            <div className={s.stage}>
+              <ClipImage img={daley.hero} className={s.heroFig} priority sizes="(min-width:1280px) 1136px, 100vw" alt="Daley Bhai Real Estate: homepage and property discovery"
+                caption={<><span>Fig. 01</span><i /><span>Homepage &amp; property discovery</span></>} />
+              <div data-depth="22" className={`${s.chip} ${s.c1}`}><span className={s.chipIc}><Search size={18} /></span><span>Property search<small>Filter by what matters</small></span></div>
+              <div data-depth="-28" className={`${s.chip} ${s.c2}`}><span className={s.chipIc}><MapPin size={18} /></span><span>Location browsing<small>Kathmandu Valley</small></span></div>
+            </div>
+          </div>
+        </section>
+
+        {/* 2. OVERVIEW */}
+        <section className={`${s.sec} ${s.white}`} id="overview">
+          <div className={`${s.wrap} ${s.split}`}>
+            <ClipImage from="left" img={daley.overview} alt="Daley Bhai Real Estate project overview" caption={<><span>Exhibit A</span><i /><span>Overview</span></>} />
+            <div>
+              <Lab n="01" t="Overview" />
+              <h2 className={s.h2} aria-label="Project Overview"><Words text="Project Overview" /></h2>
+              <Rise delay={0.1}><p className={s.body}><b className={s.accent}>Softsaro Nepal</b> built a real estate website for Daley Bhai Real Estate that presents property listings in a clear, organized format. The site guides visitors through categories, locations and individual property details with a smooth, structured browsing journey.</p></Rise>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. CHALLENGE */}
+        <section className={`${s.sec} ${s.cream}`}>
+          <div className={`${s.wrap} ${s.split} ${s.rev}`}>
+            <div>
+              <Lab n="02" t="Challenge" />
+              <h2 className={s.h2} aria-label="Client Challenge"><Words text="Client Challenge" /></h2>
+              <Rise delay={0.1}><p className={s.body}>Daley Bhai Real Estate needed a platform capable of presenting a growing portfolio of properties without discovery feeling cluttered. Buyers, sellers, renters and investors needed to find relevant listings quickly, across categories, locations and property types.</p></Rise>
+            </div>
+            <ClipImage from="right" img={daley.challenge} alt="Daley Bhai Real Estate client challenge" caption={<><span>Exhibit B</span><i /><span>Challenge</span></>} />
+          </div>
+        </section>
+
+        {/* 4. SOLUTION */}
+        <section className={`${s.sec} ${s.white}`}>
+          <div className={`${s.wrap} ${s.split}`}>
+            <ClipImage from="bottom" img={daley.solution} alt="Daley Bhai Real Estate solution" caption={<><span>Exhibit C</span><i /><span>Solution</span></>} />
+            <div>
+              <Lab n="03" t="Solution" />
+              <h2 className={s.h2} aria-label="Our Solution"><Words text="Our Solution" /></h2>
+              <Rise delay={0.1}>
+                <p className={s.body}>Softsaro Nepal delivered end-to-end <Link href="/web-development" className={s.accent}>Web Development Services</Link>, building a responsive platform centered on structured property discovery, clean listing presentation and straightforward enquiry paths for buyers and tenants.</p>
+                <p className={s.body}>For businesses looking to grow their search visibility, Softsaro Nepal also offers <a href="https://softsaro.com.np/services/best-seo-agency-in-nepal" className={s.accent}>SEO Services</a>.</p>
+              </Rise>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. FEATURES */}
+        <section className={`${s.sec} ${s.navy}`}>
+          <div className={s.wrap}>
+            <Lab n="04" t="Specification" light />
+            <h2 className={s.h2} aria-label="Key Features"><Words text="Key Features" /></h2>
+            <Stagger className={s.feats}>
+              {features.map((f, i) => (
+                <StaggerItem key={f} className={s.feat} tilt><i className={s.spl} /><span className={s.featN}>0{i + 1}</span><p>{f}</p></StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+
+        {/* 6. STACK */}
+        <section className={`${s.sec} ${s.cream}`}>
+          <div className={s.wrap}>
+            <Lab n="05" t="Built with" />
+            <h2 className={s.h2} aria-label="Technology Stack"><Words text="Technology Stack" /></h2>
+            <Stagger className={s.stack}>
+              {stack.map(({ Icon, t }) => (<StaggerItem key={t} className={s.tech}><span className={s.techIc} data-pop><Icon size={22} /></span><b>{t}</b></StaggerItem>))}
+            </Stagger>
+          </div>
+        </section>
+
+        {/* 7. MOBILE */}
+        <section className={`${s.sec} ${s.white}`} id="mobile">
+          <div className={s.wrap}>
+            <Lab n="06" t="Mobile" />
+            <h2 className={s.h2} aria-label="Mobile Application"><Words text="Mobile Application" /></h2>
+            <Rise delay={0.1}><p className={`${s.body} ${s.narrow}`}>Beyond the website, Softsaro Nepal also developed a companion mobile app for Daley Bhai Real Estate &mdash; bringing property discovery to iOS and Android with native performance and push-notification alerts for new listings.</p></Rise>
+            <Stagger className={s.appGrid}>
+              {appCards.map(({ Icon, t, d }) => (
+                <StaggerItem key={t} className={s.appCard} tilt><i className={s.spl} /><span className={s.appIc} data-pop><Icon size={22} /></span><h3>{t}</h3><p>{d}</p></StaggerItem>
+              ))}
+            </Stagger>
+            <Rise delay={0.1}>
+              <div className={s.badges}>
+                <span className={s.badge}><FaApple size={18} />Available on iOS</span>
+                <span className={s.badge}><FaAndroid size={18} />Available on Android</span>
+              </div>
+            </Rise>
+          </div>
+        </section>
+
+        {/* 8. PROCESS */}
+        <section className={`${s.sec} ${s.navy}`}>
+          <div className={s.wrap}>
+            <Lab n="07" t="Sequence" light />
+            <h2 className={s.h2} aria-label="Development Process"><Words text="Development Process" /></h2>
+            <ol className={s.steps} data-steps>
+              <i className={s.line} data-line aria-hidden="true" />
+              {process.map((p, i) => (
+                <li key={p} className={s.step} data-node data-on="false"><b>0{i + 1}</b><span>{p}</span></li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* 9. SCREENSHOTS */}
+        <section className={`${s.sec} ${s.cream}`} id="gallery">
+          <div className={s.wrap}>
+            <Lab n="08" t="Plate" />
+            <h2 className={s.h2} aria-label="Project Screenshots"><Words text="Project Screenshots" /></h2>
+            <DaleyGallery items={shots} />
+          </div>
+        </section>
+
+        {/* 10. RESULTS */}
+        <section className={`${s.sec} ${s.white}`}>
+          <div className={`${s.wrap} ${s.split}`}>
+            <ClipImage from="left" img={daley.results} alt="Daley Bhai Real Estate results and outcomes" caption={<><span>Exhibit D</span><i /><span>Results</span></>} />
+            <div>
+              <Lab n="09" t="Results" />
+              <h2 className={s.h2} aria-label="Results & Outcomes"><Words text="Results & Outcomes" /></h2>
+              <Rise delay={0.1}><p className={s.body}>The finished platform gives Daley Bhai Real Estate a dedicated, well-organized home for its listings and turned property discovery into a clear, structured experience for every visitor.</p></Rise>
+            </div>
+          </div>
+        </section>
+
+        {/* 11. RELATED */}
+        <section className={`${s.sec} ${s.cream}`}>
+          <div className={s.wrap}>
+            <Lab n="10" t="Next steps" />
+            <h2 className={s.h2} aria-label="Related Services"><Words text="Related Services" /></h2>
+            <Rise delay={0.1}>
+              <div className={s.rel}>
+                <Link href="/web-development" data-mag>Web Development Services <ArrowRight size={18} /></Link>
+                <a href="https://softsaro.com.np/services/best-seo-agency-in-nepal" data-mag>SEO Services <ArrowRight size={18} /></a>
+              </div>
+            </Rise>
+            <div className={s.relHead}>
+              <h2 className={s.h2} aria-label="Related Projects"><Words text="Related Projects" /></h2>
+              <Link href="/#work" className={s.all}>View all projects <ArrowRight size={16} /></Link>
+            </div>
+            <Stagger className={s.projects}>
+              {related.map((r) => (
+                <StaggerItem key={r.slug} className={s.projWrap} tilt>
+                  <Link href={`/portfolio/${r.slug}`} className={s.proj} data-cur="view" data-label="View">
+                    <i className={s.spl} />
+                    <span className={s.projImg} data-wipe><Image src={r.img.src} alt={r.name} fill sizes="(min-width:1024px) 380px, 100vw" placeholder="blur" blurDataURL={r.img.blur} className={s.img} /></span>
+                    <span className={s.projBody}><h3>{r.name}</h3><small>{r.tag}</small><p>{r.d}</p><em>View Case Study <ArrowRight size={14} /></em></span>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+
+        {/* 12. CTA */}
+        <section className={`${s.sec} ${s.navy} ${s.cta}`}>
+          <i className={s.blob} data-drift="-30" />
+          <div className={s.wrap}>
+            <Lab n="11" t="Start your project" light />
+            <h2 className={`${s.h2} ${s.ctaH}`} aria-label="Have a real estate or business website in mind?"><Words text="Have a real estate or business website in mind?" /></h2>
+            <Rise delay={0.1}><p className={`${s.body} ${s.narrow}`}>Talk to Softsaro Nepal about a website, real estate platform or custom digital product for your business.</p></Rise>
+            <Rise delay={0.2}><Link href="/#contact" className={s.btnP} data-mag>Start your project <ArrowRight size={18} /></Link></Rise>
+          </div>
+        </section>
+      </main>
+    </DaleyMotion>
+  );
+}
