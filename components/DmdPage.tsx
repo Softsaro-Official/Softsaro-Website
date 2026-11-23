@@ -297,7 +297,7 @@ export default function DmdPage() {
           </div>
           <div className="dmd-proj">
             {(D.pj as string[][]).map((p, i) => (
-              <a className="dmd-pj" key={p[4]} href={`${S}/portfolio/${p[4]}`} data-r style={st(i)}>
+              <a className="dmd-pj" key={p[4]} href={`/portfolio/${p[4]}`} data-r style={st(i)}>
                 <span className="dmd-pj-img"><img src={p[3]} alt={`${p[0]} website`} loading="lazy" decoding="async" /></span>
                 <span className="dmd-pj-b"><small>{p[1]}</small><h3>{p[0]}</h3><p>{p[2]}</p></span>
               </a>

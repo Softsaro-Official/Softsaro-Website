@@ -151,7 +151,7 @@ export default function Home() {
               <div className="showcase-bar"><span><i></i><i></i><i></i></span><b>Softsaro / Selected projects</b><a href={`${S}/portfolio`}>View all work <Up /></a></div>
               <div className="project-deck">
               {D.pj.slice(0, 4).map((p: string[], i: number) => (
-                <a key={p[4]} className={`pc deck-card card card-${i + 1}${i === 0 ? " is-featured" : ""}`} data-cur="view" href={`${S}/portfolio/${p[4]}`}>
+                <a key={p[4]} className={`pc deck-card card card-${i + 1}${i === 0 ? " is-featured" : ""}`} data-cur="view" href={`/portfolio/${p[4]}`}>
                   <div className="pimg" data-n={`0${i + 1}`}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={p[3]} alt={p[0]} loading={i === 0 ? "eager" : "lazy"} />

@@ -546,7 +546,7 @@ export default function SeoLanding() {
           </div>
           <div className="sl-proj-grid">
             {(D.pj as string[][]).map((p) => (
-              <a className="sl-pj" key={p[4]} href={`${S}/portfolio/${p[4]}`} data-tilt data-spot>
+              <a className="sl-pj" key={p[4]} href={`/portfolio/${p[4]}`} data-tilt data-spot>
                 <span className="sl-pj-img"><img src={p[3]} alt={`${p[0]} website`} loading="lazy" decoding="async" /></span>
                 <span className="sl-pj-b"><small>{p[1]}</small><h3>{p[0]}</h3><p>{p[2]}</p><i><Ic k="up" /></i></span>
               </a>

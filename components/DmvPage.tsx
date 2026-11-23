@@ -247,7 +247,7 @@ export default function DmvPage() {
           </div>
           <div className="dmv-proj">
             {(D.pj as string[][]).map((p) => (
-              <a className="dmv-pj" key={p[4]} href={`${S}/portfolio/${p[4]}`} data-tilt data-spot>
+              <a className="dmv-pj" key={p[4]} href={`/portfolio/${p[4]}`} data-tilt data-spot>
                 <i className="dmv-spl" />
                 <span className="dmv-pji"><img src={p[3]} alt={`${p[0]} website`} loading="lazy" decoding="async" /></span>
                 <span className="dmv-pjb"><small>{p[1]}</small><h3>{p[0]}</h3><p>{p[2]}</p></span>

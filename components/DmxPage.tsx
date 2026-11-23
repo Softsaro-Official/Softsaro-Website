@@ -404,7 +404,7 @@ export default function DmxPage() {
           </div>
           <div className="dmx-proj">
             {(D.pj as string[][]).map((p) => (
-              <a className="dmx-pj" key={p[4]} href={`${S}/portfolio/${p[4]}`} data-tilt data-spot>
+              <a className="dmx-pj" key={p[4]} href={`/portfolio/${p[4]}`} data-tilt data-spot>
                 <i className="dmx-spl" />
                 <span className="dmx-pj-img"><img src={p[3]} alt={`${p[0]} website`} loading="lazy" decoding="async" /></span>
                 <span className="dmx-pj-b"><small>{p[1]}</small><h3>{p[0]}</h3><p>{p[2]}</p><i className="dmx-go"><Ic k="up" /></i></span>
