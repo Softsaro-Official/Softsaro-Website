@@ -1,0 +1,314 @@
+Dubai inspect 3 11/23/2026 16:52:38
+
+=== A. Dmp component files ===
+11/22/2026 14:48:46  3341  E:\softsaro\softsaro-next\components\DmpAbout.tsx
+11/16/2026 13:28:54  9714  E:\softsaro\softsaro-next\components\DmPage.tsx
+11/22/2026 15:23:02  3157  E:\softsaro\softsaro-next\components\DmpCareerForm.tsx
+11/22/2026 11:07:37  6584  E:\softsaro\softsaro-next\components\DmpCareerForm.tsx.bak11
+11/22/2026 14:56:59  3941  E:\softsaro\softsaro-next\components\DmpCareerForm.tsx.bak18
+11/22/2026 17:10:07  2437  E:\softsaro\softsaro-next\components\DmpDragScroll.tsx
+11/22/2026 10:39:02  5171  E:\softsaro\softsaro-next\components\DmpForms.tsx
+11/22/2026 11:19:12  1628  E:\softsaro\softsaro-next\components\DmpFx.tsx
+11/22/2026 15:23:03  695  E:\softsaro\softsaro-next\components\DmpHeroCard.tsx
+11/22/2026 15:09:31  689  E:\softsaro\softsaro-next\components\DmpHeroCard.tsx.bak18
+11/22/2026 15:09:30  729  E:\softsaro\softsaro-next\components\DmpHeroVis.tsx
+11/22/2026 11:21:11  1476  E:\softsaro\softsaro-next\components\DmpHeroVis.tsx.bak13
+11/22/2026 17:44:14  4092  E:\softsaro\softsaro-next\components\DmpMarquee.tsx
+11/22/2026 15:10:41  8898  E:\softsaro\softsaro-next\components\DmpMotion.tsx
+11/22/2026 11:28:17  8908  E:\softsaro\softsaro-next\components\DmpMotion.tsx.bak15
+11/22/2026 10:39:08  8895  E:\softsaro\softsaro-next\components\DmpMotion.tsx.bak3
+11/22/2026 17:18:42  38167  E:\softsaro\softsaro-next\components\DmpPage.tsx
+11/22/2026 13:40:13  45228  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak10
+11/22/2026 14:48:47  44500  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak13
+11/22/2026 15:09:31  44061  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak22
+11/22/2026 16:25:50  41375  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak26
+11/22/2026 16:37:18  40745  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak27
+11/22/2026 16:40:45  38631  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak28
+11/22/2026 16:45:53  38636  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak29
+11/22/2026 16:48:51  38732  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak30
+11/22/2026 16:52:20  38090  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak34
+11/22/2026 17:10:07  38155  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak36
+11/22/2026 13:24:11  46473  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak8
+11/22/2026 13:33:42  45666  E:\softsaro\softsaro-next\components\DmpPage.tsx.bak9
+11/22/2026 16:48:50  613  E:\softsaro\softsaro-next\components\DmpRise.tsx
+11/22/2026 11:31:13  5810  E:\softsaro\softsaro-next\components\DmpSvcScroll.tsx
+11/22/2026 17:44:14  10141  E:\softsaro\softsaro-next\components\DmpWork.tsx
+11/22/2026 13:24:11  9363  E:\softsaro\softsaro-next\components\DmpWork.tsx.bak39
+
+=== B. route imports at 5f12f36 and diff vs HEAD ===
+import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import { SiteFooter } from "@/components/Site";
+import DmpPage from "@/components/DmpPage";
+      <DmpPage />
+ app/services/digital-marketing-dubai/dmd.css      |  96 ++++++++
+ app/services/digital-marketing-dubai/page.tsx     |  24 +-
+ app/services/digital-marketing-dubai/page.tsx.bak |   6 +-
+ components/dmd/DmdFaq.tsx                         |  22 ++
+ components/dmd/DmdForm.tsx                        |  43 ++++
+ components/dmd/DmdMotion.tsx                      |  22 ++
+ components/dmd/DmdPage.tsx                        | 279 ++++++++++++++++++++++
+ components/dmd/Icons.tsx                          |  36 +++
+ 8 files changed, 512 insertions(+), 16 deletions(-)
+
+=== C. .dmp- line counts in globals.css per commit ===
+46c4eea  dmp-lines=597
+5f12f36  dmp-lines=752
+1ef6f59  dmp-lines=752
+22ff428  dmp-lines=752
+HEAD  dmp-lines=752
+
+=== D. lines removed from globals.css by 22ff428 (first 70, trimmed) ===
+--- a/app/globals.css
+-.sf-cta {
+-    display: grid;
+-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+-    gap: clamp(28px, 5vw, 96px);
+-    align-items: end;
+-    padding: clamp(72px, 10vw, 150px) 0 clamp(48px, 6vw, 88px)
+-}
+-
+-.sf-eyebrow {
+-    display: flex;
+-    align-items: center;
+-    gap: 10px;
+-    margin: 0 0 22px;
+-    font: 600 12px/1 Inter, sans-serif;
+-    letter-spacing: .14em;
+-    text-transform: uppercase;
+-    color: #a9a7b6
+-}
+-
+-.sf-eyebrow:before {
+-    content: "";
+-    width: 8px;
+-    height: 8px;
+-    border-radius: 50%;
+-    background: var(--green, #3fe33f)
+-}
+-
+-.sf-h {
+-    margin: 0;
+-    max-width: none;
+-    font: 700 clamp(42px, 7.2vw, 118px)/.94 var(--font-inter), Inter, sans-serif;
+-    letter-spacing: -.055em;
+-    color: #f3efe8
+-}
+-
+-.sf-hm {
+-    display: inline-block;
+-    overflow: hidden;
+-    vertical-align: top;
+-    padding: .04em .04em .12em 0;
+-    margin-right: .2em
+-}
+-
+-.sf-hw {
+-    display: inline-block;
+-    will-change: transform
+-}
+-
+-.sf-h .sf-hm:last-child .sf-hw {
+-    color: #8b88c8
+-}
+-
+-.sf-cta-r p {
+-    margin: 0 0 28px;
+-    max-width: 40ch;
+-    color: #c9c7d3;
+-    font: 400 clamp(16px, 1.3vw, 19px)/1.55 Inter, sans-serif
+-}
+-
+-.sf-btns {
+-    display: flex;
+-    flex-wrap: wrap;
+-    align-items: center;
+-    gap: 14px 22px
+-}
+-
+-.sf-btn {
+-    position: relative;
+-    overflow: hidden;
+
+=== E. DmdMotion.tsx ===
+"use client";
+import { useEffect } from "react";
+
+/* Lightweight scroll reveals: one IntersectionObserver, CSS does the animation. */
+export default function DmdMotion() {
+  useEffect(() => {
+    const root = document.querySelector<HTMLElement>(".dmd");
+    if (!root) return;
+    const items = Array.from(root.querySelectorAll<HTMLElement>("[data-r]"));
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      items.forEach((el) => el.classList.add("in"));
+      return;
+    }
+    root.classList.add("dmd-js");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.14, rootMargin: "0px 0px -6% 0px" });
+    items.forEach((el) => io.observe(el));
+    return () => { io.disconnect(); root.classList.remove("dmd-js"); };
+  }, []);
+  return null;
+}
+
+=== F. DmdPage.tsx lines 100-170 ===
+    <main className="dmd">
+      <DmdMotion />
+
+      {/* 1. HERO */}
+      <header className="dmd-hero">
+        <div className="dmd-wrap dmd-hero-in">
+          <div className="dmd-hero-copy">
+            <p className="dmd-eyebrow">Digital marketing agency &middot; Dubai &amp; UAE</p>
+            <h1><span className="dmd-k">Digital Marketing in Dubai</span>Grow your business with smarter digital marketing.</h1>
+            <p className="dmd-lead">Softsaro is a Kathmandu-based digital partner. We plan, launch and measure marketing for businesses in Dubai and the UAE: social media, paid ads, content, email and
+            <div className="dmd-cta">
+              <a className="dmd-btn" href="#contact" data-cur="open" data-label="Open">Book a free consultation <Ic n="arrow" /></a>
+              <a className="dmd-btn dmd-btn--ghost" href="#services" data-cur="open" data-label="Open">Our services</a>
+            </div>
+            <ul className="dmd-trust"><li><Ic n="check" />8+ years as an IT company</li><li><Ic n="check" />Offices in Nepal &amp; USA</li><li><Ic n="check" />Dubai is 1h 45m behind Kathmandu</li></ul
+          </div>
+          <div className="dmd-hero-vis">
+            <div className="dmd-hero-photo"><Photo src={P.hero} alt="Digital marketing team reviewing campaign performance together" /></div>
+            <div className="dmd-card dmd-dash" aria-label="Illustrative campaign overview">
+              <div className="dmd-dash-h"><b>Campaign overview</b><em>Illustrative</em></div>
+              <div className="dmd-dash-k"><span><small>Reach</small><i /></span><span><small>Clicks</small><i /></span><span><small>Leads</small><i /></span></div>
+              <svg viewBox="0 0 240 80" preserveAspectRatio="none" aria-hidden="true"><path className="a" d="M0 66 C30 62 40 50 70 52 S110 30 140 34 S190 16 240 8 V80 H0z" /><path className="l" pathLe
+            </div>
+            <div className="dmd-chips" aria-hidden="true"><span>Social</span><span>Search ads</span><span>Email</span></div>
+          </div>
+        </div>
+      </header>
+
+      {/* 2. WHY SOFTSARO */}
+      <section className="dmd-sec dmd-cream">
+        <div className="dmd-wrap dmd-split">
+          <div className="dmd-media" data-r>
+            <Photo src={P.why} alt="Marketing team planning a campaign strategy around a table" className="main" />
+            <Photo src={P.inset} alt="Analyst reviewing marketing analytics on a laptop" className="inset" />
+            <div className="dmd-badge"><b>8+</b><span>years in IT</span></div>
+          </div>
+          <div data-r>
+            <p className="dmd-eyebrow dmd-eyebrow--dark">Why Softsaro</p>
+            <h2>Why businesses in Dubai choose Softsaro for digital marketing</h2>
+            <p className="dmd-sub">Digital marketing works best when strategy, creative and data pull in the same direction. We keep them under one roof and explain every decision in plain language.</
+            <ul className="dmd-feats">{why.map(([ic, t, d]) => <li key={t}><i><Ic n={ic} /></i><div><h3>{t}</h3><p>{d}</p></div></li>)}</ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SERVICES */}
+      <section className="dmd-sec dmd-navy" id="services">
+        <div className="dmd-wrap">
+          <div className="dmd-head" data-r><p className="dmd-eyebrow">Our services</p><h2>Digital marketing services in Dubai</h2><p className="dmd-sub">Everything you need to attract, convert and kee
+          <div className="dmd-grid4">
+            {services.map(([ic, t, d], i) => <article className="dmd-card dmd-svc" key={t} data-r style={{ ["--d" as string]: `${(i % 4) * 70}ms` }}><i><Ic n={ic} /></i><h3>{t}</h3><p>{d}</p></article
+          </div>
+        </div>
+      </section>
+
+      {/* 4. PROCESS */}
+      <section className="dmd-sec dmd-cream">
+        <div className="dmd-wrap">
+          <div className="dmd-head" data-r><p className="dmd-eyebrow dmd-eyebrow--dark">Our process</p><h2>A clear process, from research to reporting</h2></div>
+          <ol className="dmd-steps">
+            {steps.map(([t, d], i) => <li key={t} data-r style={{ ["--d" as string]: `${(i % 3) * 80}ms` }}><span>0{i + 1}</span><h3>{t}</h3><p>{d}</p></li>)}
+          </ol>
+        </div>
+      </section>
+
+      {/* 5. TOOLS */}
+      <section className="dmd-sec dmd-navy">
+        <div className="dmd-wrap">
+          <div className="dmd-head" data-r><p className="dmd-eyebrow">Tools and platforms</p><h2>The platforms we work with</h2><p className="dmd-sub">We choose tools to fit your goals and budget.</p>
+          <ul className="dmd-tools" data-r>{tools.map(([m, n]) => <li key={n}><b>{m}</b>{n}</li>)}</ul>
+
+=== G. Footer.tsx lines 20-105 ===
+    { t: "Contact", href: "/contact", next: true },
+  ]],
+  ["Services", [
+    { t: "Web Development", href: `${S}/services/web-development-in-nepal` },
+    { t: "App Development", href: "/mobile-app-development", next: true },
+    { t: "UI/UX Design", href: `${S}/services/ui-ux-design-in-nepal` },
+    { t: "Advanced SEO", href: `${S}/services/best-seo-agency-in-nepal` },
+    { t: "Dubai Marketing", href: "/services/digital-marketing-dubai", next: true },
+    { t: "Domain & Hosting", href: `${S}/services/domain-and-hosting-in-nepal` },
+  ]],
+  ["Resources", [
+    { t: "Insights", href: "/blog", next: true },
+    { t: "SEO Training", href: "/seo-training", next: true },
+    { t: "Digital Marketing", href: "/digital-marketing-training", next: true },
+  ]],
+  ["Contact", [
+    { t: "9818439664", href: "tel:9818439664" },
+    { t: "Trade Tower, 5th Floor \u2013 Thapathali", href: MAPS, ext: true },
+  ]],
+];
+
+// per-letter entrance paths (alternating up/down, different tilt and skew)
+const LP = {
+  y: [115, -115, 120, -120, 115, -115, 120, -120],
+  rx: [-80, 70, -60, 80, -70, 60, -80, 70],
+  rz: [-12, 9, -7, 11, -9, 8, -11, 7],
+  sk: [8, -8, 6, -6, 8, -8, 6, -6],
+};
+
+export default function Footer() {
+  const root = useRef<HTMLElement>(null);
+
+  const toTop = () => {
+    const jump = (y: number) => window.scrollTo({ top: y, behavior: "instant" as ScrollBehavior });
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { jump(0); return; }
+    const o = { y: window.scrollY };
+    const stop = () => tw.kill();
+    const tw = gsap.to(o, { y: 0, duration: 1.4, ease: "power3.inOut", onUpdate: () => jump(o.y) });
+    window.addEventListener("wheel", stop, { once: true, passive: true });
+    window.addEventListener("touchstart", stop, { once: true, passive: true });
+  };
+
+  useGSAP(() => {
+    const r = root.current!;
+    const el = (s: string) => r.querySelector<HTMLElement>(s)!;
+    const q = (s: string) => gsap.utils.toArray<HTMLElement>(s, r);
+    el("[data-year]").textContent = String(new Date().getFullYear());
+
+    // fit the wordmark to the footer width
+    const wm = el(".sf-wm"), inner = el(".sf-wm-in");
+    const fit = () => {
+      const cs = getComputedStyle(wm);
+      const avail = wm.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      inner.style.fontSize = "100px";
+      const w = inner.offsetWidth;
+      if (w > 0 && avail > 0) inner.style.fontSize = (100 * avail) / w + "px";
+    };
+    fit();
+    document.fonts?.ready.then(fit);
+    const ro = new ResizeObserver(fit);
+    ro.observe(wm);
+
+    const mm = gsap.matchMedia(r);
+    mm.add({ ok: "(prefers-reduced-motion: no-preference)", fine: "(hover:hover) and (pointer:fine)" }, (ctx) => {
+      const { ok, fine } = ctx.conditions as { ok: boolean; fine: boolean };
+      if (!ok) return;
+      const offs: Array<() => void> = [];
+      const on = (t: EventTarget, e: string, f: (e: any) => void) => { t.addEventListener(e, f); offs.push(() => t.removeEventListener(e, f)); };
+      const clamp = gsap.utils.clamp;
+
+      /* 1. border lines draw with the scroll, then a light glint travels along them */
+      q(".sf-line").forEach((l) => {
+        gsap.fromTo(l, { scaleX: 0 }, { scaleX: 1, ease: "none", scrollTrigger: { trigger: l, start: "top 96%", end: "top 62%", scrub: 0.6 } });
+        const g = l.querySelector<HTMLElement>("i");
+        if (g) gsap.fromTo(g, { left: "-15%" }, { left: "110%", duration: 2.6, ease: "power2.inOut", repeat: -1, repeatDelay: 2.6, scrollTrigger: { trigger: l, start: "top 92%", toggleActions: "play p
+      });
+
+      /* 2. columns: each reveals with its own timing (clip-path wipe), and drifts at its own depth */
+      const cols = q(".sf-col"), wrap = el(".sf-cols");
+      const T: [number, number][] = [[0, 1.1], [0.12, 1.25], [0.24, 1.0], [0.36, 1.3], [0.5, 1.15]];
+      const depth = [30, 64, 22, 72, 44];
+      const tl = gsap.timeline({ scrollTrigger: { trigger: wrap, start: "top 84%" } });
+      cols.forEach((c, i) => {
+        const items = i === 0 ? Array.from(c.children) as HTMLElement[] : [c.querySelector<HTMLElement>("h4")!, ...Array.from(c.querySelectorAll<HTMLElement>(".sf-links a"))];
+        tl.fromTo(items, { clipPath: "inset(0 0 100% 0)", y: 18 }, { clipPath: "inset(0 0 0% 0)", y: 0, duration: T[i][1], stagger: 0.06 + i * 0.012, ease: "expo.out", clearProps: "clipPath,transform"

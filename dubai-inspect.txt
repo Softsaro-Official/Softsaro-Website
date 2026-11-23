@@ -1,246 +1,109 @@
-﻿=== ROUTE FILES ===
-app\services\seo-expert-dubai\page.tsx
+Dubai inspect 11/23/2026 16:49:31
 
-=== app\services\seo-expert-dubai\page.tsx ===
+=== ROUTE FILES ===
+11/23/2026 10:53:34  E:\softsaro\softsaro-next\app\services\digital-marketing-dubai\dmd.css
+11/23/2026 10:53:31  E:\softsaro\softsaro-next\app\services\digital-marketing-dubai\page.tsx
+11/22/2026 10:39:09  E:\softsaro\softsaro-next\app\services\digital-marketing-dubai\page.tsx.bak
+
+=== PAGE FILE (first 120 lines) ===
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { SiteFooter } from "@/components/Site";
-import SeoLanding from "@/components/SeoLanding";
+import DmdPage from "@/components/dmd/DmdPage";
+import "./dmd.css";
+
+const title = "Digital Marketing in Dubai | Digital Marketing Agency & Services | Softsaro";
+const description =
+  "Softsaro is a digital marketing company serving Dubai and the UAE: social media, Google Ads, Facebook and Instagram advertising, content and email marketing, lead generation and clear analytics reporting.";
 
 export const metadata: Metadata = {
-  title: "SEO Services in Dubai & UAE | Softsaro",
-  description:
-    "Softsaro helps businesses in Dubai and the UAE get found on Google and cited in AI answers: technical SEO, on-page, local SEO, AEO and GEO, with plain-language reporting.",
+  title,
+  description,
+  keywords: ["Digital Marketing in Dubai", "Digital Marketing Agency in Dubai", "Digital Marketing Services in Dubai", "Online Marketing in Dubai", "Digital Marketing Company in Dubai"],
+  alternates: { canonical: "/services/digital-marketing-dubai" },
+  openGraph: { title, description, url: "/services/digital-marketing-dubai", type: "website", siteName: "Softsaro" },
 };
 
 export default function Page() {
   return (
     <>
       <Navbar b="/" />
-      <SeoLanding />
+      <DmdPage />
       <SiteFooter />
     </>
   );
 }
 
-=== RELATED FILES ===
-components\SeoLanding.tsx  (651 lines)
-components\SlForm.tsx  (54 lines)
-lib\data.ts  (153 lines)
+=== WHO REFERENCES digital-marketing-dubai ===
+E:\softsaro\softsaro-next\app\services\digital-marketing-dubai\page.tsx:15: alternates: { canonical: "/services/digital-marketing-dubai" },
+E:\softsaro\softsaro-next\app\services\digital-marketing-dubai\page.tsx:16: openGraph: { title, description, url: "/services/digital-marketing-dubai", type: "website", siteName: "Softsaro" },
+E:\softsaro\softsaro-next\app\services\seo-expert-dubai\page.tsx:5: redirect("/services/digital-marketing-dubai");
+E:\softsaro\softsaro-next\components\Footer.tsx:27: { t: "Dubai Marketing", href: "/services/digital-marketing-dubai", next: true },
+E:\softsaro\softsaro-next\components\Navbar.tsx:13: { href: "/services/digital-marketing-dubai", label: "Digital Marketing in Dubai", icon: "megaphone" },
+E:\softsaro\softsaro-next\lib\dmd-data.ts:1: // Editable content for /services/digital-marketing-dubai
 
-=== IMPORTS/EXPORTS: components\SeoLanding.tsx ===
-1: import SlMotion from "@/components/SlMotion";
-2: import SlForm from "@/components/SlForm";
-3: import { D } from "@/lib/data";
-4: import { photos, tools } from "@/lib/seo-data";
-5: import { CONTACT, RESULTS, PRICING } from "@/lib/seo-landing-data";
-193: export default function SeoLanding() {
-=== FORM LOGIC: components\SeoLanding.tsx ===
-379: <div className="sl-loc-info" aria-live="polite"><h3>Downtown Dubai</h3><p>Location-specific pages, Google Business Profile and local citations, built around how customers search in this area.</p></div>
-=== PROJECTS / TESTIMONIALS / IMAGES: components\SeoLanding.tsx ===
-478: <img src="/assets/dm/analytics.jpg" alt="" aria-hidden="true" loading="lazy" decoding="async" data-par />
+=== RECENTLY MODIFIED (top 30) ===
+11/23/2026 16:36:00  E:\softsaro\softsaro-next\components\portfolio\PortfolioClient.tsx
+11/23/2026 16:29:14  E:\softsaro\softsaro-next\app\portfolio\portfolio.css
+11/23/2026 16:29:14  E:\softsaro\softsaro-next\components\portfolio\PortfolioClient.tsx.bak6
+11/23/2026 16:17:12  E:\softsaro\softsaro-next\app\globals.css
+11/23/2026 16:11:41  E:\softsaro\softsaro-next\components\Footer.tsx
+11/23/2026 16:07:25  E:\softsaro\softsaro-next\app\portfolio\portfolio.css.bak5
+11/23/2026 16:07:25  E:\softsaro\softsaro-next\components\portfolio\PortfolioClient.tsx.bak5
+11/23/2026 16:07:25  E:\softsaro\softsaro-next\components\portfolio\data.ts
+11/23/2026 16:07:25  E:\softsaro\softsaro-next\app\portfolio\page.tsx
+11/23/2026 15:51:25  E:\softsaro\softsaro-next\components\portfolio\PortfolioClient.tsx.bak4
+11/23/2026 15:51:23  E:\softsaro\softsaro-next\components\portfolio\data.ts.bak4
+11/23/2026 15:51:22  E:\softsaro\softsaro-next\app\portfolio\portfolio.css.bak4
+11/23/2026 15:51:21  E:\softsaro\softsaro-next\app\portfolio\page.tsx.bak4
+11/23/2026 15:28:05  E:\softsaro\softsaro-next\components\contact\contact.module.css
+11/23/2026 15:28:05  E:\softsaro\softsaro-next\components\contact\ContactMotion.tsx
+11/23/2026 15:28:03  E:\softsaro\softsaro-next\components\contact\ContactPage.tsx
+11/23/2026 15:28:03  E:\softsaro\softsaro-next\components\contact\ContactUI.tsx
+11/23/2026 15:21:40  E:\softsaro\softsaro-next\components\contact\ContactPage.tsx.bak4
+11/23/2026 15:21:39  E:\softsaro\softsaro-next\components\contact\ContactMotion.tsx.bak4
+11/23/2026 15:21:39  E:\softsaro\softsaro-next\components\contact\contact.module.css.bak4
+11/23/2026 15:17:58  E:\softsaro\softsaro-next\app\contact\page.tsx
+11/23/2026 15:05:48  E:\softsaro\softsaro-next\components\contact\ContactForm.tsx
+11/23/2026 15:05:46  E:\softsaro\softsaro-next\components\contact\ContactUI.tsx.bak4
+11/23/2026 14:43:17  E:\softsaro\softsaro-next\components\adsaro\adsaro.module.css
+11/23/2026 14:17:41  E:\softsaro\softsaro-next\app\portfolio\adsaro-nepal\page.tsx
+11/23/2026 14:17:39  E:\softsaro\softsaro-next\components\adsaro\AdsaroPage.tsx
+11/23/2026 14:17:37  E:\softsaro\softsaro-next\components\adsaro\AdsaroMotion.tsx
+11/23/2026 14:17:36  E:\softsaro\softsaro-next\components\adsaro\AdsaroUI.tsx
+11/23/2026 14:17:35  E:\softsaro\softsaro-next\lib\adsaro-data.ts
+11/23/2026 13:30:45  E:\softsaro\softsaro-next\app\portfolio\emperor-educational-consultancy\page.tsx
 
-=== IMPORTS/EXPORTS: components\SlForm.tsx ===
-1: "use client";
-2: import { useState } from "react";
-3: import { submitContact } from "@/lib/contact";
-7: export default function SlForm({ email, phone, tel }: { email: string; phone: string; tel: string }) {
-=== FORM LOGIC: components\SlForm.tsx ===
-2: import { useState } from "react";
-3: import { submitContact } from "@/lib/contact";
-8: const [state, setState] = useState<"idle" | "sending" | "sent" | "fallback">("idle");
-9: const [mail, setMail] = useState("");
-11: async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-18: const r = await submitContact({ name: g("name"), email: g("email"), phone: g("phone"), message });
-39: <form className="sl-form" onSubmit={onSubmit}>
-40: <label className="sl-f"><span>Name</span><input name="name" required autoComplete="name" /></label>
-41: <label className="sl-f"><span>Email</span><input name="email" type="email" required autoComplete="email" /></label>
-42: <label className="sl-f"><span>Phone</span><input name="phone" type="tel" autoComplete="tel" /></label>
-43: <label className="sl-f"><span>Website (if any)</span><input name="website" inputMode="url" autoComplete="url" /></label>
-45: <select name="type" defaultValue="">
-46: <option value="" disabled>Select one</option>
-47: {TYPES.map((t) => (<option key={t} value={t}>{t}</option>))}
-50: <label className="sl-f full"><span>Your SEO requirements</span><textarea name="need" rows={4} /></label>
-=== PROJECTS / TESTIMONIALS / IMAGES: components\SlForm.tsx ===
+=== CONFIG FILES ===
+11/22/2026 11:21:06  package.json
+11/22/2026 11:21:06  package-lock.json
+11/15/2026 13:11:09  next.config.mjs
+11/20/2026 12:20:47  app\layout.tsx
+11/23/2026 16:17:12  app\globals.css
 
-=== IMPORTS/EXPORTS: lib\data.ts ===
-1: export const D: any = {
-=== FORM LOGIC: lib\data.ts ===
-=== PROJECTS / TESTIMONIALS / IMAGES: lib\data.ts ===
-6: "Daley Bhai",
-10: "Sajha Marketplace",
-13: "Adsaro",
-16: "Emperor Educational Network",
-27: "Daley Bhai Real Estate",
-30: "https://softsaro.com.np/uploads/portfolio_mY6fNptC.jpg",
-31: "daley-bhai-real-estate",
-34: "Sajha Courier",
-37: "https://softsaro.com.np/img/portfolio/sajha%20courier.jpg",
-38: "sajha-courier",
-41: "Emperor Educational Consultancy",
-44: "https://softsaro.com.np/img/portfolio/emperor.jpeg",
-45: "emperor-educational-consultancy",
-48: "Adsaro Nepal",
-51: "https://softsaro.com.np/img/portfolio/adsaro.jpg",
-52: "adsaro-nepal",
-123: "Bikash S.",
-128: "Siddhu K.",
-133: "Ritu K.",
-138: "Abhinash K.",
+=== CSS BLOCK MARKERS IN globals.css ===
+22153: /* blog-v2 */
+22196: /* career-v1 */
+22397: /* career-v2 */
+23460: /* blog + contact */
 
-=== PUBLIC IMAGES ===
+=== GIT ===
+true
+ M dubai-inspect.txt
+22ff428 2026-11-23 fix:portfolio pages
+557fad0 2026-11-23 feat:Added a contact us page
+bf99b8c 2026-11-23 feat:implement the adsaro page
+037e2ef 2026-11-23 feat:Animtion added in dalebhai page
+1ef6f59 2026-11-23 feat:build new page of sajha courier
+5f12f36 2026-11-22 fix:dubai marketing page issue
+46c4eea 2026-11-22 first commit
 
-=== CSS MARKERS ===
-174: /* buttons */
-313: /* nav */
-336: /* Focused menu overlay */
-717: /* Chess artwork menu background */
-993: /* hero */
-1316: /* services */
-1392: /* work */
-1536: /* Featured work deck */
-1821: /* Horizontal product shelf */
-2253: /* about */
-2296: /* why */
-2348: /* process */
-2427: /* tech */
-2477: /* testimonials */
-2904: /* motion layer */
-3992: /* SV2 SERVICES */
-4202: /* Interactive Softsaro services */
-4533: /* SEO TRAINING PAGE */
-5235: /* DM TRAINING PAGE v2 */
-5560: /* photo band */
-5620: /* bento */
-5778: /* practical */
-5891: /* tools */
-5952: /* why */
-6009: /* final cta */
-6100: /* SEO TRAINING PAGE v2 */
-6347: /* photo band */
-6527: /* method */
-6556: /* tools */
-6608: /* why */
-6668: /* cta */
-6872: /* SOFTSARO INTRO */
-6942: /* INTRO V2 */
-7020: /* INTRO V3 */
-7059: /* NAVBAR LOGO */
-7077: /* FOOTER V2 */
-7436: /* FOOTER V3 */
-7538: /* SOFTSARO INTRO */
-7608: /* INTRO V2 */
-7686: /* INTRO V3 */
-7725: /* NAVBAR LOGO */
-7743: /* FOOTER V2 */
-8102: /* FOOTER V3 */
-8298: /* keep badge and arrow clear of the rounded corners */
-8309: /* optional tighter featured title */
-8349: /* badge and arrow sit inside the new silhouette */
-8366: /* keep screenshot well inside the silhouette */
-8468: /* keep badges and arrows clear of the larger curves */
-8808: /* WORDMARK TINT */
-8813: /* MENU SUBMENU */
-8952: /* WORDMARK TINT */
-8957: /* MENU SUBMENU */
-9150: /* hero */
-9572: /* what we build */
-9787: /* showcase */
-9880: /* process */
-9950: /* why */
-10015: /* tech */
-10045: /* faq */
-10090: /* cta */
-10238: /* WX WEB DEV v2 */
-10327: /* HERO */
-10584: /* MARQUEE */
-11015: /* BENTO */
-11074: /* PROCESS rows */
-11136: /* WHY */
-11213: /* TECH */
-11243: /* FAQ */
-11317: /* CTA */
-11353: /* RESPONSIVE */
-11466: /* WX IMAGES */
-11489: /* WX TYPE */
-11700: /* stats icon fix */
-11720: /* stats card size */
-11877: /* hero */
-12349: /* marquee */
-12387: /* accordion */
-12474: /* expertise */
-12825: /* showcase */
-13180: /* process stack */
-13257: /* why */
-13331: /* cta */
-13367: /* responsive */
-13778: /* WX WEB DEV v2 */
-13867: /* HERO */
-14124: /* MARQUEE */
-14555: /* BENTO */
-14614: /* PROCESS rows */
-14676: /* WHY */
-14753: /* TECH */
-14783: /* FAQ */
-14857: /* CTA */
-14893: /* RESPONSIVE */
-15006: /* WX IMAGES */
-15029: /* WX TYPE */
-15313: /* stats icon fix */
-15333: /* stats card size */
-15548: /* room for the corner number so cards never cover it */
-15868: /* Pricing pages */
-15903: /* MOBILE APP PAGE v1 */
-15975: /* phone */
-16223: /* hero */
-16470: /* what we build */
-16588: /* expertise */
-16702: /* showcase */
-16783: /* process */
-16895: /* tech */
-16930: /* why */
-17029: /* faq */
-17110: /* cta */
-17355: /* DOMAIN HOSTING PAGE */
-17544: /* hero */
-17931: /* marquee */
-17968: /* dark sections */
-18111: /* services panels */
-18216: /* vps */
-18447: /* journey */
-18608: /* why */
-18675: /* faq */
-18776: /* cta */
-18881: /* tablet */
-20102: /* hero */
-20273: /* marquee */
-20316: /* showcase */
-20435: /* create list */
-20507: /* approach */
-20611: /* uses */
-20684: /* why */
-20753: /* cta */
-20798: /* responsive */
-21408: /* quiet interactions */
-21592: /* PRICING MOTION */
-21604: /* cards */
-21722: /* SEO LANDING PAGE */
-21762: /* hero */
-21815: /* proof */
-21838: /* about */
-21856: /* practice panels */
-21882: /* local */
-21908: /* services */
-21937: /* tools */
-21946: /* audience */
-21955: /* process */
-21971: /* data */
-21988: /* education */
-22000: /* compare */
-22015: /* projects */
-22029: /* pricing */
-22048: /* faq */
-22063: /* testimonials */
-22074: /* contact */
-22096: /* final */
-22104: /* tablet */
+=== DEPS ===
+softsaro-next@0.1.0 E:\softsaro\softsaro-next
++-- @gsap/react@2.1.2
++-- framer-motion@14.14.0
++-- gsap@3.15.1
++-- lenis@1.3.27
++-- next@16.4.6
+`-- react@19.3.1
+

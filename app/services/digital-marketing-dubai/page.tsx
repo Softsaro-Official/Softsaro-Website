@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { SiteFooter } from "@/components/Site";
-import DmdPage from "@/components/dmd/DmdPage";
-import "./dmd.css";
+import DmpPage from "@/components/DmpPage";
 
-const title = "Digital Marketing in Dubai | Digital Marketing Agency & Services | Softsaro";
-const description =
-  "Softsaro is a digital marketing company serving Dubai and the UAE: social media, Google Ads, Facebook and Instagram advertising, content and email marketing, lead generation and clear analytics reporting.";
+const PATH = "/services/digital-marketing-dubai";
+const TITLE = "Digital Marketing in Dubai | Digital Marketing Agency | Softsaro";
+const DESC =
+  "Softsaro is a digital marketing agency serving businesses in Dubai and the UAE: search, Google Ads, social media, Meta ads, content, email and analytics, with a free consultation before you commit.";
 
 export const metadata: Metadata = {
-  title,
-  description,
-  keywords: ["Digital Marketing in Dubai", "Digital Marketing Agency in Dubai", "Digital Marketing Services in Dubai", "Online Marketing in Dubai", "Digital Marketing Company in Dubai"],
-  alternates: { canonical: "/services/digital-marketing-dubai" },
-  openGraph: { title, description, url: "/services/digital-marketing-dubai", type: "website", siteName: "Softsaro" },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://softsaro.com.np"),
+  title: TITLE,
+  description: DESC,
+  keywords: ["digital marketing in Dubai", "digital marketing agency in Dubai", "digital marketing services in Dubai", "online marketing in Dubai", "digital marketing company in Dubai"],
+  alternates: { canonical: PATH },
+  openGraph: { title: TITLE, description: DESC, url: PATH, siteName: "Softsaro", type: "website", locale: "en_AE" },
+  twitter: { card: "summary_large_image", title: TITLE, description: DESC },
 };
 
 export default function Page() {
   return (
     <>
       <Navbar b="/" />
-      <DmdPage />
+      <DmpPage />
       <SiteFooter />
     </>
   );
