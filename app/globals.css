@@ -23854,7 +23854,7 @@ a.dh-tile:hover {
 .dmh-in{grid-template-columns:minmax(0,1.25fr) minmax(0,520px)}
 .dmh .dmp-h1{font-size:clamp(28px,3.35vw,46px);line-height:1.1;letter-spacing:-.035em}
 .dmh .dmp-h1 br{display:block}
-@media(min-width:961px){.dmh .dmp-h1{white-space:nowrap}.dmh .dmh-copy{transform:translateY(-12px)}}
+@media(min-width:961px){.dmh .dmp-h1{white-space:nowrap}.dmh .dmh-copy{transform:translateY(-72px)}}
 @media(max-width:960px){.dmh .dmp-h1{font-size:clamp(28px,6.4vw,44px);white-space:normal}}
 /* DMH HERO (heading typography, column-based sizing) */
 .dmh-in{grid-template-columns:minmax(0,1.2fr) minmax(0,500px);gap:clamp(40px,5vw,80px)}
