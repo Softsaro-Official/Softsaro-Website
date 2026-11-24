@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Navbar from "@/components/Navbar";
 import { SiteFooter } from "@/components/Site";
-import AppMotion from "@/components/app/AppMotion";
-import { Phone, Shop, Food, Bank, Fit, Learn, Stats, Travel, Social, Custom, UiKit, Api, Tests, Release } from "@/components/app/Screens";
+import MobileAppMotion from "@/components/mobile-app/MobileAppMotion";
+import { Phone, Shop, Food, Bank, Fit, Learn, Stats, Travel, Social, Custom, UiKit, Api, Tests, Release } from "@/components/mobile-app/MobileAppScreens";
 import "./app.css";
 
 export const metadata: Metadata = {
@@ -257,7 +257,7 @@ export default function MobileAppPage() {
         </div>
       </main>
       <SiteFooter />
-      <AppMotion />
+      <MobileAppMotion />
     </>
   );
 }

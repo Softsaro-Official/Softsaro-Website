@@ -29,7 +29,7 @@ function split(el: HTMLElement, mode: "chars" | "words"): HTMLElement[] {
   return out;
 }
 
-export default function AppMotion() {
+export default function MobileAppMotion() {
   /* interactions that must work even with reduced motion: platform toggle, FAQ, accordion */
   useEffect(() => {
     const root = document.querySelector<HTMLElement>(".ap");
