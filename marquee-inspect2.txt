@@ -1,0 +1,194 @@
+=== css selector starts (line numbers) ===
+1294: .clients {
+1308: .clients>p {
+2846: .clients {
+2852: .mq {
+3185: .mq {
+3192: .tk {
+3198: .tk span {
+3208: .tk span::after {
+3217: .tk span:hover {
+
+=== css block @ line 1294 ===
+1294: .clients {
+1295:     width: 100%;
+1296:     margin: 0;
+1297:     display: flex;
+1298:     align-items: center;
+1299:     border-top: 1px solid var(--line);
+1300:     border-bottom: 1px solid var(--line);
+1301:     max-width: none;
+1302:     padding: 0 clamp(20px, 8vw, 120px);
+1303:     background: #f3efe8cc;
+1304:     position: relative;
+1305:     z-index: 3
+1306: }
+
+=== css block @ line 1308 ===
+1308: .clients>p {
+1309:     font: 500 13px/1.5 Inter, sans-serif;
+1310:     letter-spacing: .08em;
+1311:     text-transform: uppercase;
+1312:     color: #555;
+1313:     padding: 22px 30px 22px 0;
+1314:     white-space: nowrap
+1315: }
+
+=== css block @ line 2846 ===
+2846:     .clients {
+2847:         flex-direction: column;
+2848:         align-items: flex-start;
+2849:         padding-bottom: 6px
+2850:     }
+
+=== css block @ line 2852 ===
+2852:     .mq {
+2853:         width: 100%;
+2854:         flex: none
+2855:     }
+
+=== css block @ line 3185 ===
+3185: .mq {
+3186:     flex: 1;
+3187:     min-width: 0;
+3188:     overflow: hidden;
+3189:     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)
+3190: }
+
+=== css block @ line 3192 ===
+3192: .tk {
+3193:     display: flex;
+3194:     width: max-content;
+3195:     align-items: center
+3196: }
+
+=== css block @ line 3198 ===
+3198: .tk span {
+3199:     display: flex;
+3200:     align-items: center;
+3201:     padding: 26px 0;
+3202:     font: 500 18px var(--font-inter), Inter, sans-serif;
+3203:     white-space: nowrap;
+3204:     cursor: default;
+3205:     transition: color .3s, transform .5s var(--o)
+3206: }
+
+=== css block @ line 3208 ===
+3208: .tk span::after {
+3209:     content: "";
+3210:     width: 6px;
+3211:     height: 6px;
+3212:     border-radius: 50%;
+3213:     background: #0a0b1433;
+3214:     margin: 0 32px
+3215: }
+
+=== css block @ line 3217 ===
+3217: .tk span:hover {
+3218:     color: var(--blue);
+3219:     transform: scale(1.1)
+3220: }
+
+=== css: any rule mentioning .tk (first 30) ===
+3192: .tk {
+3198: .tk span {
+3208: .tk span::after {
+3217: .tk span:hover {
+
+=== css: keyframes near line 3179-3200 ===
+    animation: drop 2s var(--e) infinite
+}
+
+@keyframes drop {
+    to {
+        top: 100%
+    }
+}
+
+.mq {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)
+}
+
+.tk {
+    display: flex;
+    width: max-content;
+    align-items: center
+}
+
+.tk span {
+    display: flex;
+    align-items: center;
+    padding: 26px 0;
+    font: 500 18px var(--font-inter), Inter, sans-serif;
+    white-space: nowrap;
+    cursor: default;
+    transition: color .3s, transform .5s var(--o)
+}
+
+=== code refs: #clients / clients / .tk ===
+\app\mobile-app-development\page.tsx:73: ["8+ years of IT experience", "Serving clients across Nepal and internationally through our USA office."],
+\components\adsaro\AdsaroPage.tsx:149: <Fade delay={0.1}><p className={s.body}>Ad agencies live and die by data speed. The challenge was building a system that could ingest and query millions of ad event rows in real time, surface insights  ...[cut]
+\components\app\AppPage.tsx:266: <p className="ma-why-n">Serving clients across Nepal and internationally through our USA office.</p>
+\components\dmd\DmdPage.tsx:252: <div className="dmd-head" data-r><p className="dmd-eyebrow">Client feedback</p><h2>What clients say about Softsaro</h2></div>
+\components\emperor\EmperorPage.tsx:96: <Rise delay={0.1}><p className={s.body}>Emperor needed a platform that could serve two audiences simultaneously: prospective students exploring study options, and current clients tracking their applic ...[cut]
+\components\sajha\SajhaNav.tsx:22: const els = LINKS.map(([id]) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+\components\sajha\SajhaPage.tsx:71: <p className={s.lead}>Softsaro Nepal designed and built the Sajha Courier website &mdash; giving customers, senders and business clients a single platform to book shipments, track parcels and manage couri ...[cut]
+\components\web\WebSections.tsx:150: <div className="wd-big"><b>8+</b><p>years of IT experience, serving clients in Nepal and abroad through our Kathmandu and USA offices.</p></div>
+\components\wx\WxPage.tsx:246: <p className="wx-why-s">years of IT experience, serving clients in Nepal and abroad through our Kathmandu and USA offices.</p>
+\components\CareerForm.tsx:93: if (first) { document.getElementById(`cr-${first}`)?.focus(); return; }
+\components\DmdPage.tsx:348: <h2 className="dmd-h2" data-r>What clients say about Softsaro</h2>
+\components\DmMotion.tsx:62: const nav = document.getElementById("nav");
+\components\DmpMotion.tsx:72: const sec = document.getElementById(a.dataset.spy || "");
+\components\DmpPage.tsx:109: { k: "pin", l: "Based in", v: "Kathmandu, Nepal, with an office in the USA, working remotely with UAE clients" },
+\components\DmpPage.tsx:200: const REVIEW_NOTE = "Feedback from Softsaro clients on past projects.";
+\components\DmxPage.tsx:466: <H2 t="What clients say about" em="Softsaro" />
+\components\DomainHostingPage.tsx:81: { t: "8+ years of IT experience", d: "Softsaro serves businesses across Nepal and international clients through our USA office." },
+\components\DomainHostingPage.tsx:84: { t: "Based in Kathmandu, working internationally", d: "Our USA office gives overseas clients a contact in their own time zone." },
+\components\Home.tsx:66: const clients = [...D.clients, ...D.clients];
+\components\Home.tsx:138: <div className="clients wrap">
+\components\Home.tsx:140: <div id="clients" className="mq"><div className="tk">{clients.map((c: string, i: number) => <span key={i}>{c}</span>)}</div></div>
+\components\Home.tsx:179: <p className="big">Softsaro is a team of developers, designers and marketers working from Trade Tower, Thapathali in Kathmandu, with a branch in the USA serving international clients. Design, development, SEO, mark ...[cut]
+\components\Home.tsx:266: <section className="testi" id="clients-say">
+\components\Home.tsx:271: <h2 data-r>What clients say about partnering with Softsaro.</h2>
+\components\ProcReveal.tsx:9: const root = document.getElementById("psteps");
+\components\SeoLanding.tsx:142: { q: "Do you work with businesses in Dubai and the UAE?", a: "We work with clients online across countries. Dubai is only 1 hour 45 minutes behind Kathmandu, so calls fit comfortably within business hours." } ...[cut]
+\components\SeoLanding.tsx:606: <H2 t="What clients say about" em="Softsaro." />
+\components\SeoMotion.tsx:62: const nav = document.getElementById("nav");
+\components\TechReveal.tsx:6: const el = document.getElementById("tccols");
+\components\WhyReveal.tsx:7: const board = document.getElementById("wboard");
+\lib\data.ts:2: clients: [
+\lib\data.ts:84: "Clients in Nepal, the USA and beyond work with us online; Kathmandu hours overlap with Australia and the UK.",
+\lib\motion.ts:207: .from(".clients", { y: 30, opacity: 0, duration: 1 }, "-=1");
+\lib\motion.ts:480: const tk = $(".tk"),
+\lib\wd-data.ts:50: ["Where are you located?", "Trade Tower, 5th Floor, Thapathali, Kathmandu. We also have a USA office and work with clients online."],
+
+=== lib/data.ts head ===
+export const D: any = {
+  clients: [
+    "Hamro Jobs",
+    "Artha Kagaj",
+    "Sayumi Global",
+    "Daley Bhai",
+    "Sajilo Mobile",
+    "De Glamora",
+    "Himalayan Fabs",
+    "Sajha Marketplace",
+    "Buy Fresh",
+    "Angel Health Care",
+    "Adsaro",
+    "CSR Link",
+    "Neerkart",
+    "Emperor Educational Network",
+  ],
+  svc: [
+    ["Web & Digital Products", "web-development-in-nepal"],
+    ["Mobile Experiences", "app-development-company-in-nepal"],
+    ["Brand & Interface Design", "ui-ux-design-in-nepal"],
+    ["Search & Growth", "best-seo-agency-in-nepal"],
+    ["Cloud & Support", "domain-and-hosting-in-nepal"],
+  ],
+  pj: [
+

@@ -62,8 +62,33 @@ const TLOGO: Record<string, [any, string]> = {
   flutter: [SiFlutter, "#02569B"], reactnative: [TbBrandReactNative, "#2BB5D8"],
   cloud: [TcCloud, "#6a67ae"], clickhouse: [SiClickhouse, "#F5B800"], cicd: [TcBranch, "#3f3d7a"],
 };
+const PARTNER_LOGOS: [string, string][] = [
+  ["partner_B6pukqhO.webp", "BuyFresh"],
+  ["partner_GJQrsCkU.webp", "De Glamora"],
+  ["partner_GrRVDNvL.webp", "Indreni Mushroom Farm"],
+  ["partner_HwY3gihV.webp", "RSTCA Investment Fund"],
+  ["partner_Ja0YKFt3.webp", "Daley Bhai"],
+  ["partner_N9jAKJxG.webp", "Global Ranking Hub"],
+  ["partner_OaCNmXpf.webp", "Saurya Krishi Company"],
+  ["partner_OqVUTbe2.webp", "Artha Kagaj"],
+  ["partner_SM3ZVTCe.webp", "Hamro Jobs"],
+  ["partner_TwgYlIJV.webp", "HFI"],
+  ["partner_VXmoxl3q.webp", "Chandra Surya"],
+  ["partner_WOBPFqJD.webp", "CSR Link"],
+  ["partner_cmr12uMY.webp", "Sajha Marketplace"],
+  ["partner_eSY6RfXF.webp", "Hope2Help"],
+  ["partner_f24K9kAC.webp", "Karmi"],
+  ["partner_ft4keRwm.webp", "Photo Studio Service"],
+  ["partner_kzcthB6M.webp", "Jilo Mobile"],
+  ["partner_nMpaICzs.webp", "Emperor Education Network"],
+  ["partner_oFvc2SEm.webp", "Neerkart"],
+  ["partner_oSubdZcj.webp", "Sayumi Global"],
+  ["partner_qdwaO1QD.webp", "Leideu"],
+  ["partner_uAa3vcMy.webp", "Adsaro"],
+  ["partner_uDKXJyr5.webp", "Partner logo"],
+];
 export default function Home() {
-  const clients = [...D.clients, ...D.clients];
+
   return (
     <>
       <PvGuard />
@@ -137,7 +162,15 @@ export default function Home() {
           </div>
           <div className="clients wrap">
             <p>Good work,<br />built to last</p>
-            <div id="clients" className="mq"><div className="tk">{clients.map((c: string, i: number) => <span key={i}>{c}</span>)}</div></div>
+            <div id="clients" className="mq"><div className="tk tk-logos">{PARTNER_LOGOS.concat(PARTNER_LOGOS).map(([f, n], i) => {
+              const dup = i >= PARTNER_LOGOS.length;
+              return (
+                <div key={i} className="lg" aria-hidden={dup ? true : undefined}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={"/images/partners/" + f} alt={dup ? "" : n} width={168} height={96} loading={!dup && i < 6 ? "eager" : "lazy"} decoding="async" draggable={false} />
+                </div>
+              );
+            })}</div></div>
           </div>
         </section>
 

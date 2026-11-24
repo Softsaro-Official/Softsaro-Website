@@ -478,7 +478,7 @@ if (mm) {
   });
   // marquee
   const tk = $(".tk"),
-    mq = gsap.to(tk, { xPercent: -50, duration: 45, ease: "none", repeat: -1 });
+    mq = gsap.to(tk, { xPercent: -50, duration: 30, ease: "none", repeat: -1 });
   $(".mq").addEventListener("mouseenter", () =>
     gsap.to(mq, { timeScale: 0.15, duration: 0.6 }),
   );

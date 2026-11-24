@@ -1,0 +1,246 @@
+=== partners folder ===
+partner_B6pukqhO.jpg  34625
+partner_cmr12uMY.jpg  42597
+partner_eSY6RfXF.jpg  48256
+partner_f24K9kAC.jpg  38345
+partner_fE7zFLrX.jpg  10991
+partner_ft4keRwm.jpg  53458
+partner_GJQrsCkU.jpg  37107
+partner_GrRVDNvL.jpg  79089
+partner_HwY3gihV.png  516406
+partner_Ja0YKFt3.jpg  64816
+partner_kzcthB6M.png  88149
+partner_N9jAKJxG.jpg  44860
+partner_nMpaICzs.jpg  49194
+partner_OaCNmXpf.jpg  102551
+partner_oFvc2SEm.jpg  28231
+partner_OqVUTbe2.jpg  43392
+partner_oSubdZcj.jpg  92198
+partner_qdwaO1QD.jpeg  46246
+partner_SM3ZVTCe.jpg  65262
+partner_TwgYlIJV.jpg  41322
+partner_uAa3vcMy.jpg  28761
+partner_uDKXJyr5.jpg  28180
+partner_VXmoxl3q.jpg  67013
+partner_WOBPFqJD.jpg  90380
+
+=== text hits ===
+\components\portfolio\data.ts:26: ["Adsaro UK Graphics", "dm"], ["Emperor Graphics", "graphics"], ["Buy Fresh", "web"], ["Angel Health Care", "seo"], ["Chandra Surya Sports", "web"], ["Suvlav Application", "app"],
+\components\portfolio\data.ts:30: ["Kosish", "web"], ["Softsaro", "seo"], ["Market Lab", "web"], ["Mero Gantabya", "web"], ["Neerkart", "web"], ["Photo Studio", "web"],
+\components\Home.tsx:139: <p>Good work,<br />built to last</p>
+\lib\data.ts:12: "Angel Health Care",
+\lib\data.ts:15: "Neerkart",
+\lib\data.ts:16: "Emperor Educational Network",
+
+=== file head: \components\Home.tsx ===
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import { D } from "@/lib/data";
+import Services from "@/components/Services";
+import { SiteFooter } from "@/components/Site";
+import Navbar from "@/components/Navbar";
+import TechReveal from "@/components/TechReveal";
+import { SiLaravel, SiPhp, SiMysql, SiReact, SiNextdotjs, SiNodedotjs, SiTailwindcss, SiWordpress, SiShopify, SiFlutter, SiClickhouse } from "react-icons/si";
+import { TbBrandReactNative } from "react-icons/tb";
+import { Cloud as TcCloud, GitBranch as TcBranch, Code as TcCode } from "lucide-react";
+import { Search, Compass, PenTool, Code, Rocket, Lightbulb, Map as MapIcon, Palette, Layers, Zap } from "lucide-react";
+import ProcReveal from "@/components/ProcReveal";
+import WhyReveal from "@/components/WhyReveal";
+import PvGuard from "@/components/PvGuard";
+import CardsMotion from "@/components/CardsMotion";
+
+const S = "https://softsaro.com.np";
+const Roll = ({ t }: { t: string }) => (
+  <span className="roll"><span>{t}</span><span aria-hidden="true">{t}</span></span>
+);
+const Up = () => (<svg className="ar" viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9" /></svg>);
+const Spark = ({ c }: { c: string }) => (
+  <i className={`spark ${c}`}>
+    <svg viewBox="0 0 24 24" style={{ width: "100%", height: "100%", fill: "currentColor" }}>
+      <path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" />
+    </svg>
+  </i>
+);
+const Logo = ({ inv }: { inv?: boolean }) => (
+  <a href="#top" className={inv ? "logo inv" : "logo"} aria-label="Softsaro">
+    <svg viewBox="0 0 34 30">
+      <path d="M0 9h15v21H0z" fill={inv ? "#8b88c8" : "#6a67ae"} />
+      <path d="M11 0h23v15H19V9h-8z" fill={inv ? "#8b88c8" : "#6a67ae"} />
+      <path d="M15 15h4v15h-4z" fill={inv ? "#6a67ae" : "#3f3d7a"} />
+    </svg>SOFTSARO
+  </a>
+);
+const WI = [
+  <g key="w1"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="5" /><circle cx="12" cy="12" r="1.5" /></g>,
+  <g key="w2"><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 13l9 5 9-5" /></g>,
+  <g key="w3"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z" /><path d="M14 3v5h5M9 13h6M9 17h6" /></g>,
+  <g key="w4"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4" /></g>,
+  <g key="w5"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" /><path d="M9 12l2 2 4-4" /></g>,
+  <g key="w6"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18" /></g>,
+];
+
+
+=== context around 'built to last' (line 139) ===
+              <p className="sub" data-h>Strategy, design and technology for brands ready to grow.</p>
+              <div className="cta-row" data-h>
+                <a href="#work" className="btn blue"><Roll t="Explore our work" /><Up /></a>
+                <a href="#services" className="tlink"><Roll t="What we do" /><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" /></svg></a>
+              </div>
+            </div>
+            <div className="hero-vis" aria-hidden="true">
+              <div className="layer" data-d="12"><div className="fl f1">
+                <svg className="ribbon" viewBox="0 0 700 600">
+                  <defs>
+                    <linearGradient id="rg" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stopColor="#8b88c8" /><stop offset=".5" stopColor="#6a67ae" /><stop offset="1" stopColor="#3f3d7a" />
+                    </linearGradient>
+                    <filter id="sh" x="-20%" y="-20%" width="140%" height="150%">
+                      <feDropShadow dx="0" dy="34" stdDeviation="26" floodColor="#6a67ae" floodOpacity=".35" />
+                    </filter>
+                  </defs>
+                  <g filter="url(#sh)" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M90 390C130 535 420 565 600 440" stroke="url(#rg)" strokeWidth="74" />
+                    <path d="M360 70C540 20 660 170 610 300 560 430 360 470 240 400 130 335 150 140 360 70" stroke="url(#rg)" strokeWidth="86" />
+                    <path d="M360 52C520 14 636 160 590 286" stroke="#aaa7d8" strokeWidth="9" opacity=".55" />
+                    <path d="M110 372C150 500 400 535 580 425" stroke="#aaa7d8" strokeWidth="7" opacity=".4" />
+                  </g>
+                </svg></div></div>
+              <div className="layer" data-d="26"><div className="fl f2"><div className="glass">
+                <div className="gbar"><i></i><i></i><i></i></div>
+                <div className="gbody">
+                  <div className="gt"><h4>Innovative<br />Digital Solutions</h4><p>Build. Grow. Scale.</p><span className="gbtn">Get Started →</span></div>
+                  <svg className="mtn" viewBox="0 0 200 180">
+                    <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ece9f7" /><stop offset="1" stopColor="#bcb9e0" /></linearGradient></defs>
+                    <rect width="200" height="180" fill="url(#sk)" />
+                    <path d="M0 180L60 70l25 30 40-70 75 150z" fill="#5b5a86" />
+                    <path d="M125 30l-25 40 14-6 11 12 12-10 10 14z" fill="#fff" />
+                    <path d="M60 70L44 100l14-6 12 14 15-8z" fill="#fff" />
+                    <path d="M0 180l90-60 110 60z" fill="#efedf8" opacity=".8" />
+                  </svg>
+                </div></div></div></div>
+              <div className="layer tile t-code" data-d="40"><div className="fl f3"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 5l-4 14" /></svg></div></div>
+              <div className="layer tile t-chart" data-d="34"><div className="fl f4"><svg viewBox="0 0 24 24"><path d="M3 20h18M6 16v-3M11 16V9M16 16v-5M4 11l5-4 4 3 7-6" /></svg></div></div>
+              <div className="layer tile t-star" data-d="44"><div className="fl f5"><svg viewBox="0 0 24 24" className="fillsvg"><path d="M12 2c.8 5.5 4 8.7 10 10-6 1.3-9.2 4.5-10 10-.8-5.5-4-8.7-10-10 6-1.3 9.2-4.5 10-10z" /></svg></div></ ...[cut]
+              <svg className="spark s1" viewBox="0 0 24 24"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" /></svg>
+              <ul className="pills"><li><i></i>Design</li><li><i className="g"></i>Development</li><li><i></i>Growth</li></ul>
+            </div>
+          </div>
+          <div className="clients wrap">
+            <p>Good work,<br />built to last</p>
+            <div id="clients" className="mq"><div className="tk">{clients.map((c: string, i: number) => <span key={i}>{c}</span>)}</div></div>
+          </div>
+        </section>
+
+        <Services />
+
+        <section className="work" id="work">
+          <div className="wrap">
+            <p className="lab w"><i></i>Our work</p>
+            <h2 className="wh" data-r>Products we’ve designed, built and shipped.</h2>
+            <div className="work-showcase" id="pgrid">
+              <div className="showcase-bar"><span><i></i><i></i><i></i></span><b>Softsaro / Selected projects</b><a href={`${S}/portfolio`}>View all work <Up /></a></div>
+              <div className="project-deck">
+              {D.pj.slice(0, 4).map((p: string[], i: number) => (
+                <a key={p[4]} className={`pc deck-card card card-${i + 1}${i === 0 ? " is-featured" : ""}`} data-cur="view" href={`/portfolio/${p[4]}`}>
+                  <div className="pimg" data-n={`0${i + 1}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={p[3]} alt={p[0]} loading={i === 0 ? "eager" : "lazy"} />
+                    <span className="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9" /></svg></span>
+                  </div>
+                  <div className="pm"><h3>{p[0]}</h3><small>{i === 2 ? "Education · Web" : i === 3 ? "Advertising · Web" : p[1]}</small></div>
+                  <p>{p[2]}</p>
+                </a>
+              ))}
+                <a className="pc deck-card card deck-more" data-cur="open" data-label="View all" href={`${S}/portfolio`}>
+                  <div className="pimg"><span>+</span><b>Explore<br />our work</b></div>
+                  <div className="pm"><h3>All projects</h3><small>Portfolio</small></div>
+                </a>
+              </div>
+            </div>
+            <p className="pnote">Challenge and outcome notes are being confirmed with each client before publication.</p>
+          </div>
+        </section>
+
+        <section className="about" id="about">
+          <div className="wrap">
+            <p className="lab"><i></i><span className="gn">02 /</span> About Softsaro</p>
+            <div className="two">
+              <h2 data-r>Built for businesses that take digital seriously.</h2>
+              <p className="big">Softsaro is a team of developers, designers and marketers working from Trade Tower, Thapathali in Kathmandu, with a branch in the USA serving international clients. Design, development, SEO, marketing and ho ...[cut]
+            </div>
+            <div className="stats" id="stats">
+              {D.stats.map((s: any[], i: number) => (
+                <div key={i}><span className="sico"><svg viewBox="0 0 24 24" aria-hidden="true">{SI[i]}</svg></span><b><span className="count" data-to={s[0]}>0</span><i>{s[1]}</i></b><small>{s[2]}</small></div>
+              ))}
+
+=== css: marquee / ticker / keyframes ===
+\app\mobile-app-development\app.css:95: .ap-eyebrow{display:flex;align-items:center;gap:10px;font:500 12.5px Inter,sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:32px}.ap-eyebrow i{width:9px;height:9px;border-radius: ...[cut]
+\app\mobile-app-development\app.css:194: @keyframes aphide{to{visibility:hidden}}
+\app\portfolio\portfolio.css:91: @keyframes pf-drift{to{translate:-5vw 7vw}}
+\app\services\digital-marketing-dubai\dmd.css:22: @keyframes dmdGlow{to{transform:translate(-3%,4%) scale(1.06)}}
+\app\services\digital-marketing-dubai\dmd.css:92: .dmd-js .dmd-res-main svg path.l,.dmd-js .dmd-dash svg path.l{stroke-dashoffset:1}.dmd-js .in svg path.l,.dmd-js .dmd-dash svg path.l{animation:dmdDraw 2s ease .3s forwards}@keyframes dmdDra ...[cut]
+\app\globals.css:163: @keyframes drift {
+\app\globals.css:169: @keyframes spin {
+\app\globals.css:1039: @keyframes ping {
+\app\globals.css:1247: @keyframes tw {
+\app\globals.css:1294: .clients {
+\app\globals.css:1308: .clients>p {
+\app\globals.css:2846: .clients {
+\app\globals.css:2852: .mq {
+\app\globals.css:3179: @keyframes drop {
+\app\globals.css:3185: .mq {
+\app\globals.css:6170: @keyframes ssblink {
+\app\globals.css:10291: @keyframes wx-spin {
+\app\globals.css:10297: /* MARQUEE */
+\app\globals.css:10325: @keyframes wx-mq {
+\app\globals.css:11372: @keyframes statSheen {
+\app\globals.css:12062: /* marquee */
+\app\globals.css:12094: @keyframes uxmq {
+\app\globals.css:12473: @keyframes uxpulse {
+\app\globals.css:13831: @keyframes wx-spin {
+\app\globals.css:13837: /* MARQUEE */
+\app\globals.css:13865: @keyframes wx-mq {
+\app\globals.css:14985: @keyframes statSheen {
+\app\globals.css:15865: @keyframes planFade {
+\app\globals.css:15875: @keyframes planLift {
+\app\globals.css:17831: @keyframes dhShow {
+\app\globals.css:18287: /* marquee */
+\app\globals.css:18743: @keyframes dhRing {
+\app\globals.css:22221: @keyframes bnbob {
+\app\globals.css:22278: @keyframes bnspin {
+\app\globals.css:22284: /* marquee */
+\app\globals.css:22321: @keyframes bnmq {
+\app\globals.css:24016: @keyframes pmDrift {
+\app\globals.css:24022: @keyframes pmSpin {
+\app\globals.css:24069: @keyframes pmRing {
+\app\globals.css:24112: @keyframes pmPulse {
+\app\globals.css:24244: @keyframes pzEdge {
+\app\globals.css:24250: @keyframes pzOrbit {
+\app\globals.css:24256: @keyframes pzBlink {
+\app\globals.css:24426: @keyframes psEdge {
+\app\globals.css:24432: @keyframes psOrbit {
+\app\globals.css:24438: @keyframes psPulse {
+\app\globals.css:24664: @keyframes pdEdge {
+\app\globals.css:24670: @keyframes pdOrbit {
+\app\globals.css:25032: @keyframes slShow {
+\app\globals.css:25316: @keyframes slBlink {
+\app\globals.css:25713: @keyframes slShimmer {
+\app\globals.css:25975: @keyframes slSpinB {
+\app\globals.css:26097: @keyframes slPing {
+\app\globals.css:26250: @keyframes slDash {
+\app\globals.css:26268: @keyframes slPulse {
+\app\globals.css:26288: @keyframes slHl {
+\app\globals.css:26313: @keyframes slBob {
+\app\globals.css:26336: @keyframes slRip {
+\app\globals.css:26395: @keyframes slGrow {
+\app\globals.css:26416: @keyframes slSpin {
+\app\globals.css:27902: @keyframes dmdUp {
+\app\globals.css:29165: @keyframes dmdGlow {
+\app\globals.css:29269: @keyframes dmdMq {
+\app\globals.css:29299: @keyframes dmdSpin {
+\app\globals.css:29340: @keyframes bl-spin {
+\app\globals.css:29346: @keyframes bl-fade {
+\app\globals.css:29621: @keyframes cr-spin {
+\app\globals.css:29627: @keyframes cr-drift {
+\app\globals.css:29633: @keyframes cr-fade {
+\app\globals.css:29640: @keyframes cr-pop {
+
