@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/Site";
 import Navbar from "@/components/Navbar";
-import SeoMotion from "@/components/SeoMotion";
-import SeoPage from "@/components/SeoPage";
+import SeoTrainingMotion from "@/components/seo-training/SeoTrainingMotion";
+import SeoTrainingContent from "@/components/seo-training/SeoTrainingContent";
 
 const description =
   "Practical SEO training from Softsaro Nepal: keyword research, on-page and technical SEO, link building, local SEO, analytics, AEO and GEO fundamentals.";
@@ -18,9 +18,9 @@ export default function SeoTrainingPage() {
     <>
       <Navbar b="/" />
       <main>
-        <SeoMotion>
-          <SeoPage />
-        </SeoMotion>
+        <SeoTrainingMotion>
+          <SeoTrainingContent />
+        </SeoTrainingMotion>
       </main>
       <SiteFooter />
     </>

@@ -58,7 +58,7 @@ function AuditVisual() {
   );
 }
 
-export default function SeoPage() {
+export default function SeoTrainingContent() {
   return (
     <>
       <section className="ss-hero" id="top" aria-labelledby="seo-title">

@@ -35,7 +35,7 @@ function splitWords(el: HTMLElement) {
   return { words: Array.from(el.querySelectorAll<HTMLElement>(".sx-i")), restore: () => { el.innerHTML = orig; } };
 }
 
-export default function SeoMotion({ children }: { children: ReactNode }) {
+export default function SeoTrainingMotion({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
 
   useGSAP(
