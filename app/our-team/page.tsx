@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import PageReveal from "@/components/PageReveal";
 import { SiteFooter } from "@/components/Site";
-import TmPage from "@/components/team/TmPage";
+import TeamSection from "@/components/TeamSection";
 
 const description = "Meet the Softsaro team: strategists, designers, developers and growth specialists building useful digital work.";
 export const metadata: Metadata = { title: "Our Team | Softsaro", description, alternates: { canonical: "/our-team" }, openGraph: { type: "website", title: "Our Team | Softsaro", description } };
@@ -11,7 +11,7 @@ export default function OurTeamRoute() {
     <>
       <Navbar b="/" />
       <PageReveal>
-        <TmPage />
+        <TeamSection />
       </PageReveal>
       <SiteFooter />
     </>
