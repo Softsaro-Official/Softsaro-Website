@@ -161,7 +161,7 @@ export default function Home() {
             </div>
           </div>
           <div className="clients wrap">
-            <p>Good work,<br />built to last</p>
+            <p>Our Clients</p>
             <div id="clients" className="mq"><div className="tk tk-logos">{PARTNER_LOGOS.concat(PARTNER_LOGOS).map(([f, n], i) => {
               const dup = i >= PARTNER_LOGOS.length;
               return (

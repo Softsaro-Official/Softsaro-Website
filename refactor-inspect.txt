@@ -1,0 +1,694 @@
+=== git ===
+branch: main
+last commit: 417fa64 feat:change the scrollable text to logo
+changed/untracked entries: 2
+ M components/Home.tsx
+?? components/Home.tsx.bak-label
+
+=== git: tracked totals ===
+tracked files: 750
+tracked backup-like files: 90
+
+=== totals ===
+files scanned (without node_modules/.next/.git): 768
+
+=== backup / temp style files ===
+count: 92
+total KB: 21759
+_recovered\Photo.tsx.bak  832
+app\api\careers\route.ts.bak11  2974
+app\globals.css.bak  632903
+app\globals.css.bak10  649323
+app\globals.css.bak11  652888
+app\globals.css.bak12  653370
+app\globals.css.bak13  653481
+app\globals.css.bak14  656369
+app\globals.css.bak16  656833
+app\globals.css.bak17  657408
+app\globals.css.bak18  657625
+app\globals.css.bak19  657822
+app\globals.css.bak2  636168
+app\globals.css.bak20  658192
+app\globals.css.bak21  658882
+app\globals.css.bak23  659342
+app\globals.css.bak24  661339
+app\globals.css.bak25  662662
+app\globals.css.bak28  665838
+app\globals.css.bak29  667245
+app\globals.css.bak3  644767
+app\globals.css.bak31  668987
+app\globals.css.bak32  669674
+app\globals.css.bak33  670244
+app\globals.css.bak34  670991
+app\globals.css.bak35  671531
+app\globals.css.bak36  673199
+app\globals.css.bak37  673298
+app\globals.css.bak38  673298
+app\globals.css.bak39  674577
+app\globals.css.bak6  646216
+app\globals.css.bak7  649174
+app\globals.css.bak-partners  774940
+app\globals.css.bak-partners2  775591
+app\mobile-app-development\app.css.bak  33479
+app\mobile-app-development\page.tsx.bak  16009
+app\our-team\page.tsx.bak4  779
+app\portfolio\page.tsx.bak4  1436
+app\portfolio\portfolio.css.bak4  10817
+app\portfolio\portfolio.css.bak5  11892
+app\pricing\advanced-seo\page.tsx.bak  456
+app\pricing\digital-marketing\page.tsx.bak  479
+app\pricing\domain-hosting\page.tsx.bak  468
+app\services\digital-marketing-dubai\page.tsx.bak  1230
+app\services\seo-expert-dubai\page.tsx.bak  222
+components\app\AppMotion.tsx.bak  16258
+components\app\Screens.tsx.bak  3962
+components\contact\contact.module.css.bak4  9111
+components\contact\ContactMotion.tsx.bak4  2282
+components\contact\ContactPage.tsx.bak4  2977
+components\contact\ContactUI.tsx.bak4  2791
+components\daley\daley.module.css.bak2  17302
+components\daley\daley.module.css.bak3  17576
+components\daley\DaleyFx.tsx.bak3  3658
+components\daley\DaleyGallery.tsx.bak3  5369
+components\daley\DaleyMotion.tsx.bak  4161
+components\daley\DaleyMotion.tsx.bak3  5493
+components\daley\DaleyPage.tsx.bak  15200
+components\daley\DaleyPage.tsx.bak2  15260
+components\daley\DaleyPage.tsx.bak3  15326
+components\DmpCareerForm.tsx.bak11  6584
+components\DmpCareerForm.tsx.bak18  3941
+components\DmpHeroCard.tsx.bak18  689
+components\DmpHeroVis.tsx.bak13  1476
+components\DmpMotion.tsx.bak15  8908
+components\DmpMotion.tsx.bak3  8895
+components\DmpPage.tsx.bak10  45228
+components\DmpPage.tsx.bak13  44500
+components\DmpPage.tsx.bak22  44061
+components\DmpPage.tsx.bak26  41375
+components\DmpPage.tsx.bak27  40745
+components\DmpPage.tsx.bak28  38631
+components\DmpPage.tsx.bak29  38636
+components\DmpPage.tsx.bak30  38732
+components\DmpPage.tsx.bak34  38090
+components\DmpPage.tsx.bak36  38155
+components\DmpPage.tsx.bak8  46473
+components\DmpPage.tsx.bak9  45666
+components\DmpWork.tsx.bak39  9363
+components\Home.tsx.bak-label  19853
+components\Home.tsx.bak-partners  18339
+components\Home.tsx.bak-partners2  19871
+components\Navbar.tsx.bak  12053
+components\Navbar.tsx.bak2  16071
+components\portfolio\data.ts.bak4  3968
+components\portfolio\PortfolioClient.tsx.bak4  13548
+components\portfolio\PortfolioClient.tsx.bak5  15221
+components\portfolio\PortfolioClient.tsx.bak6  17039
+components\pricing\PricingMotion.tsx.bak  3998
+components\pricing\PricingPage.tsx.bak  17026
+components\team\tm.css.bak5  14967
+lib\motion.ts.bak-speed  17326
+
+=== root-level files ===
+.gitignore  64
+about-inspect.txt  4023
+adsaro-inspect.txt  5116
+blog-inspect.txt  14420
+brand-inspect.txt  5536
+career-inspect.txt  6377
+career-inspect2.txt  7455
+contact-inspect.txt  189
+daley-inspect.txt  17997
+daley-inspect2.txt  22508
+daley-inspect3.txt  23768
+dmd-existing.txt  46369
+dmh-inspect.txt  15381
+dmp-inspect.txt  35631
+dubai-inspect.txt  5810
+dubai-inspect2.txt  41216
+dubai-inspect3.txt  15594
+emperor-inspect.txt  11195
+inspect.txt  7445
+inspect-out.txt  11729
+marquee-inspect.txt  14445
+marquee-inspect2.txt  8237
+marquee-inspect3.txt  6749
+navbar-inspect.txt  23866
+next.config.mjs  180
+next-env.d.ts  295
+package.json  712
+package-lock.json  77191
+portfolio-code.txt  32106
+portfolio-inspect.txt  15781
+postcss.config.mjs  60
+pricing-inspect.txt  31296
+sajha-diag.txt  888
+sajha-inspect.txt  18398
+sajha-inspect2.txt  4866
+sajha-inspect3.txt  53649
+seo-training.ps1  0
+team-inspect.txt  23669
+team-live.txt  38738
+tsconfig.json  698
+tsconfig.tsbuildinfo  839744
+
+=== root-level folders ===
+.adsaro-tmp
+.blog-backup
+.career-backup
+.career-backup-v2
+.daley-tmp
+.dmp-backup-v1
+.dmp-backup-v2
+.emperor-tmp
+.git
+.next
+.partners-originals
+.portfolio-tmp
+.sajha-backup-v3
+.sajha-backup-v4
+.sajha-backup-v5
+.sajha-tmp
+app
+components
+lib
+node_modules
+public
+_recovered
+
+=== code files read ===
+count: 176
+
+=== ZERO importers: 22 of 164 candidate files ===
+.sajha-backup-v4\sajha.module.pre-v4b.css  17228
+_recovered\globals.before-services-menu.20261119-103401.css  418905
+_recovered\globals.before-union.css  267104
+_recovered\globals.current-mobile-block.20261118-115809.css  18959
+_recovered\globals.HEAD.css  248142
+_recovered\globals.merged.css  279140
+_recovered\globals.stage1.css  161185
+_recovered\globals.stage2.css  248142
+_recovered\globals.stage3.css  169152
+_recovered\globals.truncated.css  184
+components\app\AppPage.tsx  17731
+components\dmd\DmdPage.tsx  20324
+components\DmdPage.tsx  23706
+components\DmvPage.tsx  22980
+components\DmxPage.tsx  29827
+components\SeoLanding.tsx  39560
+components\team\TeamExperience.tsx  9492
+components\team\TxMotion.tsx  14240
+components\TeamMotion.tsx  14760
+components\TeamPage.tsx  4121
+components\web\WdMotion.tsx  8322
+components\web\WebSections.tsx  9097
+
+=== exactly ONE importer (chains): 84 ===
+.blog-backup\BlogMotion.tsx <- page.tsx
+.blog-backup\BlogPage.tsx <- page.tsx
+.career-backup-v2\CareerMotion.tsx <- page.tsx
+.career-backup-v2\CareerPage.tsx <- page.tsx
+.dmp-backup-v1\DmpPage.tsx <- page.tsx
+.sajha-backup-v3\SajhaPage.tsx <- page.tsx
+.sajha-backup-v4\SajhaPage.tsx <- page.tsx
+app\portfolio\[slug]\portfolio.module.css <- page.tsx
+components\about-motion.css <- AboutMotion.tsx
+components\AboutMotion.tsx <- page.tsx
+components\AboutPage.tsx <- page.tsx
+components\adsaro\AdsaroMotion.tsx <- AdsaroPage.tsx
+components\adsaro\AdsaroPage.tsx <- page.tsx
+components\adsaro\AdsaroUI.tsx <- AdsaroPage.tsx
+components\app\AppMotion.tsx <- page.tsx
+components\app\AppPhoto.tsx <- AppPage.tsx
+components\app\Screens.tsx <- page.tsx
+components\BlogArticle.tsx <- page.tsx
+components\BlogMotion.tsx <- page.tsx
+components\BlogPage.tsx <- page.tsx
+components\bn\BnMotion.tsx <- page.tsx
+components\bn\BnPage.tsx <- page.tsx
+components\bn\BnPhoto.tsx <- BnPage.tsx
+components\CardsMotion.tsx <- Home.tsx
+components\CareerMotion.tsx <- page.tsx
+components\CareerPage.tsx <- page.tsx
+components\contact\ContactForm.tsx <- ContactPage.tsx
+components\contact\ContactMotion.tsx <- ContactPage.tsx
+components\contact\ContactPage.tsx <- page.tsx
+components\daley\DaleyPage.tsx <- page.tsx
+components\DdLink.tsx <- Site.tsx
+components\DhMotion.tsx <- DomainHostingPage.tsx
+components\DmdFx.tsx <- DmdPage.tsx
+components\DmMotion.tsx <- page.tsx
+components\DmPage.tsx <- page.tsx
+components\DmpMarquee.tsx <- DmpWork.tsx
+components\DmpPage.tsx <- page.tsx
+components\DmvForm.tsx <- DmvPage.tsx
+components\DmvMotion.tsx <- DmvPage.tsx
+components\DmxForm.tsx <- DmxPage.tsx
+components\DmxMotion.tsx <- DmxPage.tsx
+components\DomainHostingPage.tsx <- page.tsx
+components\emperor\EmperorPage.tsx <- page.tsx
+components\Footer.tsx <- Site.tsx
+components\GsapCursor.tsx <- layout.tsx
+components\Home.tsx <- page.tsx
+components\Intro.tsx <- page.tsx
+components\intro-pieces.ts <- Intro.tsx
+components\Motion.tsx <- page.tsx
+components\portfolio\PortfolioClient.tsx <- page.tsx
+components\pricing\PricingDmExtras.tsx <- page.tsx
+components\pricing\PricingExtras.tsx <- page.tsx
+components\pricing\PricingMotion.tsx <- PricingPage.tsx
+components\pricing\PricingSeoExtras.tsx <- page.tsx
+components\ProcReveal.tsx <- Home.tsx
+components\PvGuard.tsx <- Home.tsx
+components\sajha\SajhaPage.tsx <- page.tsx
+components\SeoMotion.tsx <- page.tsx
+components\SeoPage.tsx <- page.tsx
+components\SlForm.tsx <- SeoLanding.tsx
+components\SlMotion.tsx <- SeoLanding.tsx
+components\team\tm.css <- TmPage.tsx
+components\team\TmMotion.tsx <- TmPage.tsx
+components\team\TmPage.tsx <- page.tsx
+components\team\TmPeople.tsx <- TmPage.tsx
+components\team-motion.css <- TeamMotion.tsx
+components\TechReveal.tsx <- Home.tsx
+components\ux\UxMotion.tsx <- page.tsx
+components\ux\UxPage.tsx <- page.tsx
+components\ux\UxPhoto.tsx <- UxPage.tsx
+components\web\WdMockups.tsx <- WebSections.tsx
+components\web\wd-parts.tsx <- WebSections.tsx
+components\WhyReveal.tsx <- Home.tsx
+components\wx\WxMotion.tsx <- page.tsx
+components\wx\WxPage.tsx <- page.tsx
+components\wx\WxPhoto.tsx <- WxPage.tsx
+lib\adsaro-data.ts <- AdsaroPage.tsx
+lib\blog-posts.ts <- BlogPage.tsx
+lib\dm-data.ts <- DmPage.tsx
+lib\emperor-data.ts <- EmperorPage.tsx
+lib\motion.ts <- Motion.tsx
+lib\motion-plus.ts <- motion.ts
+lib\seo-landing-data.ts <- SeoLanding.tsx
+lib\wd-data.ts <- WebSections.tsx
+
+=== name prefix families (files / zero-importers) ===
+(other): files=5 zero=0
+abou: files=1 zero=0
+About: files=2 zero=0
+adsar: files=5 zero=0
+ap: files=1 zero=0
+AppMo: files=1 zero=0
+AppPa: files=1 zero=1
+AppPh: files=1 zero=0
+blo: files=1 zero=0
+BlogA: files=1 zero=0
+BlogM: files=2 zero=0
+BlogP: files=2 zero=0
+BnMot: files=1 zero=0
+BnPag: files=1 zero=0
+BnPho: files=1 zero=0
+Cards: files=1 zero=0
+Caree: files=8 zero=0
+conta: files=6 zero=0
+dale: files=2 zero=0
+Daley: files=4 zero=0
+dat: files=2 zero=0
+DdLin: files=1 zero=0
+DhMot: files=1 zero=0
+dm: files=2 zero=0
+DmdF: files=1 zero=0
+DmdFa: files=2 zero=0
+DmdFo: files=2 zero=0
+DmdMo: files=2 zero=0
+DmdPa: files=2 zero=2
+DmMot: files=1 zero=0
+DmpAb: files=2 zero=0
+DmPag: files=1 zero=0
+DmpCa: files=1 zero=0
+DmpDr: files=1 zero=0
+DmpF: files=1 zero=0
+DmpFo: files=1 zero=0
+DmpHe: files=2 zero=0
+DmpMa: files=1 zero=0
+DmpMo: files=1 zero=0
+DmpPa: files=2 zero=0
+DmpRi: files=1 zero=0
+DmpSv: files=1 zero=0
+DmpWo: files=1 zero=0
+DmvFo: files=1 zero=0
+DmvMo: files=1 zero=0
+DmvPa: files=1 zero=1
+DmxFo: files=1 zero=0
+DmxMo: files=1 zero=0
+DmxPa: files=1 zero=1
+Domai: files=1 zero=0
+Emper: files=2 zero=0
+Foote: files=1 zero=0
+globa: files=9 zero=9
+GsapC: files=1 zero=0
+Hom: files=1 zero=0
+Icon: files=1 zero=0
+intr: files=2 zero=0
+Motio: files=3 zero=0
+Navba: files=1 zero=0
+PageR: files=1 zero=0
+Phot: files=1 zero=0
+portf: files=3 zero=0
+Prici: files=5 zero=0
+ProcR: files=1 zero=0
+PvGua: files=1 zero=0
+sajh: files=6 zero=1
+Sajha: files=7 zero=0
+Scree: files=1 zero=0
+se: files=2 zero=0
+SeoLa: files=1 zero=1
+SeoMo: files=1 zero=0
+SeoPa: files=1 zero=0
+Servi: files=1 zero=0
+Sit: files=1 zero=0
+SlFor: files=1 zero=0
+SlMot: files=1 zero=0
+tea: files=3 zero=0
+TeamE: files=1 zero=1
+TeamM: files=1 zero=1
+TeamP: files=1 zero=1
+TechR: files=1 zero=0
+TmMot: files=1 zero=0
+TmPag: files=1 zero=0
+TmPeo: files=1 zero=0
+TmPi: files=1 zero=0
+TxMot: files=1 zero=1
+UxMot: files=1 zero=0
+UxPag: files=1 zero=0
+UxPho: files=1 zero=0
+WdMoc: files=1 zero=0
+WdMot: files=1 zero=1
+WebSe: files=1 zero=1
+WhyRe: files=1 zero=0
+WxMot: files=1 zero=0
+WxPag: files=1 zero=0
+WxPho: files=1 zero=0
+
+=== route files -> local imports ===
+app\layout.tsx: @/components/GsapCursor
+app\page.tsx: @/components/Home, @/components/Motion, @/components/Intro
+app\about-us\page.tsx: @/components/Navbar, @/components/AboutPage, @/components/AboutMotion, @/components/PageReveal, @/components/Site
+app\api\careers\route.ts: 
+app\blog\page.tsx: @/components/Navbar, @/components/BlogPage, @/components/BlogMotion, @/components/Site
+app\blog\a-website-that-earns-its-keep\page.tsx: @/components/Navbar, @/components/BlogArticle, @/components/PageReveal, @/components/Site
+app\career\page.tsx: @/components/Navbar, @/components/CareerPage, @/components/CareerMotion, @/components/Site
+app\contact\page.tsx: @/components/Navbar, @/components/Site, @/components/contact/ContactPage
+app\digital-marketing-training\page.tsx: @/components/Site, @/components/Navbar, @/components/DmMotion, @/components/DmPage
+app\mobile-app-development\page.tsx: @/components/Navbar, @/components/Site, @/components/app/AppMotion, @/components/app/Screens
+app\our-team\page.tsx: @/components/Navbar, @/components/PageReveal, @/components/Site, @/components/team/TmPage
+app\portfolio\page.tsx: @/components/Navbar, @/components/Site, @/components/portfolio/PortfolioClient
+app\portfolio\adsaro-nepal\page.tsx: @/components/Navbar, @/components/Site, @/components/adsaro/AdsaroPage
+app\portfolio\daley-bhai-real-estate\page.tsx: @/components/Navbar, @/components/Site, @/components/daley/DaleyPage
+app\portfolio\emperor-educational-consultancy\page.tsx: @/components/Navbar, @/components/Site, @/components/emperor/EmperorPage
+app\portfolio\sajha-courier\page.tsx: @/components/Navbar, @/components/Site, @/components/sajha/SajhaPage
+app\portfolio\[slug]\page.tsx: @/components/Navbar, @/components/Site, @/lib/data, ./portfolio.module.css
+app\pricing\advanced-seo\page.tsx: @/components/Navbar, @/components/Site, @/components/pricing/PricingPage, @/components/pricing/PricingSeoExtras
+app\pricing\digital-marketing\page.tsx: @/components/Navbar, @/components/Site, @/components/pricing/PricingPage, @/components/pricing/PricingDmExtras
+app\pricing\domain-hosting\page.tsx: @/components/Navbar, @/components/Site, @/components/pricing/PricingPage, @/components/pricing/PricingExtras
+app\pricing\ui-ux-design\page.tsx: @/components/Navbar, @/components/Site, @/components/pricing/PricingPage
+app\pricing\web-development\page.tsx: @/components/Navbar, @/components/Site, @/components/pricing/PricingPage
+app\seo-training\page.tsx: @/components/Site, @/components/Navbar, @/components/SeoMotion, @/components/SeoPage
+app\services\banner-ads-in-nepal\page.tsx: @/components/Navbar, @/components/Site, @/components/bn/BnMotion, @/components/bn/BnPage
+app\services\digital-marketing-dubai\page.tsx: @/components/Navbar, @/components/Site, @/components/DmpPage
+app\services\domain-and-hosting-in-nepal\page.tsx: @/components/Navbar, @/components/Site, @/components/DomainHostingPage
+app\services\seo-expert-dubai\page.tsx: 
+app\ui-ux-design\page.tsx: @/components/Navbar, @/components/Site, @/components/ux/UxMotion, @/components/ux/UxPage
+app\web-development\page.tsx: @/components/Navbar, @/components/Site, @/components/wx/WxMotion, @/components/wx/WxPage
+
+=== package.json scripts ===
+dev: next dev
+build: next build
+start: next start
+
+=== packages not mentioned in any code file (build tools and types may be false positives) ===
+devDependencies : @types/node
+devDependencies : @types/react
+devDependencies : @types/react-dom
+devDependencies : playwright
+
+=== css files by line count ===
+41438  app\globals.css
+24164  .dmp-backup-v2\globals.css
+24098  .dmp-backup-v1\globals.css
+22686  .career-backup-v2\globals.css
+22485  .career-backup\globals.css
+22441  .blog-backup\globals.css
+21503  _recovered\globals.before-services-menu.20261119-103401.css
+12475  _recovered\globals.merged.css
+12268  _recovered\globals.before-union.css
+12035  _recovered\globals.HEAD.css
+12035  _recovered\globals.stage2.css
+3752  _recovered\globals.stage3.css
+3645  _recovered\globals.stage1.css
+356  components\sajha\sajha.module.css
+305  .sajha-backup-v5\sajha.module.css
+240  components\daley\daley.module.css
+232  _recovered\globals.current-mobile-block.20261118-115809.css
+219  app\portfolio\[slug]\portfolio.module.css
+200  app\mobile-app-development\app.css
+195  components\team-motion.css
+192  components\adsaro\adsaro.module.css
+182  .sajha-backup-v4\sajha.module.pre-v4b.css
+182  .sajha-backup-v3\sajha.module.css
+182  .sajha-backup-v4\sajha.module.css
+181  components\team\tm.css
+
+=== globals.css: keyframe names defined more than once ===
+statSheen x2
+cr-drift x2
+wx-spin x2
+wx-mq x2
+
+=== globals.css: section comment markers (first 160) ===
+175: /* buttons */
+314: /* nav */
+337: /* Focused menu overlay */
+607: /* Reference-inspired large navigation composition */
+718: /* Chess artwork menu background */
+994: /* hero */
+1317: /* services */
+1393: /* work */
+1537: /* Featured work deck */
+1749: /* Editorial project-board arrangement */
+1822: /* Horizontal product shelf */
+2254: /* about */
+2297: /* why */
+2349: /* process */
+2428: /* tech */
+2478: /* testimonials */
+2595: /* final + footer */
+2905: /* motion layer */
+3993: /* SV2 SERVICES */
+4203: /* Interactive Softsaro services */
+4534: /* SEO TRAINING PAGE */
+5236: /* DM TRAINING PAGE v2 */
+5561: /* photo band */
+5621: /* bento */
+5779: /* practical */
+5892: /* tools */
+5953: /* why */
+6010: /* final cta */
+6101: /* SEO TRAINING PAGE v2 */
+6348: /* photo band */
+6416: /* learn: topic index with photo preview */
+6528: /* method */
+6557: /* tools */
+6609: /* why */
+6669: /* cta */
+6873: /* SOFTSARO INTRO */
+6943: /* INTRO V2 */
+7021: /* INTRO V3 */
+7060: /* NAVBAR LOGO */
+7078: /* FOOTER V2 */
+7306: /* FOOTER V3 */
+7395: /* SOFTSARO INTRO */
+7465: /* INTRO V2 */
+7543: /* INTRO V3 */
+7582: /* NAVBAR LOGO */
+7600: /* FOOTER V2 */
+7828: /* FOOTER V3 */
+7948: /* dark cards: normal blend, lift the screenshot */
+7957: /* All projects card: restore content */
+7990: /*        TL    TR    BR    BL   /  TL    TR    BR    BL  */
+8011: /* keep badge and arrow clear of the rounded corners */
+8022: /* optional tighter featured title */
+8028: /* 02 Sajha = Vader */
+8034: /* 01 Daley Bhai = ADR1FT: sharp top-left, huge top-right sweep, tapered */
+8041: /* 03 Emperor = Hyper Dash */
+8062: /* badge and arrow sit inside the new silhouette */
+8079: /* keep screenshot well inside the silhouette */
+8084: /* badge + arrow inside */
+8095: /* floor shadow back, on the card (not clipped by the mask) */
+8130: /* shadow: no negative z-index, sits just under the card */
+8157: /* All projects = Angry Birds: big top curves, round bottoms */
+8163: /* 02 Sajha = Vader: biggest curve top-left, tighter top-right */
+8169: /* 03 Emperor = Hyper Dash: big top-left, tight top-right, round bottoms */
+8175: /* 04 Adsaro = Sniper Elite: big top sweep on the right, big bottom-right */
+8181: /* keep badges and arrows clear of the larger curves */
+8217: /* small cards sit lower: top offset = 42% of their own width */
+8222: /* proportions from the reference: small 177x187, featured 295x310 */
+8521: /* WORDMARK TINT */
+8526: /* MENU SUBMENU */
+8665: /* WORDMARK TINT */
+8670: /* MENU SUBMENU */
+8863: /* hero */
+8974: /* browser / mockups */
+9285: /* what we build */
+9426: /* expertise (dark) */
+9500: /* showcase */
+9593: /* process */
+9663: /* why */
+9728: /* tech */
+9758: /* faq */
+9803: /* cta */
+9951: /* WX WEB DEV v2 */
+10040: /* HERO */
+10297: /* MARQUEE */
+10354: /* WHAT WE BUILD: horizontal */
+10628: /* EXPERTISE: pinned */
+10728: /* BENTO */
+10787: /* PROCESS rows */
+10849: /* WHY */
+10926: /* TECH */
+10956: /* FAQ */
+11030: /* CTA */
+11066: /* RESPONSIVE */
+11179: /* WX IMAGES */
+11202: /* WX TYPE */
+11231: /* hierarchy: H1 > H2 > panel/row titles > body */
+11413: /* stats icon fix */
+11433: /* stats card size */
+11445: /* stats: GSAP owns transform, no CSS springs */
+11590: /* hero */
+12062: /* marquee */
+12100: /* accordion */
+12187: /* expertise */
+12538: /* showcase */
+12893: /* process stack */
+12970: /* why */
+13044: /* cta */
+13080: /* responsive */
+13275: /* closed accordion panels: show a soft visual instead of blank white */
+13293: /* pinned canvas: photos had collapsed to zero height */
+13308: /* showcase: stop phone covering the third KPI */
+13491: /* WX WEB DEV v2 */
+13580: /* HERO */
+13837: /* MARQUEE */
+13894: /* WHAT WE BUILD: horizontal */
+14168: /* EXPERTISE: pinned */
+14268: /* BENTO */
+14327: /* PROCESS rows */
+14389: /* WHY */
+14466: /* TECH */
+14496: /* FAQ */
+14570: /* CTA */
+14606: /* RESPONSIVE */
+14719: /* WX IMAGES */
+14742: /* WX TYPE */
+14771: /* hierarchy: H1 > H2 > panel/row titles > body */
+15026: /* stats icon fix */
+15046: /* stats card size */
+15058: /* stats: GSAP owns transform, no CSS springs */
+15068: /* why: planner board */
+15261: /* room for the corner number so cards never cover it */
+15267: /* cards straight, tilt comes from the board only */
+15276: /* tighter card: icon top, text pinned to bottom */
+15617: /* Expanded menu groups must take space in the desktop grid. */
+15917: /* Pricing pages */
+16259: /* MOBILE APP PAGE v1 */
+16331: /* phone */
+16579: /* hero */
+16826: /* what we build */
+16944: /* expertise */
+17058: /* showcase */
+17139: /* process */
+17251: /* tech */
+17286: /* why */
+17385: /* faq */
+17466: /* cta */
+17711: /* DOMAIN HOSTING PAGE */
+17900: /* hero */
+18287: /* marquee */
+18324: /* dark sections */
+18467: /* services panels */
+18572: /* vps */
+18681: /* built for / network */
+18803: /* journey */
+18964: /* why */
+19031: /* faq */
+19132: /* cta */
+19237: /* tablet */
+21872: /* ad banners (coded) */
+22113: /* hero */
+
+=== public: top folders (files / KB) ===
+code-orbit-menu-bg.png: files=1 KB=1534
+softsaro-logo.png: files=1 KB=22
+softsaro-menu-bg.png: files=1 KB=1555
+tech-menu-bg.png: files=1 KB=1694
+assets: files=58 KB=17695
+blog: files=16 KB=17658
+career: files=3 KB=2206
+images: files=141 KB=4588
+
+=== public: 15 largest files ===
+public\blog\blog-writer-in-nepal.jpeg  2496065
+public\blog\content-writer-in-nepal-guide.jpeg  2370249
+public\blog\video-editing-in-nepal-guide.jpeg  2226694
+public\blog\ui-ux-design-vs-graphic-design.jpeg  2035452
+public\blog\backlink-building-in-nepal.jpeg  2028270
+public\blog\geo-services-in-nepal.jpeg  2021174
+public\blog\aeo-services-in-nepal.jpeg  1992139
+public\career\hero.png  1884508
+public\tech-menu-bg.png  1734836
+public\blog\aio-services-in-nepal.jpeg  1625217
+public\assets\team\sujan-adhikari.png  1598802
+public\assets\team\krishna-prasad-khanal.png  1595816
+public\softsaro-menu-bg.png  1592577
+public\assets\team\aabishkar-shrestha.png  1584489
+public\assets\team\anup-kasula.png  1576640
+
+=== tsconfig.json (first 40 lines) ===
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+
