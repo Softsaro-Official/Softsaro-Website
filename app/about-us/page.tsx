@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import AboutPage from "@/components/AboutPage";
-import AboutMotion from "@/components/AboutMotion";
+import AboutPage from "@/components/about/AboutPage";
+import AboutMotion from "@/components/about/AboutMotion";
 import PageReveal from "@/components/PageReveal";
 import { SiteFooter } from "@/components/Site";
 

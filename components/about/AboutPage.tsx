@@ -6,7 +6,7 @@ import { ArrowUpRight, BadgeCheck, Clock3, Cog, Compass, Headset, Layers3, Mail,
 import { D } from "@/lib/data";
 import { aboutImg } from "@/lib/about-images";
 import { clientsCopy, companyIntro, contactCards, leader, mission, vision, whoExtra, whyCards } from "@/lib/about-data";
-import { FxCard } from "@/components/AboutFx";
+import { FxCard } from "@/components/about/AboutFx";
 
 const principles = [
   { icon: Compass, title: "Start with the real goal", copy: "We listen for the business outcome behind the brief, then make decisions that move it forward." },
