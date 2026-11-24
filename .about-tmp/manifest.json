@@ -1,0 +1,26 @@
+[
+    {
+        "key":  "teamNine",
+        "in":  "E:\\softsaro\\softsaro-next\\.about-tmp\\zip\\aboutusphoyto\\teamnine.jpeg",
+        "out":  "E:\\softsaro\\softsaro-next\\public\\images\\about\\team-nine.webp",
+        "max":  1600
+    },
+    {
+        "key":  "teamFour",
+        "in":  "E:\\softsaro\\softsaro-next\\.about-tmp\\zip\\aboutusphoyto\\teamfour.jpeg",
+        "out":  "E:\\softsaro\\softsaro-next\\public\\images\\about\\team-four.webp",
+        "max":  1400
+    },
+    {
+        "key":  "teamSeven",
+        "in":  "E:\\softsaro\\softsaro-next\\.about-tmp\\zip\\aboutusphoyto\\teamseven.jpeg",
+        "out":  "E:\\softsaro\\softsaro-next\\public\\images\\about\\team-seven.webp",
+        "max":  1200
+    },
+    {
+        "key":  "founder",
+        "in":  "E:\\softsaro\\softsaro-next\\public\\assets\\team\\santosh-rajbanshi.png",
+        "out":  "E:\\softsaro\\softsaro-next\\public\\images\\about\\founder.webp",
+        "max":  1000
+    }
+]
