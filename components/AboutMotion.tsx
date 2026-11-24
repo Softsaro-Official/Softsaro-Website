@@ -174,6 +174,94 @@ export default function AboutMotion({ children }) {
         gsap.fromTo(cta, { clipPath: "inset(0% 100% 0% 0% round 999px)", opacity: 0 }, { clipPath: "inset(0% 0% 0% 0% round 999px)", opacity: 1, duration: 1.2, ease: "expo.inOut", delay: 0.2, scrollTrigger: once(clos, "top 70%"), onComplete: () => gsap.set(cta, { clearProps: "clipPath" }) });
       }
 
+      /* ===== about-v2: company intro, collage, leadership, clients ===== */
+      [".about-co h2", ".about-who-extra h3", ".about-why h2", ".about-lead h2", ".about-clients h2", ".about-contact .lab"].forEach((s) => {
+        const el = one(s);
+        if (!el || s.endsWith(".lab")) return;
+        const w = reveal(el);
+        gsap.to(w, { yPercent: 0, duration: 1.25, stagger: 0.05, ease: "expo.out", scrollTrigger: once(el, "top 86%") });
+      });
+      if (one(".about-co")) gsap.from(".about-co-side > *", { y: 30, opacity: 0, duration: 1.1, stagger: 0.12, ease: "expo.out", scrollTrigger: once(".about-co", "top 70%") });
+      if (one(".about-who-extra")) gsap.from(".about-who-extra > :not(h3)", { y: 28, opacity: 0, duration: 1.1, stagger: 0.1, ease: "expo.out", scrollTrigger: once(".about-who-extra", "top 85%") });
+
+      q(".about-collage figure").forEach((f, fi) => {
+        const shot = f.querySelector(".about-shot"), inner = f.querySelector(".about-shot-in"), img = f.querySelector("img");
+        gsap.fromTo(shot, { clipPath: ["inset(100% 0% 0% 0% round 28px)", "inset(0% 100% 0% 0% round 28px)", "inset(0% 0% 0% 100% round 28px)"][fi % 3] }, { clipPath: "inset(0% 0% 0% 0% round 28px)", duration: 1.5, delay: fi * 0.18, ease: "expo.inOut", scrollTrigger: once(f, "top 86%"), onComplete: () => gsap.set(shot, { clearProps: "clipPath" }) });
+        if (img) gsap.from(img, { scale: 1.3, duration: 2, delay: fi * 0.18, ease: "expo.out", scrollTrigger: once(f, "top 86%") });
+        if (inner) gsap.fromTo(inner, { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: f, start: "top bottom", end: "bottom top", scrub: true } });
+      });
+      gsap.from(".about-shot-tag", { y: 16, opacity: 0, duration: 1, ease: "expo.out", scrollTrigger: once(".about-collage", "top 70%") });
+
+      const pt = one(".about-portrait");
+      if (pt) {
+        gsap.fromTo(pt, { clipPath: "inset(100% 0% 0% 0% round 32px)" }, { clipPath: "inset(0% 0% 0% 0% round 32px)", duration: 1.5, ease: "expo.inOut", scrollTrigger: once(pt, "top 85%"), onComplete: () => gsap.set(pt, { clearProps: "clipPath" }) });
+        gsap.fromTo(".about-portrait-in", { yPercent: -5 }, { yPercent: 5, ease: "none", scrollTrigger: { trigger: pt, start: "top bottom", end: "bottom top", scrub: true } });
+        gsap.from(".about-portrait-chip", { y: 20, opacity: 0, stagger: 0.12, duration: 1, ease: "expo.out", scrollTrigger: once(pt, "top 70%") });
+      }
+      if (one(".about-lead-copy .blog-category")) gsap.from(".about-lead-copy .blog-category", { x: -30, opacity: 0, duration: 1.1, ease: "expo.out", scrollTrigger: once(".about-lead", "top 75%") });
+      if (one(".about-quote")) gsap.from(".about-quote", { x: 70, opacity: 0, duration: 1.3, ease: "expo.out", scrollTrigger: once(".about-quote", "top 88%") });
+      const qt = one(".about-quote blockquote");
+      if (qt) { const s = splitWords(qt); splits.push(s); gsap.fromTo(s.words, { opacity: 0.2 }, { opacity: 1, stagger: 0.1, ease: "none", scrollTrigger: { trigger: qt, start: "top 80%", end: "bottom 55%", scrub: true } }); }
+
+      q("[data-about-count]").forEach((el) => {
+        const end = parseInt(el.getAttribute("data-about-count"), 10), o = { v: 0 };
+        if (!Number.isFinite(end)) return;
+        el.textContent = "0";
+        offs.push(() => { el.textContent = String(end); });
+        gsap.to(o, { v: end, duration: 2.2, ease: "power2.out", scrollTrigger: once(el, "top 88%"), onUpdate: () => { el.textContent = String(Math.round(o.v)); } });
+      });
+      if (one(".about-mq")) gsap.from(".about-mq", { y: 40, opacity: 0, duration: 1.2, ease: "expo.out", scrollTrigger: once(".about-clients", "top 62%") });
+
+      /* ===== about-v3: brand-colour sweep on the highlighted heading words ===== */
+      [[".about-hero h1 em .am-i", ".about-hero"], [".about-co h2 em .am-i", ".about-co"], [".about-lead h2 em .am-i", ".about-lead"]].forEach(([sel, trg]) => {
+        const words = q(sel);
+        if (!words.length || !one(trg)) return;
+        gsap.fromTo(words, { color: "#0a0b14" }, { color: "#6a67ae", duration: 1.1, stagger: 0.12, delay: 0.45, ease: "power2.out", clearProps: "color", scrollTrigger: once(trg, "top 80%") });
+      });
+
+      /* ===== about-v4: every image + per-heading effects ===== */
+      const E = "expo.out";
+      const extra = (sel, from, dur = 1.2, delay = 0) => {
+        const el = one(sel);
+        const w = q(sel + " .am-i");
+        if (!el || !w.length) return;
+        gsap.from(w, { ...from, duration: dur, delay, stagger: 0.05, ease: E, clearProps: "filter", scrollTrigger: once(el, "top 86%") });
+      };
+      extra(".about-hero h1", { filter: "blur(12px)" }, 1.4, 0.5);
+      extra(".about-co h2", { skewY: 8, transformOrigin: "0% 100%" });
+      extra(".about-intro h2", { rotationX: -80, transformOrigin: "50% 100%", transformPerspective: 600 });
+      extra(".about-why h2", { filter: "blur(14px)", scale: 1.12 });
+      extra(".about-approach h2", { x: -60 });
+      extra(".about-lead h2", { filter: "blur(10px)", skewY: 4, transformOrigin: "0% 100%" });
+      extra(".about-clients h2", { scale: 1.25, transformOrigin: "0% 50%" });
+      extra(".about-closing h2", { rotationX: -60, filter: "blur(8px)", transformOrigin: "50% 100%", transformPerspective: 600 });
+
+      /* hero visual: circular iris reveal */
+      if (one(".about-orbit")) gsap.fromTo(".about-orbit", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(100% at 50% 50%)", duration: 1.6, delay: 0.5, ease: "expo.inOut", clearProps: "clipPath" });
+
+      /* founder portrait: brand-colour panel uncovers the photo, image settles from a zoom */
+      const pHost = one(".about-portrait");
+      if (pHost) {
+        const panel = document.createElement("span");
+        panel.className = "about-uncover";
+        pHost.appendChild(panel);
+        offs.push(() => panel.remove());
+        gsap.fromTo(panel, { scaleX: 1 }, { scaleX: 0, transformOrigin: "100% 50%", duration: 1.5, delay: 0.3, ease: "expo.inOut", scrollTrigger: once(pHost, "top 85%"), onComplete: () => panel.remove() });
+        gsap.from(".about-portrait img", { scale: 1.28, duration: 2.2, ease: E, scrollTrigger: once(pHost, "top 85%") });
+      }
+
+      /* client logos: staggered clip-reveal, then the marquee carries on */
+      const logos = q(".about-logo");
+      if (logos.length) gsap.fromTo(logos, { clipPath: "inset(0% 0% 100% 0% round 20px)", y: 24 }, { clipPath: "inset(0% 0% 0% 0% round 20px)", y: 0, duration: 1, ease: E, stagger: { amount: 1.2 }, clearProps: "clipPath,transform", scrollTrigger: once(".about-clients", "top 55%") });
+
+      /* "happy customers" avatar logos pop in */
+      const av = q(".about-happy-av span");
+      if (av.length) gsap.from(av, { scale: 0, duration: 0.8, stagger: 0.12, ease: "back.out(2)", clearProps: "transform", scrollTrigger: once(".about-co", "top 70%") });
+
+      const onLoad = () => ScrollTrigger.refresh();
+      window.addEventListener("load", onLoad);
+      offs.push(() => window.removeEventListener("load", onLoad));
+
       /* ===== magnetic links with arrow nudge ===== */
       if (fine) {
         q(".about-text-link, .about-closing a").forEach((b) => {
