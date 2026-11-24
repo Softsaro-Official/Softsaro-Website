@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import BlogArticle from "@/components/BlogArticle";
+import BlogArticle from "@/components/blog/BlogArticle";
 import PageReveal from "@/components/PageReveal";
 import { SiteFooter } from "@/components/Site";
 

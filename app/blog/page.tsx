@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
-import BlogPage from "@/components/BlogPage";
-import BlogMotion from "@/components/BlogMotion";
+import BlogPage from "@/components/blog/BlogPage";
+import BlogMotion from "@/components/blog/BlogMotion";
 import { SiteFooter } from "@/components/Site";
 
 const description = "Ideas on web development, UI/UX design, SEO and digital growth from the Softsaro team.";
