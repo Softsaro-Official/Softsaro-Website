@@ -87,7 +87,7 @@ function Hero() {
   );
 }
 
-export default function DmPage() {
+export default function DigitalMarketingTrainingContent() {
   const half = Math.ceil(tools.length / 2);
   const rows = [tools.slice(0, half), tools.slice(half)];
   return (

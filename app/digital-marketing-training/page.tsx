@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "@/components/Site";
 import Navbar from "@/components/Navbar";
-import DmMotion from "@/components/DmMotion";
-import DmPage from "@/components/DmPage";
+import DigitalMarketingTrainingMotion from "@/components/digital-marketing-training/DigitalMarketingTrainingMotion";
+import DigitalMarketingTrainingContent from "@/components/digital-marketing-training/DigitalMarketingTrainingContent";
 
 const description =
   "Practical digital marketing training from Softsaro Nepal: social media, Facebook & Instagram ads, Google Ads, content, SEO fundamentals, email marketing, strategy and analytics.";
@@ -19,9 +19,9 @@ export default function DigitalMarketingTrainingPage() {
     <>
       <Navbar b="/" />
       <main>
-        <DmMotion>
-          <DmPage />
-        </DmMotion>
+        <DigitalMarketingTrainingMotion>
+          <DigitalMarketingTrainingContent />
+        </DigitalMarketingTrainingMotion>
       </main>
       <SiteFooter />
     </>
