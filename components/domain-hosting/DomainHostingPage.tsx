@@ -1,4 +1,4 @@
-import DhMotion from "@/components/DhMotion";
+import DomainHostingMotion from "@/components/domain-hosting/DomainHostingMotion";
 
 const S = "https://softsaro.com.np";
 const TEL = "tel:+9779818439664";
@@ -398,7 +398,7 @@ export default function DomainHostingPage() {
         </div>
       </section>
 
-      <DhMotion />
+      <DomainHostingMotion />
     </main>
   );
 }

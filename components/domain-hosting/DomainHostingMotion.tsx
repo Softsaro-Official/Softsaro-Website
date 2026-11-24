@@ -8,7 +8,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const WORD = "yourbrand";
 
-export default function DhMotion() {
+export default function DomainHostingMotion() {
   useGSAP(() => {
     const root = document.querySelector<HTMLElement>(".dh");
     if (!root) return;

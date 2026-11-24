@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { SiteFooter } from "@/components/Site";
-import DomainHostingPage from "@/components/DomainHostingPage";
+import DomainHostingPage from "@/components/domain-hosting/DomainHostingPage";
 
 export const metadata: Metadata = {
   title: "Domain and Hosting in Nepal | Softsaro",
