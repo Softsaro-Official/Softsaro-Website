@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Briefcase, Calendar, Check, Clock3, Code, Eye, FileText, Heart, Laptop, MapPin, Monitor, Palette, Phone, Quote, Rocket, Search, Send, Shield, Smartphone, Sparkles, Star, UserCheck, Users, Utensils } from "lucide-react";
-import CareerForm from "@/components/CareerForm";
+import CareerForm from "@/components/career/CareerForm";
 import { GENERAL, vacancies } from "@/lib/careers";
 
 const gallery: string[] = ["/career/gallery-1.jpg", "/career/hero.png", "/career/gallery-2.jpg"];
