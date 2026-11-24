@@ -1,7 +1,0 @@
-import type { Metadata } from "next";
-import Navbar from "@/components/Navbar";
-import { SiteFooter } from "@/components/Site";
-import PricingPage from "@/components/pricing/PricingPage";
-
-export const metadata: Metadata = { title: "Domain & Hosting Pricing | Softsaro", description: "Domain and hosting plans from Softsaro." };
-export default function Page() { return <><Navbar b="/" /><main><PricingPage service="domain-hosting" /></main><SiteFooter /></>; }
