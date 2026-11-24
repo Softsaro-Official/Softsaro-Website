@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /** Tries each src in order. Also checks on mount, because a 404 can fire before React hydrates. */
-export default function WxPhoto({ srcs, alt, className, label }: { srcs: string[]; alt: string; className?: string; label?: string }) {
+export default function WebDevelopmentPhoto({ srcs, alt, className, label }: { srcs: string[]; alt: string; className?: string; label?: string }) {
   const [i, setI] = useState(0);
   const ref = useRef<HTMLImageElement>(null);
 

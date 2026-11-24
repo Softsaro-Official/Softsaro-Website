@@ -1,5 +1,5 @@
 import { S, Roll, Up } from "@/components/Site";
-import WxPhoto from "./WxPhoto";
+import WebDevelopmentPhoto from "./WebDevelopmentPhoto";
 
 const P = {
   hero: ["/assets/web/responsive.jpg", "/assets/dm/devices.jpg"],
@@ -67,7 +67,7 @@ function BuildVisual({ k }: { k: number }) {
     return (
       <Win url="yourbrand.com">
         <div className="wx-shot">
-          <WxPhoto srcs={P.work} alt="WordPress website preview" label="View" />
+          <WebDevelopmentPhoto srcs={P.work} alt="WordPress website preview" label="View" />
           <div className="wx-ov"><b></b><b></b><b></b><span></span></div>
         </div>
       </Win>
@@ -104,7 +104,7 @@ function BuildVisual({ k }: { k: number }) {
   );
 }
 
-export default function WxPage() {
+export default function WebDevelopmentPage() {
   return (
     <>
       <section className="wx-hero" id="top" aria-labelledby="wx-title">
@@ -124,13 +124,13 @@ export default function WxPage() {
           <div className="wx-l wx-L1" data-depth="14"><div className="wx-pop"><div data-float="-10,0.4,6">
             <Win url="yourbrand.com" cls="wx-win-main">
               <div className="wx-shot">
-                <WxPhoto srcs={P.hero} alt="Responsive website design shown on devices" label="View" />
+                <WebDevelopmentPhoto srcs={P.hero} alt="Responsive website design shown on devices" label="View" />
                 <div className="wx-ov"><b></b><b></b><b></b><span></span></div>
               </div>
             </Win>
           </div></div></div>
           <div className="wx-l wx-L2" data-depth="30"><div className="wx-pop"><div data-float="14,-1.5,5">
-            <div className="wx-phone"><WxPhoto srcs={P.dev} alt="Mobile website preview" label="View" /></div>
+            <div className="wx-phone"><WebDevelopmentPhoto srcs={P.dev} alt="Mobile website preview" label="View" /></div>
           </div></div></div>
           <div className="wx-l wx-L3" data-depth="22"><div className="wx-pop"><div data-float="-12,1,5.5">
             <div className="wx-dash" role="img" aria-label="Illustrative analytics card">
@@ -139,7 +139,7 @@ export default function WxPage() {
             </div>
           </div></div></div>
           <div className="wx-l wx-L4" data-depth="26"><div className="wx-pop"><div data-float="10,-1,6.5">
-            <div className="wx-round"><WxPhoto srcs={P.ui} alt="Designer reviewing UI screens" label="View" /></div>
+            <div className="wx-round"><WebDevelopmentPhoto srcs={P.ui} alt="Designer reviewing UI screens" label="View" /></div>
           </div></div></div>
           <div className="wx-l wx-L5" data-depth="36"><div className="wx-pop"><div data-float="-8,1,4.8">
             <div className="wx-code" aria-hidden="true">
@@ -202,7 +202,7 @@ export default function WxPage() {
           </div>
           <div className="wx-exp-frame">
             {expertise.map(([t, , src]) => (
-              <div className="wx-exp-pic" key={t}><WxPhoto srcs={[...src]} alt={t + " at Softsaro"} label="View" /></div>
+              <div className="wx-exp-pic" key={t}><WebDevelopmentPhoto srcs={[...src]} alt={t + " at Softsaro"} label="View" /></div>
             ))}
           </div>
         </div>
@@ -213,11 +213,11 @@ export default function WxPage() {
           <Lab n="03">In practice</Lab>
           <h2 className="wx-h2" id="wx-bento-t" data-split>Built to look sharp on every screen.</h2>
           <div className="wx-bg">
-            <figure className="wx-b wx-b1" data-speed="0.4"><WxPhoto srcs={P.hero} alt="Business website on laptop and phone" label="View" /><figcaption>Business websites</figcaption></figure>
-            <figure className="wx-b wx-b2" data-speed="0.9"><WxPhoto srcs={P.ui} alt="UI design screens" label="View" /><figcaption>Interface design</figcaption></figure>
-            <figure className="wx-b wx-b3" data-speed="0.2"><WxPhoto srcs={P.dash} alt="Web application dashboard" label="View" /><figcaption>Web applications</figcaption></figure>
-            <figure className="wx-b wx-b4" data-speed="0.7"><WxPhoto srcs={P.dev} alt="Developer building a website" label="View" /><figcaption>Clean code</figcaption></figure>
-            <figure className="wx-b wx-b5" data-speed="0.5"><WxPhoto srcs={P.work} alt="Design and development workspace" label="View" /><figcaption>Platforms &amp; listings</figcaption></figure>
+            <figure className="wx-b wx-b1" data-speed="0.4"><WebDevelopmentPhoto srcs={P.hero} alt="Business website on laptop and phone" label="View" /><figcaption>Business websites</figcaption></figure>
+            <figure className="wx-b wx-b2" data-speed="0.9"><WebDevelopmentPhoto srcs={P.ui} alt="UI design screens" label="View" /><figcaption>Interface design</figcaption></figure>
+            <figure className="wx-b wx-b3" data-speed="0.2"><WebDevelopmentPhoto srcs={P.dash} alt="Web application dashboard" label="View" /><figcaption>Web applications</figcaption></figure>
+            <figure className="wx-b wx-b4" data-speed="0.7"><WebDevelopmentPhoto srcs={P.dev} alt="Developer building a website" label="View" /><figcaption>Clean code</figcaption></figure>
+            <figure className="wx-b wx-b5" data-speed="0.5"><WebDevelopmentPhoto srcs={P.work} alt="Design and development workspace" label="View" /><figcaption>Platforms &amp; listings</figcaption></figure>
           </div>
         </div>
       </section>
@@ -244,7 +244,7 @@ export default function WxPage() {
             <h2 className="wx-h2" id="wx-why-t" data-split>A team you can rely on.</h2>
             <div className="wx-count" aria-label="8 plus years">8+</div>
             <p className="wx-why-s">years of IT experience, serving clients in Nepal and abroad through our Kathmandu and USA offices.</p>
-            <div className="wx-tilt" data-tilt=""><WxPhoto srcs={P.team} alt="Softsaro team working on a website" label="View" /></div>
+            <div className="wx-tilt" data-tilt=""><WebDevelopmentPhoto srcs={P.team} alt="Softsaro team working on a website" label="View" /></div>
           </div>
           <ul className="wx-why-list" data-stagger="">
             {why.map(([t, d], i) => (<li key={t}><small>0{i + 1}</small><h3>{t}</h3><p>{d}</p></li>))}
@@ -257,7 +257,7 @@ export default function WxPage() {
           <Lab n="06">Technologies</Lab>
           <h2 className="wx-h2" id="wx-tech-t" data-split>The right stack for each project.</h2>
           <ul className="wx-pills" data-stagger="">{tech.map((t) => (<li key={t}>{t}</li>))}</ul>
-          <figure className="wx-b wx-xwide" data-speed="0.3"><WxPhoto srcs={P.wide} alt="Developer writing code for a website project" label="View" /><figcaption>Modern, maintainable code</figcaption></figure>
+          <figure className="wx-b wx-xwide" data-speed="0.3"><WebDevelopmentPhoto srcs={P.wide} alt="Developer writing code for a website project" label="View" /><figcaption>Modern, maintainable code</figcaption></figure>
         </div>
       </section>
 
@@ -266,7 +266,7 @@ export default function WxPage() {
           <div>
             <Lab n="07">FAQ</Lab>
             <h2 className="wx-h2" id="wx-faq-t" data-split>Questions we hear often.</h2>
-            <figure className="wx-b wx-xtall" data-speed="0.4"><WxPhoto srcs={P.desk} alt="Design and development workspace" label="View" /><figcaption>Design to launch</figcaption></figure>
+            <figure className="wx-b wx-xtall" data-speed="0.4"><WebDevelopmentPhoto srcs={P.desk} alt="Design and development workspace" label="View" /><figcaption>Design to launch</figcaption></figure>
           </div>
           <div className="wx-faq-list" data-stagger="">
             {faqs.map(([q, a]) => (
@@ -288,7 +288,7 @@ export default function WxPage() {
             </div>
             <p className="wx-contact"><a href="mailto:info@softsaro.com">info@softsaro.com</a> &middot; Trade Tower, 5th Floor, Thapathali, Kathmandu</p>
           </div>
-          <div className="wx-cta-pic" data-tilt=""><WxPhoto srcs={P.work} alt="Softsaro design and development team at work" label="View" /></div>
+          <div className="wx-cta-pic" data-tilt=""><WebDevelopmentPhoto srcs={P.work} alt="Softsaro design and development team at work" label="View" /></div>
         </div>
       </section>
     </>

@@ -32,7 +32,7 @@ function split(el: HTMLElement) {
   return out;
 }
 
-export default function BnMotion({ children }: { children: ReactNode }) {
+export default function BannerAdsMotion({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {

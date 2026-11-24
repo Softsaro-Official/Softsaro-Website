@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import UxPhoto from "./UxPhoto";
+import UiUxDesignPhoto from "./UiUxDesignPhoto";
 
 const C = "https://softsaro.com.np/contact";
 const P = {
@@ -73,7 +73,7 @@ function Vis({ k }: { k: string }) {
   );
 }
 
-export default function UxPage() {
+export default function UiUxDesignPage() {
   return (
     <>
       {/* HERO */}
@@ -113,7 +113,7 @@ export default function UxPage() {
                       <div className="ux-wf ux-wf-p ux-w55"><i className="ux-fill ux-f-soft" /></div>
                       <div className="ux-wf ux-wf-btn"><i className="ux-fill" /></div>
                     </div>
-                    <div className="ux-wf ux-wf-img"><i className="ux-fill"><UxPhoto srcs={P.hero} alt="Designers planning a user interface" label="Design" /></i></div>
+                    <div className="ux-wf ux-wf-img"><i className="ux-fill"><UiUxDesignPhoto srcs={P.hero} alt="Designers planning a user interface" label="Design" /></i></div>
                   </div>
                   <div className="ux-cards3">
                     <div className="ux-wf ux-wf-card"><i className="ux-fill ux-f-soft" /></div>
@@ -195,7 +195,7 @@ export default function UxPage() {
                 <em className="ux-ill">Illustrative</em>
                 <div className="ux-lay ux-lay0">
                   <p className="ux-lay-t">01 &middot; Research</p>
-                  <div className="ux-lay-ph"><UxPhoto srcs={P.team} alt="Team reviewing user research" label="Research" /></div>
+                  <div className="ux-lay-ph"><UiUxDesignPhoto srcs={P.team} alt="Team reviewing user research" label="Research" /></div>
                   <div className="ux-notes"><span>Checkout feels long</span><span>Search is hard to find</span><span>Goal: book in two taps</span></div>
                 </div>
                 <div className="ux-lay ux-lay1">
@@ -214,7 +214,7 @@ export default function UxPage() {
                 </div>
                 <div className="ux-lay ux-lay3">
                   <p className="ux-lay-t">04 &middot; Visual design</p>
-                  <div className="ux-fd-ph"><UxPhoto srcs={P.devs} alt="Polished interface on desktop and mobile" label="Design" /></div>
+                  <div className="ux-fd-ph"><UiUxDesignPhoto srcs={P.devs} alt="Polished interface on desktop and mobile" label="Design" /></div>
                   <div className="ux-fd-t"><i style={{ width: "70%" }} /><i style={{ width: "46%" }} /><b>Get started</b></div>
                   <div className="ux-fd-sw"><i style={{ background: "#6a67ae" }} /><i style={{ background: "#3f3d7a" }} /><i style={{ background: "#3fe33f" }} /><i style={{ background: "#0a0b14" }} /></div>
                 </div>
@@ -258,7 +258,7 @@ export default function UxPage() {
           </div>
           <div className="ux-ph2 ux-ph2-a" data-speed="0.5" data-tilt>
             <div className="s">
-              <div className="ux-ph2-img"><UxPhoto srcs={P.work} alt="Designer working on a mobile app" label="App" /></div>
+              <div className="ux-ph2-img"><UiUxDesignPhoto srcs={P.work} alt="Designer working on a mobile app" label="App" /></div>
               <div className="ux-ph2-b"><i style={{ width: "80%" }} /><i style={{ width: "55%" }} /><b>Continue</b></div>
             </div>
           </div>
@@ -268,7 +268,7 @@ export default function UxPage() {
               <div className="ux-ph2-l"><i /><i /><i /><i /></div>
             </div>
           </div>
-          <figure className="ux-fig ux-fig-a" data-reveal><UxPhoto srcs={P.shot} alt="Analytics dashboard on a laptop" label="Dashboards" /></figure>
+          <figure className="ux-fig ux-fig-a" data-reveal><UiUxDesignPhoto srcs={P.shot} alt="Analytics dashboard on a laptop" label="Dashboards" /></figure>
         </div>
       </section>
 
@@ -320,7 +320,7 @@ export default function UxPage() {
               <li>Trade Tower, 5th Floor, Thapathali, Kathmandu</li>
             </ul>
           </div>
-          <figure className="ux-fig ux-fig-c" data-reveal><UxPhoto srcs={P.cta} alt="Softsaro design studio" label="Say hello" /></figure>
+          <figure className="ux-fig ux-fig-c" data-reveal><UiUxDesignPhoto srcs={P.cta} alt="Softsaro design studio" label="Say hello" /></figure>
         </div>
       </section>
     </>

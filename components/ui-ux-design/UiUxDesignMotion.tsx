@@ -29,7 +29,7 @@ function split(el: HTMLElement) {
   return words;
 }
 
-export default function UxMotion({ children }: { children: ReactNode }) {
+export default function UiUxDesignMotion({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {

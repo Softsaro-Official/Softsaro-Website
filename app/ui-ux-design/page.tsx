@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { SiteFooter } from "@/components/Site";
-import UxMotion from "@/components/ux/UxMotion";
-import UxPage from "@/components/ux/UxPage";
+import UiUxDesignMotion from "@/components/ui-ux-design/UiUxDesignMotion";
+import UiUxDesignPage from "@/components/ui-ux-design/UiUxDesignPage";
 
 export const metadata: Metadata = {
   title: "UI/UX Design in Nepal | Softsaro",
@@ -25,7 +25,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       <Navbar b="/" />
       <main id="main">
-        <UxMotion><UxPage /></UxMotion>
+        <UiUxDesignMotion><UiUxDesignPage /></UiUxDesignMotion>
       </main>
       <SiteFooter />
     </>

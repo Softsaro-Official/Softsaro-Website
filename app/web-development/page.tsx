@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { SiteFooter } from "@/components/Site";
-import WxMotion from "@/components/wx/WxMotion";
-import WxPage from "@/components/wx/WxPage";
+import WebDevelopmentMotion from "@/components/web-development/WebDevelopmentMotion";
+import WebDevelopmentPage from "@/components/web-development/WebDevelopmentPage";
 
 const description =
   "Website design and development in Nepal by Softsaro: WordPress, business websites, dynamic sites with admin panels and custom web apps. Fast, secure, mobile-friendly and SEO-ready.";
@@ -23,15 +23,15 @@ const jsonLd = {
   description,
 };
 
-export default function WebDevelopmentPage() {
+export default function WebDevelopmentPageRoute() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Navbar b="/" />
       <main id="main">
-        <WxMotion>
-          <WxPage />
-        </WxMotion>
+        <WebDevelopmentMotion>
+          <WebDevelopmentPage />
+        </WebDevelopmentMotion>
       </main>
       <SiteFooter />
     </>

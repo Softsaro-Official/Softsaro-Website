@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import BnPhoto from "./BnPhoto";
+import BannerAdsPhoto from "./BannerAdsPhoto";
 
 const C = "https://softsaro.com.np/contact";
 const VIO = "#5b2fd6", COR = "#2a1668", YEL = "#ffc233", LIM = "#ece6f8", PNK = "#ece6f8", INK = "#120b2e", CR = "#f6f0e6", W = "#ffffff";
@@ -19,7 +19,7 @@ function Ad({ cls, a, b, c, d, tag, h, cta, ph, label = "View" }: AdP) {
   return (
     <div className={"bn-ad " + cls} style={st} data-cursor-label={label}>
       <i className="bn-ad-blob" />
-      <div className="bn-ad-ph">{ph ? <BnPhoto srcs={ph} alt="" label={label} /> : <span className="bn-ad-shape" />}</div>
+      <div className="bn-ad-ph">{ph ? <BannerAdsPhoto srcs={ph} alt="" label={label} /> : <span className="bn-ad-shape" />}</div>
       <div className="bn-ad-t"><small>{tag}</small><b>{h}</b><span className="bn-ad-cta">{cta}</span></div>
     </div>
   );
@@ -71,7 +71,7 @@ const WHY = [
   { t: "Measurable results", d: "Creatives built to be tracked, so you can see what works." },
 ];
 
-export default function BnPage() {
+export default function BannerAdsPage() {
   return (
     <>
       {/* HERO */}

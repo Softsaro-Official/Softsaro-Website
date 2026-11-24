@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-export default function BnPhoto({ srcs, alt, label = "View" }: { srcs: string[]; alt: string; label?: string }) {
+export default function BannerAdsPhoto({ srcs, alt, label = "View" }: { srcs: string[]; alt: string; label?: string }) {
   const [i, setI] = useState(0);
   const r = useRef<HTMLImageElement>(null);
   useEffect(() => {

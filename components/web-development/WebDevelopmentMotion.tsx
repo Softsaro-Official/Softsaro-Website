@@ -36,7 +36,7 @@ function splitWords(el: HTMLElement) {
 }
 
 /** Motion for /web-development. GsapCursor and Navbar run on their own. */
-export default function WxMotion({ children }: { children: ReactNode }) {
+export default function WebDevelopmentMotion({ children }: { children: ReactNode }) {
   const root = useRef<HTMLDivElement>(null);
 
   useGSAP(

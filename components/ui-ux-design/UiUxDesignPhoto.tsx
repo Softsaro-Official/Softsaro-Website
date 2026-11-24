@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-export default function UxPhoto({ srcs, alt, className = "", label = "View" }: { srcs: string[]; alt: string; className?: string; label?: string }) {
+export default function UiUxDesignPhoto({ srcs, alt, className = "", label = "View" }: { srcs: string[]; alt: string; className?: string; label?: string }) {
   const [i, setI] = useState(0);
   const ref = useRef<HTMLImageElement>(null);
   useEffect(() => {

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { SiteFooter } from "@/components/Site";
-import BnMotion from "@/components/bn/BnMotion";
-import BnPage from "@/components/bn/BnPage";
+import BannerAdsMotion from "@/components/banner-ads/BannerAdsMotion";
+import BannerAdsPage from "@/components/banner-ads/BannerAdsPage";
 
 export const metadata: Metadata = {
   title: "Banner Advertising in Nepal | Softsaro",
@@ -16,7 +16,7 @@ export default function Page() {
     <>
       <Navbar b="/" />
       <main id="main">
-        <BnMotion><BnPage /></BnMotion>
+        <BannerAdsMotion><BannerAdsPage /></BannerAdsMotion>
       </main>
       <SiteFooter />
     </>
