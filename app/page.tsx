@@ -1,13 +1,13 @@
-import Home from "@/components/Home";
-import Motion from "@/components/Motion";
-import Intro from "@/components/Intro";
+import Home from "@/components/home/Home";
+import HomeMotion from "@/components/home/HomeMotion";
+import Intro from "@/components/home/Intro";
 
 export default function Page() {
   return (
     <>
       <Intro />
       <Home />
-      <Motion />
+      <HomeMotion />
     </>
   );
 }

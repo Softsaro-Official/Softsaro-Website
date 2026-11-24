@@ -2,7 +2,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { LOGO_W, LOGO_H, PIECES } from "@/components/intro-pieces";
+import { LOGO_W, LOGO_H, PIECES } from "@/components/home/intro-pieces";
 
 const COLS = 5;
 

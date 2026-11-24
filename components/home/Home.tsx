@@ -1,17 +1,17 @@
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { D } from "@/lib/data";
-import Services from "@/components/Services";
+import Services from "@/components/home/Services";
 import { SiteFooter } from "@/components/Site";
 import Navbar from "@/components/Navbar";
-import TechReveal from "@/components/TechReveal";
+import TechReveal from "@/components/home/TechReveal";
 import { SiLaravel, SiPhp, SiMysql, SiReact, SiNextdotjs, SiNodedotjs, SiTailwindcss, SiWordpress, SiShopify, SiFlutter, SiClickhouse } from "react-icons/si";
 import { TbBrandReactNative } from "react-icons/tb";
 import { Cloud as TcCloud, GitBranch as TcBranch, Code as TcCode } from "lucide-react";
 import { Search, Compass, PenTool, Code, Rocket, Lightbulb, Map as MapIcon, Palette, Layers, Zap } from "lucide-react";
-import ProcReveal from "@/components/ProcReveal";
-import WhyReveal from "@/components/WhyReveal";
-import PvGuard from "@/components/PvGuard";
-import CardsMotion from "@/components/CardsMotion";
+import ProcReveal from "@/components/home/ProcReveal";
+import WhyReveal from "@/components/home/WhyReveal";
+import PvGuard from "@/components/home/PvGuard";
+import CardsMotion from "@/components/home/CardsMotion";
 
 const S = "https://softsaro.com.np";
 const Roll = ({ t }: { t: string }) => (

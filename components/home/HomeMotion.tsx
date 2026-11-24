@@ -2,7 +2,7 @@
 import { useGSAP } from "@gsap/react";
 import { initMotion } from "@/lib/motion";
 
-export default function Motion() {
+export default function HomeMotion() {
   useGSAP(() => initMotion(), []);
   return null;
 }
