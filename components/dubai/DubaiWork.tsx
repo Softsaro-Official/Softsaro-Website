@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
-import DmpMarquee from "./DmpMarquee";
+import DubaiMarquee from "./DubaiMarquee";
 
 type Cat = "web" | "seo" | "ads" | "social" | "content";
 type Item = { id: string; cat: Cat; title: string; label: string; desc: string; tags: string[]; img?: string; href?: string; viz?: string };
@@ -53,7 +53,7 @@ function Viz({ k }: { k: string }) {
   }
 }
 
-export default function DmpWork({ items, base }: { items: string[][]; base: string }) {
+export default function DubaiWork({ items, base }: { items: string[][]; base: string }) {
   const [f, setF] = useState("all");
   const rm = useReducedMotion();
   const all: Item[] = [...CONCEPTS];
@@ -106,7 +106,7 @@ export default function DmpWork({ items, base }: { items: string[][]; base: stri
           ))}
         </motion.div>
       </LayoutGroup>
-      <DmpMarquee />
+      <DubaiMarquee />
     </div>
   );
 }

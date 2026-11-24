@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function DmpFx() {
+export default function DubaiFx() {
   useGSAP(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const root = document.querySelector<HTMLElement>(".dmp-page");

@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-export default function DmpMotion() {
+export default function DubaiMotion() {
   useGSAP(() => {
     const root = document.querySelector<HTMLElement>(".dmp-page");
     if (!root) return;
@@ -64,7 +64,7 @@ export default function DmpMotion() {
         });
       });
     };
-    /* services tabs are handled by DmpSvcScroll */
+    /* services tabs are handled by DubaiServicesScroll */
     tabGroup(".dmp-rtab", ".dmp-rpane");
 
     const spy = all<HTMLAnchorElement>("[data-spy]");

@@ -1,14 +1,14 @@
-import DmpMotion from "@/components/DmpMotion";
-import DmpFx from "@/components/DmpFx";
-import DmpSvcScroll from "@/components/DmpSvcScroll";
-import DmpWork from "./DmpWork";
-import DmpAbout from "./DmpAbout";
-import Rise from "./DmpRise";
-import DragScroll from "./DmpDragScroll";
-import HeroVis from "@/components/DmpHeroVis";
-import { ContactForm } from "@/components/DmpForms";
-import CareerForm from "@/components/DmpCareerForm";
-import HeroCard from "@/components/DmpHeroCard";
+import DubaiMotion from "@/components/dubai/DubaiMotion";
+import DubaiFx from "@/components/dubai/DubaiFx";
+import DubaiServicesScroll from "@/components/dubai/DubaiServicesScroll";
+import DubaiWork from "./DubaiWork";
+import DubaiAbout from "./DubaiAbout";
+import Rise from "./Rise";
+import DragScroll from "./DragScroll";
+import HeroVis from "@/components/dubai/HeroVis";
+import { ContactForm } from "@/components/dubai/ConsultForms";
+import WhatsAppConsultForm from "@/components/dubai/WhatsAppConsultForm";
+import HeroCard from "@/components/dubai/HeroCard";
 import { D } from "@/lib/data";
 
 const S = "https://softsaro.com.np";
@@ -203,7 +203,7 @@ const CURVE = "M0 92C30 88 50 80 80 70S130 62 160 46 220 30 300 14";
 
 const SKY = Array.from({ length: 20 }, (_, i) => ({ x: i * 20 + 2, h: 28 + ((i * 37) % 60) + (i === 10 ? 50 : 0), w: 12 + ((i * 11) % 8) }));
 
-export default function DmpPage() {
+export default function DubaiPage() {
   const pj = D.pj as string[][];
   const tq = D.tq as string[][];
   return (
@@ -228,7 +228,7 @@ export default function DmpPage() {
         </div>
       </section>
 
-      <DmpAbout a={P("dmx", "crew")} b={P("dmx", "board")} c={P("dmd", "charts")} />
+      <DubaiAbout a={P("dmx", "crew")} b={P("dmx", "board")} c={P("dmd", "charts")} />
 
       <nav className="dmp-pills" aria-label="On this page"><div className="dmp-in"><ul>{PILLS.map(([l, id]) => (<li key={id}><a href={`#${id}`} data-spy={id}>{l}</a></li>))}</ul></div></nav>
 
@@ -424,7 +424,7 @@ export default function DmpPage() {
       <section className="dmp-sec dmp-work" id="dmp-work">
         <div className="dmp-in">
           <Head tag="Digital marketing portfolio" t="Our portfolio" lede="The SEO, advertising, social media and content work we do to grow your business. Cards marked Concept example are illustrative, not client results." />
-          <DmpWork items={pj} base={S} />
+          <DubaiWork items={pj} base={S} />
           <div className="dmp-center-cta" data-up><a className="dmp-btn p" data-mag href={`${S}/portfolio`}><span>View full portfolio</span></a></div>
         </div>
       </section>
@@ -507,9 +507,9 @@ export default function DmpPage() {
         {SKY.map((b, i) => (<rect key={i} x={b.x} y={160 - b.h} width={b.w} height={b.h} />))}
       </svg>
 
-      <DmpMotion />
-      <DmpFx />
-      <DmpSvcScroll />
+      <DubaiMotion />
+      <DubaiFx />
+      <DubaiServicesScroll />
     </main>
   );
 }

@@ -7,7 +7,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const TOP = 150;
 
-export default function DmpSvcScroll() {
+export default function DubaiServicesScroll() {
   useGSAP(() => {
     const svc = document.querySelector<HTMLElement>(".dmp-svc");
     if (!svc) return;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { SiteFooter } from "@/components/Site";
-import DmpPage from "@/components/DmpPage";
+import DubaiPage from "@/components/dubai/DubaiPage";
 
 const PATH = "/services/digital-marketing-dubai";
 const TITLE = "Digital Marketing in Dubai | Digital Marketing Agency | Softsaro";
@@ -22,7 +22,7 @@ export default function Page() {
   return (
     <>
       <Navbar b="/" />
-      <DmpPage />
+      <DubaiPage />
       <SiteFooter />
     </>
   );

@@ -6,7 +6,7 @@ const SERVICES = [
   "SEO", "Digital Marketing", "Social Media Marketing", "Google Ads", "Website Development", "Other",
 ];
 
-export default function DmpCareerForm() {
+export default function WhatsAppConsultForm() {
   const [sent, setSent] = useState(false);
   const [link, setLink] = useState("");
 

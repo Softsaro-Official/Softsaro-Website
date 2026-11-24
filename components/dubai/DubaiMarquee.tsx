@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const SEL = "#dmp-work .dmp-wk-grid";
 const SPEED = 40; // px per second
 
-export default function DmpMarquee() {
+export default function DubaiMarquee() {
   useEffect(() => {
     const g = document.querySelector<HTMLElement>(SEL);
     if (!g) return;

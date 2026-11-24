@@ -13,7 +13,7 @@ const POINTS = [
   "Business-focused solutions",
 ];
 
-export default function DmpAbout({ a, b, c }: { a: string; b: string; c: string }) {
+export default function DubaiAbout({ a, b, c }: { a: string; b: string; c: string }) {
   const rm = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
